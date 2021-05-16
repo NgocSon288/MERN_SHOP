@@ -11,7 +11,6 @@ const categoryService = {
   getAll: async () => {
     //   return    axios.get(`${urlStr}/categories`).then(res => res.data)
     const res = await axios.get(`${urlStr}/categories`)
-    console.log('adad', res.data);
 
     return res.data
   },
@@ -32,7 +31,7 @@ const categoryService = {
     return res.data
   },
   delete: async (id) => {
-    const res = await axios.delete(`${urlStr}/categories/${id}`)
+    const res = await axios.delete(`${urlStr}/categories/${id}`) // urlStr: localhost://3000/api/categories/1873568172631923
 
     return res.data
   },
