@@ -18,7 +18,11 @@ export const categoryReducer = async (state, action) => {
       try {
         const res = await categoryService.update({ ...data })
         mess = res.message
-        state = [...state, { ...data }]
+        // state = [...state, { ...data }]
+        const item = state.find((ite) => ite._id === data._id)
+        item.name = data.name
+        item.description = data.description 
+        
       } catch (error) {
         mess = error.message
       }

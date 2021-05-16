@@ -49,7 +49,6 @@ export const productReducer = async (state, action) => {
 
     case TYPE.CREATE: { 
       const { product } = payload 
-      console.log(product);
       try {
         const res = await productService.create(product)
 

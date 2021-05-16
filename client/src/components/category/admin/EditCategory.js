@@ -27,7 +27,8 @@ export default function EditCategory({ title }) {
     }
   }, [categories])
 
-  useEffect(() =>{console.log('asda');}, [data])
+  useEffect(() => { 
+  }, [data])
 
   const onChange = async (e) => {
     const newData = { ...data, [e.target.name]: e.target.value }
@@ -36,7 +37,7 @@ export default function EditCategory({ title }) {
   }
 
   const onSubmit = async (e) => {
-    console.log(categories)
+    e.preventDefault() 
     if (!data.name || !data.description) {
       alert('Data is not empty')
       return

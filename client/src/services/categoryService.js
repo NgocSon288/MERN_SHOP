@@ -11,6 +11,7 @@ const categoryService = {
   getAll: async () => {
     //   return    axios.get(`${urlStr}/categories`).then(res => res.data)
     const res = await axios.get(`${urlStr}/categories`)
+    console.log('adad', res.data);
 
     return res.data
   },

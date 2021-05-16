@@ -119,7 +119,7 @@ export default function Createproduct({ title }) {
           />
         </FormGroup>
         <FormGroup>
-          <Label for='category'>Giá</Label>
+          <Label for='category'>Loại sản phẩm</Label>
           <Input
             type='select'
             name='category'

@@ -26,8 +26,7 @@ module.exports = {
   },
   create: async function (req, res, next) {
     try {
-      const { name, description } = req.body
-      console.log(req.body);
+      const { name, description } = req.body 
       const category = new Category({ name: name, description: description })
       await category.save()
       res.json({ success: true, message: 'Create successfully' })
