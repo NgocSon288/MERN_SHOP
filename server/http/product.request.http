@@ -1,0 +1,45 @@
+# Get all products
+GET http://localhost:3000/api/products/
+
+
+
+###
+# Get product by id
+GET http://localhost:3000/api/products/609a29dc6542d153f86da754
+ 
+
+###
+# Create product
+POST http://localhost:3000/api/products/
+Content-Type: application/json
+
+{
+    "name": "Điện thoại iPhone 12 64GB",
+    "category": "609a202d1100534046b7efb3",
+    "price": "21990000",
+    "image": "img2.jpg",
+    "content": "Apple đã trang bị con chip mới nhất của hãng (tính đến 11/2020) cho iPhone 12 đó là A14 Bionic, được sản xuất trên tiến trình 5 nm với hiệu suất ổn định hơn so với chip A13 được trang bị trên phiên bản tiền nhiệm iPhone 11."
+}
+
+
+###
+# Delete product by id
+DELETE http://localhost:3000/api/products/609a28c55d6c30515c8e4c70
+ 
+
+###
+# Update product by id
+PUT http://localhost:3000/api/products/609a29dc6542d153f86da754
+Content-Type: application/json
+
+{
+    "name": "Laptop Acer Aspire A315 56 34AY i3 1005G1/4GB/512GB/Win10 (NX.HS5SV.007)",
+    "category": "609a226e0fba9b43c1d9c04b",
+    "price": "12990000",
+    "image": "img1.jpg",
+    "content": "Acer Aspire được làm từ chất liệu nhựa, có độ hoàn thiện cao, đường nét tỉ mỉ tạo nên tổng thể máy sang trọng, thời trang. Chiếc máy này có độ dày 19.9 mm và cân nặng 1.7 kg đủ mỏng nhẹ để bạn thoải mái đem theo đi học, đi làm hằng ngày."
+}
+     
+
+### 
+GET http://localhost:3000/api/test

@@ -1,0 +1,50 @@
+###
+# GetAll category
+GET http://localhost:3000/api/categories/
+
+
+
+###
+# Get category by id
+GET http://localhost:3000/api/categories/609a202d1100534046b7efb3
+
+
+
+### 
+# Create Category
+POST  http://localhost:3000/api/categories/
+Content-Type: application/json
+
+{
+    "name": "Smart Watch",
+    "description": "Smart Watch xịn xịn"
+}
+
+
+
+### 
+# Update Category
+PUT  http://localhost:3000/api/categories/609a226e0fba9b43c1d9c04b
+Content-Type: application/json
+
+{
+    "name": "Laptop 1",
+    "description": "Laptop xịn, vô địch cấp xã 1"
+}
+
+
+
+###
+# Delete Category
+DELETE  http://localhost:3000/api/categories/609a225c0fba9b43c1d9c04a
+
+
+
+
+
+
+
+
+
+
+
