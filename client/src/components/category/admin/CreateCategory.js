@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 import { CategoryContext } from '../../../contexts/admin/CategoryContext'
 import * as CATEGORY_TYPE from '../../../reducers/admin/categoryType.js'
 
+import './CreateCategory.css'
+
 export default function CreateCategory({ title }) {
   const [data, setData] = useState({
     name: '',
