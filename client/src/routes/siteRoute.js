@@ -1,16 +1,17 @@
 // Admin
-import AdminHome from '../components/sites/admin/AdminHome'
+// import AdminHome from '../components/sites/admin/AdminHome'
+import  AdminHome from './../views/sites/admin/Home'
 
 // Client
-import ClientAbout from '../components/sites/client/ClientAbout'
-import ClientHome from '../components/sites/client/ClientHome'
-import ClientContact from '../components/sites/client/ClientContact' 
+import ClientAbout from '../views/sites/client/About'
+import ClientHome from '../views/sites/client/Home'
+import ClientContact from '../views/sites/client/Contact' 
 
 //  Layouts
 import AdminLayout from './../layouts/AdminLayout'
 import ClientLayout from './../layouts/ClientLayout'
 
-// ContextProvider 
+// ContextProvider  
 
 const route = [
   // Admin Sites route
@@ -21,9 +22,8 @@ const route = [
     icon: 'design_app',
     component: AdminHome,
     layout: AdminLayout,
-    wrapContextProvider: null,
+    wrapContextProvider: null
   },
-
 
   //-----------------------------------------------------------------------------------------
   // Client Sites route
@@ -34,7 +34,7 @@ const route = [
     icon: 'design_app',
     component: ClientHome,
     layout: ClientLayout,
-    wrapContextProvider: null,
+    wrapContextProvider: null
   },
 
   // Client About route
@@ -56,7 +56,6 @@ const route = [
     layout: ClientLayout,
     wrapContextProvider: null,
   },
- 
 ]
 
 export default route

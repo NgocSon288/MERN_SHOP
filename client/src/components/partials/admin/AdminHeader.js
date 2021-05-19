@@ -12,7 +12,12 @@ export default function AdminHeader() {
         <Collapse navbar>
           <Nav className='mr-auto' navbar>
             <NavItem>
-              <Link to='/admin/category'>Category</Link>
+              <Link to='/admin/user'>User</Link>
+            </NavItem>
+            <NavItem>
+              <Link className='pl-4' to='/admin/category'>
+                Category
+              </Link>
             </NavItem>
             <NavItem>
               <Link className='pl-4' to='/admin/product'>

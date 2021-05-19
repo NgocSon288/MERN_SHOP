@@ -36,15 +36,4 @@ Content-Type: application/json
 
 ###
 # Delete Category
-DELETE  http://localhost:3000/api/categories/609a225c0fba9b43c1d9c04a
-
-
-
-
-
-
-
-
-
-
-
+DELETE  http://localhost:3000/api/categories/609a225c0fba9b43c1d9c04a 

@@ -1,0 +1,40 @@
+###
+# GetAll category
+GET http://localhost:3000/api/categoryUsers/
+
+
+
+###
+# Get category by id
+GET http://localhost:3000/api/categoryUsers/60a28d3f7ceccf23132019d9
+
+
+
+### 
+# Create Category
+POST  http://localhost:3000/api/categoryUsers/
+Content-Type: application/json
+
+{
+    "name": "ADMIN",
+    "displayName": "Quản Trị Viên",
+    "description": "Thành viên có chức năng quản trị và chức năng của khách hàng"
+}
+
+
+
+### 
+# Update Category
+PUT  http://localhost:3000/api/categoryUsers/60a28dc17ceccf23132019da
+Content-Type: application/json
+
+{
+    "name": "ADMIN",
+    "displayName": "Quản Trị Viên",
+    "description": "Thành viên có chức năng quản trị website và chức năng của khách hàng"
+}
+
+
+###
+# Delete Category
+DELETE  http://localhost:3000/api/categoryUsers/60a28cdf7ceccf23132019d7 

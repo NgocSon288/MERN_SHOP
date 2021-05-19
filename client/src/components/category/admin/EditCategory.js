@@ -50,8 +50,6 @@ export default function EditCategory({ title }) {
   }
 
   return (
-    <div className='container'>
-      <h2 className='text-center mb-4'>Cập nhật loại sản phẩm</h2>
       <Form>
         <FormGroup>
           <Label for='name'>Tên sản phẩm</Label>
@@ -82,6 +80,5 @@ export default function EditCategory({ title }) {
         <br />
         <Link to='/admin/category'>Quay về</Link>
       </Form>
-    </div>
   )
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react'
-import { Table, Button } from 'reactstrap'
+import { Table } from 'reactstrap'
 import { Link } from 'react-router-dom'
 
 import { ProductContext } from './../../../contexts/admin/ProductContext'
@@ -26,11 +26,6 @@ export default function ListProduct({ title }) {
   }
 
   return (
-    <div className='container'>
-      <h2 className='text-center mb-4'>Danh sách các sản phẩm</h2>
-      <Button color='primary' className='float-right mb-4' outline>
-        <Link to='/admin/product/create'>Thêm sản phẩm</Link>
-      </Button>
       <Table>
         <thead>
           <tr>
@@ -52,7 +47,7 @@ export default function ListProduct({ title }) {
                   {/* eslint-disable-next-line jsx-a11y/alt-text */}
                   <img
                     src={
-                      `http://localhost:3000/images/${
+                      `http://localhost:3000/images/product/${
                         item.image.split('|')[0]
                       }` ||
                       'https://tse3.mm.bing.net/th?id=OIP.03Nx1O7saqRog5kMdOZSuwHaHa&pid=Api&P=0&w=300&h=300'
@@ -88,6 +83,5 @@ export default function ListProduct({ title }) {
             ))}
         </tbody>
       </Table>
-    </div>
   )
 }

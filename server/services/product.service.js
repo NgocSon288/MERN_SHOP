@@ -14,8 +14,7 @@ const updatePrivate = async function (req, res, next) {
     image: image,
     content: content,
   }
-
-  const oldProduct = await Product.findOne({ _id: id })
+ 
   const product = await Product.findByIdAndUpdate({ _id: id }, newProduct, {
     new: true,
   })

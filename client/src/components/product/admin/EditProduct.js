@@ -40,8 +40,8 @@ export default function Editproduct({ title }) {
       const product = products.find((pro) => pro._id === id)
       setData({ ...product })
     }
-  }, [categories, products]) 
-  
+  }, [categories, products])
+
   const onSubmit = async (e) => {
     try {
       dispatch({
@@ -49,7 +49,7 @@ export default function Editproduct({ title }) {
         payload: {
           product: { ...data },
         },
-      }) 
+      })
     } catch (error) {
       alert(error.message)
     }
@@ -95,125 +95,122 @@ export default function Editproduct({ title }) {
   }
 
   return (
-    <div className='container'>
-      <h2 className='text-center mb-4'>Cập nhật loại sản phẩm</h2>
-      <Form>
-        <FormGroup>
-          <Label for='name'>Tên sản phẩm</Label>
-          <Input
-            type='text'
-            name='name'
-            id='name'
-            placeholder='Nhập tên'
-            value={name}
-            onChange={(e) => onChange(e)}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label for='price'>Giá</Label>
-          <Input
-            type='text'
-            name='price'
-            id='price'
-            placeholder='Nhập giá'
-            value={price}
-            onChange={(e) => onChange(e)}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label for='category'>Loại sản phẩm</Label>
-          <Input
-            type='select'
-            name='category'
-            id='category'
-            onChange={(e) => onSelectChanged(e)}
-          >
-            {categories &&
-              [...categories].map((item) => {
-                if (item._id === data.category._id)
-                  return <option selected>{item.name}</option>
-                else return <option>{item.name}</option>
-              })}
-          </Input>
-        </FormGroup>
-        <FormGroup>
-          <Label for='content'>Nội dung</Label>
-          <CKEditor
-            editor={ClassicEditor}
-            data={content}
-            onBlur={(event, editor) => {
-              const value = editor.getData()
-              setData({ ...data, content: value })
-            }}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label for='image'>Hình ảnh</Label>
-          <Input
-            type='file'
-            name='image'
-            id='image'
-            onChange={(e) => onChangeImage(e)}
-            multiple
-          />
-          <div className='d-flex'>
-            {/* // eslint-disable-next-line array-callback-return */}
-            <Row className='w-100 ml-1'>
-              {image &&
-                image.split('|').map(
-                  (item) =>
-                    item && (
-                      <Col xm='3' sm='3' className='mt-4 px-1'>
-                        <div className='wrap-image px-0'>
-                          <img
-                            src={`http://localhost:3000/images/${item}`}
-                            alt={item}
-                            width='100%'
-                            height='200'
-                          />
-                          <button
-                            className='btn btn-danger'
-                            data-item={item}
-                            data-switch='img'
-                            onClick={(e) => onClickDeleteImage(e)}
-                          >
-                            Delete
-                          </button>
-                        </div>
-                      </Col>
-                    )
-                )}
-              {data.fileUpload &&
-                [...data.fileUpload].map((item) => (
-                  <Col xm='3' sm='3' className='mt-4 px-1'>
-                    <div className='wrap-image'>
-                      <img
-                        src={URL.createObjectURL(item.val)}
-                        alt={item}
-                        width='100%'
-                        height='200'
-                      />
-                      <button
-                        className='btn btn-danger'
-                        data-key={item.key}
-                        data-switch='file'
-                        onClick={(e) => onClickDeleteImage(e)}
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  </Col>
-                ))}
-            </Row>
-          </div>
-        </FormGroup>
+    <Form>
+      <FormGroup>
+        <Label for='name'>Tên sản phẩm</Label>
+        <Input
+          type='text'
+          name='name'
+          id='name'
+          placeholder='Nhập tên'
+          value={name}
+          onChange={(e) => onChange(e)}
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label for='price'>Giá</Label>
+        <Input
+          type='text'
+          name='price'
+          id='price'
+          placeholder='Nhập giá'
+          value={price}
+          onChange={(e) => onChange(e)}
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label for='category'>Loại sản phẩm</Label>
+        <Input
+          type='select'
+          name='category'
+          id='category'
+          onChange={(e) => onSelectChanged(e)}
+        >
+          {categories &&
+            [...categories].map((item) => {
+              if (item._id === data.category._id)
+                return <option selected>{item.name}</option>
+              else return <option>{item.name}</option>
+            })}
+        </Input>
+      </FormGroup>
+      <FormGroup>
+        <Label for='content'>Nội dung</Label>
+        <CKEditor
+          editor={ClassicEditor}
+          data={content}
+          onBlur={(event, editor) => {
+            const value = editor.getData()
+            setData({ ...data, content: value })
+          }}
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label for='image'>Hình ảnh</Label>
+        <Input
+          type='file'
+          name='image'
+          id='image'
+          onChange={(e) => onChangeImage(e)}
+          multiple
+        />
+        <div className='d-flex'>
+          {/* // eslint-disable-next-line array-callback-return */}
+          <Row className='w-100 ml-1'>
+            {image &&
+              image.split('|').map(
+                (item) =>
+                  item && (
+                    <Col xm='3' sm='3' className='mt-4 px-1'>
+                      <div className='wrap-image px-0'>
+                        <img
+                          src={`http://localhost:3000/images/product/${item}`}
+                          alt={item}
+                          width='100%'
+                          height='200'
+                        />
+                        <button
+                          className='btn btn-danger'
+                          data-item={item}
+                          data-switch='img'
+                          onClick={(e) => onClickDeleteImage(e)}
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </Col>
+                  )
+              )}
+            {data.fileUpload &&
+              [...data.fileUpload].map((item) => (
+                <Col xm='3' sm='3' className='mt-4 px-1'>
+                  <div className='wrap-image'>
+                    <img
+                      src={URL.createObjectURL(item.val)}
+                      alt={item}
+                      width='100%'
+                      height='200'
+                    />
+                    <button
+                      className='btn btn-danger'
+                      data-key={item.key}
+                      data-switch='file'
+                      onClick={(e) => onClickDeleteImage(e)}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </Col>
+              ))}
+          </Row>
+        </div>
+      </FormGroup>
 
-        <Button color='primary' className='mb-2' onClick={(e) => onSubmit(e)}>
-          Submit
-        </Button>
-        <br />
-        <Link to='/admin/product'>Quay về</Link>
-      </Form>
-    </div>
+      <Button color='primary' className='mb-2' onClick={(e) => onSubmit(e)}>
+        Submit
+      </Button>
+      <br />
+      <Link to='/admin/product'>Quay về</Link>
+    </Form>
   )
 }

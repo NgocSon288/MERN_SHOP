@@ -6,8 +6,8 @@ import ClientFooter from '../components/partials/client/ClientFooter'
 export default function ClientLayout(props) {
   return (
     <React.Fragment>
-      <ClientHeader />
-
+      <ClientHeader /> 
+      
       {props.children}
 
       <ClientFooter />

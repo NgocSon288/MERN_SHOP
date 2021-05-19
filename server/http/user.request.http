@@ -1,0 +1,74 @@
+###
+# GetAll user
+GET http://localhost:3000/api/users/
+Content-Type: application/json
+Authorization: Bearer 1kbsdkhabskbdkjab
+
+
+###
+# Get user by id
+GET http://localhost:3000/api/users/60a28d3f7ceccf23132019d9
+
+
+###
+# Check Auth user
+GET http://localhost:3000/api/users/auth
+Content-Type: application/json
+Authorization: Bearer 1kbsdkhabskbdkjabaskjn29hdansdubosdbnj
+
+
+
+### 
+# Create user
+POST  http://localhost:3000/api/users/
+Content-Type: application/json
+
+{
+    "name": "Nguyễn Thị Diệu Nhi",
+    "username":"dieunhi",
+    "password":"123",
+    "email":"18521694@gm.uit.edu.vn",
+    "image": "abc",
+    "address":"Đồng Tháp",
+    "categoryUser":"60a28d3f7ceccf23132019d9"
+}
+
+
+
+### 
+# Login
+POST  http://localhost:3000/api/users/login
+Content-Type: application/json
+
+{
+    "username":"son",
+    "password":"123"
+}
+
+
+
+### 
+# Update user
+PUT  http://localhost:3000/api/users/60a28dc17ceccf23132019da
+Content-Type: application/json
+
+{
+    "name": "ADMIN",
+    "displayName": "Quản Trị Viên",
+    "description": "Thành viên có chức năng quản trị website và chức năng của khách hàng"
+}
+
+
+
+### 
+# Update permission user
+PUT  http://localhost:3000/api/users/permission/60a28dc17ceccf23132019da 
+Content-Type: application/json
+Authorization: Bearer 1kbsdkhabskbdkjabaskjn29hdansdubosdbnj
+
+
+
+
+###
+# Delete user
+DELETE  http://localhost:3000/api/users/60a28cdf7ceccf23132019d7 

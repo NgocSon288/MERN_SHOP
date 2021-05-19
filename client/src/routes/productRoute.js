@@ -1,7 +1,7 @@
 // Admin
-import CreateProduct from '../components/product/admin/CreateProduct'
-import EditProduct from '../components/product/admin/EditProduct'
-import ListProduct from '../components/product/admin/ListProduct'
+import List from '../views/product/admin/List'
+import Create from '../views/product/admin/Create'
+import Edit from '../views/product/admin/Edit'
 
 // Client
 
@@ -19,7 +19,7 @@ const productRoute = [
     path: '/admin/product/',
     title: 'Quản trị sản phẩm',
     icon: 'design_app',
-    component: ListProduct,
+    component: List,
     layout: AdminLayout,
     wrapContextProvider: ({ children }) => (
       <ProductContextProvider>{children}</ProductContextProvider>
@@ -30,7 +30,7 @@ const productRoute = [
     path: '/admin/product/create',
     title: 'Thêm mới sản phẩm',
     icon: 'design_app',
-    component: CreateProduct,
+    component: Create,
     layout: AdminLayout,
     wrapContextProvider: ({ children }) => (
       <ProductContextProvider>
@@ -43,7 +43,7 @@ const productRoute = [
     path: '/admin/Product/edit/:id',
     title: 'Cập nhật sản phẩm',
     icon: 'design_app',
-    component: EditProduct,
+    component: Edit,
     layout: AdminLayout,
     wrapContextProvider: ({ children }) => (
       <ProductContextProvider>

@@ -1,5 +1,6 @@
 const express = require('express')
 const productService = require('./../services/product.service')
+const verifyToken = require('./../middleware/auth')
 
 const route = express.Router()
 
@@ -15,17 +16,17 @@ route.get('/:id', productService.getById)
 
 // @route POST /api/products/
 // @desc Create product
-// @access Public
-route.post('/', productService.create)
+// @access Private
+route.post('/', verifyToken, productService.create)
 
 // @route DELETE /api/products/:id
 // @desc Delete product by id
-// @access Public
-route.delete('/:id', productService.delete)
+// @access Private
+route.delete('/:id', verifyToken, productService.delete)
 
 // @route PUT /api/products/:id
 // @desc Update product by id
-// @access Public
-route.put('/:id', productService.update)
+// @access Private
+route.put('/:id', verifyToken, productService.update)
 
 module.exports = route

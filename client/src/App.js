@@ -1,29 +1,8 @@
 import './App.css'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import route from './routes/route' 
-
-// const RenderContextProvider = ({ ListContextProvider, children }) => {
-//   if (!ListContextProvider || ListContextProvider.length === 0) {
-//     return children
-//   }
-//   const d = ListContextProvider.length
-//   const ItemContextProvider = ListContextProvider[0]
-//   ListContextProvider.shift()
-//   let code = null
-//   if (d > 1) {
-//     code = (
-//       <ItemContextProvider>
-//         <RenderContextProvider ListContextProvider={ListContextProvider}>
-//           {children}
-//         </RenderContextProvider>
-//       </ItemContextProvider>
-//     )
-//   } else if (d === 1) {
-//     code = <ItemContextProvider>{children}</ItemContextProvider>
-//   }
-//   return code
-// }
+import route from './routes/route'
+import AuthContextProvider from './contexts/client/AuthContext'
 
 const AppRoute = ({
   component: Component,
@@ -35,20 +14,18 @@ const AppRoute = ({
   <Route
     {...rest}
     render={(props) => (
-      <Layout>
-        {/* <RenderContextProvider ListContextProvider={ListContextProvider}> */}
-        {/* <CategoryContextProvider> */}
-        {WrapContextProvider && (
-          <WrapContextProvider>
+      <AuthContextProvider>
+        <Layout>
+          {WrapContextProvider && (
+            <WrapContextProvider>
+              <Component {...props} title={title}></Component>
+            </WrapContextProvider>
+          )}
+          {!WrapContextProvider && (
             <Component {...props} title={title}></Component>
-          </WrapContextProvider>
-        )}
-        {!WrapContextProvider && (
-          <Component {...props} title={title}></Component>
-        )}
-        {/* </CategoryContextProvider> */}
-        {/* </RenderContextProvider> */}
-      </Layout>
+          )}
+        </Layout>
+      </AuthContextProvider>
     )}
   ></Route>
 )
