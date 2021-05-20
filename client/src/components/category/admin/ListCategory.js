@@ -5,11 +5,10 @@ import { Link } from 'react-router-dom'
 import { CategoryContext } from './../../../contexts/admin/CategoryContext'
 import * as CATEGORY_TYPE from './../../../reducers/admin/categoryType.js'
 
-export default function ListCategory({ title }) {
+export default function ListCategory() {
   let { categories, dispatch } = useContext(CategoryContext)
 
   useEffect(() => {
-    document.title = title
   }, [categories])
 
   const removeItem = async ({ _id }) => {

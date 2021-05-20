@@ -6,12 +6,14 @@ import LoginForm from './../../../components/user/client/LoginForm'
 import { AuthContext } from '../../../contexts/client/AuthContext'
 import * as AUTH_TYPE from '../../../reducers/client/authType'
 
-export default function LoginAccount() {
+export default function LoginAccount({ title }) {
   const { authState, dispatch } = useContext(AuthContext)
 
   let body = <></>
 
   useEffect(() => {
+    document.title = title
+
     dispatch({
       type: AUTH_TYPE.SET_AUTH,
       payload: null,
@@ -21,7 +23,10 @@ export default function LoginAccount() {
 
   if (authState.authLoading) {
     body = (
-      <div className='d-flex justify-content-center mt-2' style={{height:'100%'}}>
+      <div
+        className='d-flex justify-content-center mt-2'
+        style={{ height: '100%' }}
+      >
         <Spinner color='primary' />
       </div>
     )

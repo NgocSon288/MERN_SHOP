@@ -1,10 +1,7 @@
 import React, {useEffect} from 'react'
 
-export default function ClientAbout({ title }) {
-
-    useEffect(() =>{
-        document.title = title
-    })
+export default function ClientAbout( ) {
+ 
 
   return (
     <div>

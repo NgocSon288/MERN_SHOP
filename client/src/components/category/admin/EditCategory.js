@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { CategoryContext } from '../../../contexts/admin/CategoryContext'
 import * as CATEGORY_TYPE from '../../../reducers/admin/categoryType.js'
 
-export default function EditCategory({ title }) {
+export default function EditCategory() {
   const [data, setData] = useState({
     name: '',
     description: '',
@@ -14,8 +14,7 @@ export default function EditCategory({ title }) {
 
   let { categories, dispatch } = useContext(CategoryContext)
 
-  useEffect(() => {
-    document.title = title
+  useEffect(() => { 
 
     var location = window.location.href
     const index = location.lastIndexOf('/') + 1

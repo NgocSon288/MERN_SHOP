@@ -7,14 +7,13 @@ import * as USER_TYPE from './../../../reducers/admin/userType.js'
 import * as AUTH_TYPE from './../../../reducers/client/authType'
 import './ListUser.css'
 
-export default function ListUser({ title }) {
+export default function ListUser( ) {
   let { users, dispatch } = useContext(UserContext)
   let { authState, dispatch: dispatchAuth } = useContext(AuthContext)
 
   let userCurrent = null
 
-  useEffect(() => {
-    document.title = title
+  useEffect(() => { 
 
     dispatchAuth({
       type: AUTH_TYPE.SET_AUTH,

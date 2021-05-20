@@ -7,7 +7,7 @@ import * as CATEGORY_TYPE from '../../../reducers/admin/categoryType.js'
 
 import './CreateCategory.css'
 
-export default function CreateCategory({ title }) {
+export default function CreateCategory() {
   const [data, setData] = useState({
     name: '',
     description: '',
@@ -15,11 +15,7 @@ export default function CreateCategory({ title }) {
   let { name, description } = data
 
   const { dispatch } = useContext(CategoryContext)
-
-  useEffect(() => {
-    document.title = title
-  })
-
+ 
   const onChange = async (e) => {
     const newData = { ...data, [e.target.name]: e.target.value }
 

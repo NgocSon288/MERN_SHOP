@@ -3,8 +3,15 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
 
 export default function AdminFooter() {
     return (
-        <div>
-            <h1 className='text-center bg-info'>Admin Footer</h1>
+      <div>
+        <div className='copyrights'>
+          <p>
+            © 2016 Shoppy. All Rights Reserved | Design by{' '}
+            <a href='http://w3layouts.com/' target='_blank'>
+              W3layouts
+            </a>{' '}
+          </p>
         </div>
+      </div>
     )
 }

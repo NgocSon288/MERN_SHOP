@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import EditProduct from '../../../components/product/admin/EditProduct'
 
-export default function Edit() {
+export default function Edit({ title }) {
+  useEffect(() => {
+    document.title = title
+  })
+
   return (
     <div>
-      <div className='container'>
-        <h2 className='text-center mb-4'>Cập nhật loại sản phẩm</h2>
+      <div>
+        <h2 className='mb-4'>Cập nhật loại sản phẩm</h2>
         <EditProduct />
       </div>
     </div>

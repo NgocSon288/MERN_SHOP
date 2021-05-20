@@ -1,10 +1,7 @@
 import React, {useEffect} from 'react'
 
-export default function ClientContact({ title }) {
-
-    useEffect(() =>{
-        document.title = title
-    })
+export default function ClientContact() {
+ 
 
   return (
     <div>

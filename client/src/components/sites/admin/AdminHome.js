@@ -1,19 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import categoryService from '../../../services/categoryService' 
+import categoryService from '../../../services/categoryService'
 
-export default function AdminHome({ title }) {
-  useEffect(() => {
-    document.title = title
- 
-  })    
- 
+export default function AdminHome() {
+  
+
   return (
     <div>
-      <h1>this is home</h1>
-      <h1>this is home</h1>
-      <h1>this is home</h1>
-      <h1>this is home</h1>
-      <h1>this is home</h1>
+      this is home 
     </div>
   )
 }

@@ -6,12 +6,14 @@ import RegisterForm from '../../../components/user/client/RegisterForm.js'
 import { AuthContext } from '../../../contexts/client/AuthContext'
 import * as AUTH_TYPE from '../../../reducers/client/authType'
 
-export default function RegisterAccount() {
+export default function RegisterAccount({ title }) {
   const { authState, dispatch } = useContext(AuthContext)
 
   let body = <></>
 
   useEffect(() => {
+    document.title = title
+
     dispatch({
       type: AUTH_TYPE.SET_AUTH,
       payload: null,
