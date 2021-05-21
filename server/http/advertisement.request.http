@@ -1,0 +1,46 @@
+# Get all advertisements
+GET http://localhost:3000/api/advertisements/
+
+
+
+###
+# Get advertisement by id
+GET http://localhost:3000/api/advertisements/609a29dc6542d153f86da754
+ 
+
+###
+# Create advertisement
+POST http://localhost:3000/api/advertisements/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGEzZjJkOGZkODQ2MDNlODM2NGI4YTYiLCJpYXQiOjE2MjE1MTM5NzR9.C7L2StI5sadC1kEZE0usbePBjpqlNIwe0xlvI8JbuE8
+
+{
+    "name": "Slide 1",
+    "description": "Slide 11111",
+    "image":null,
+    "url": "https://google.com/",
+    "displayOrder": "0"
+}
+
+
+###
+# Delete advertisement by id
+DELETE http://localhost:3000/api/advertisements/609a28c55d6c30515c8e4c70
+ 
+
+###
+# Update advertisement by id
+PUT http://localhost:3000/api/advertisements/609a29dc6542d153f86da754
+Content-Type: application/json
+
+{
+    "name": "Slide 1",
+    "description": "Slide 11111",
+    "image":null,
+    "url": "https://google.com/",
+    "displayOrder": "0"
+}
+     
+
+### 
+GET http://localhost:3000/api/test

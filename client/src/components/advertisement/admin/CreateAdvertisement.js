@@ -2,18 +2,20 @@ import React, { useEffect, useState, useContext } from 'react'
 import { Button, Form, FormGroup, Label, Input, Row, Col } from 'reactstrap'
 import { Link } from 'react-router-dom'
 
-import { BrandContext } from './../../../contexts/admin/BrandContext'
-import * as BRAND_TYPE from './../../../reducers/admin/brandType'
+import { AdvertisementContext } from '../../../contexts/admin/AdvertisementContext'
+import * as ADVERTISEMENT_TYPE from '../../../reducers/admin/advertisementType'
 
-export default function CreateBrand() {
+export default function CreateAdvertisement() {
   const [data, setData] = useState({
     name: '',
     description: '',
     fileUpload: null,
+    url: '',
+    displayOrder: 0,
   })
-  const { dispatch } = useContext(BrandContext)
+  const { advertisements, dispatch } = useContext(AdvertisementContext)
 
-  useEffect(() => {})
+  useEffect(() => {}, [advertisements])
 
   const onChange = async (e) => {
     setData({ ...data, [e.target.name]: e.target.value })
@@ -24,7 +26,7 @@ export default function CreateBrand() {
   }
 
   const onSubmit = async (e) => {
-      console.log(data);
+
     if (!data.name || !data.description) {
       alert('Data is not valid')
       return
@@ -32,30 +34,41 @@ export default function CreateBrand() {
 
     try {
       dispatch({
-        type: BRAND_TYPE.CREATE,
+        type: ADVERTISEMENT_TYPE.CREATE,
         payload: {
-          brand: { ...data },
+          advertisement: { ...data },
         },
       })
       setData({
         name: '',
         description: '',
         fileUpload: null,
+        url: '',
+        displayOrder: 0,
+      })
+      dispatch({
+          type: ADVERTISEMENT_TYPE.SET_ADVERTISEMENTS,
+          payload: null
       })
     } catch (error) {
       alert(error.message)
     }
   }
 
+  const onSelectChanged = (e) => {
+    const value = e.target.value
+
+    setData({ ...data, displayOrder: value })
+  }
   return (
     <Form>
       <FormGroup>
-        <Label for='name'>Tên nhãn hiệu</Label>
+        <Label for='name'>Tên slide</Label>
         <Input
           type='text'
           name='name'
           id='name'
-          placeholder='Nhập tên nhãn hiệu'
+          placeholder='Nhập tên slide'
           value={data.name}
           onChange={(e) => onChange(e)}
         />
@@ -72,6 +85,36 @@ export default function CreateBrand() {
         />
       </FormGroup>
       <FormGroup>
+        <Label for='url'>URL</Label>
+        <Input
+          type='text'
+          name='url'
+          id='url'
+          placeholder='Nhập mô đường dẫn'
+          value={data.url}
+          onChange={(e) => onChange(e)}
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label for='url'>URL</Label>
+        <Input
+          type='select'
+          name='displayOrder'
+          id='displayOrder'
+          onChange={(e) => onSelectChanged(e)}
+        >
+          {advertisements &&
+            Array.from(Array(advertisements.length + 1)).map((_, item) => {
+              if (item === data.displayOrder)
+                return <option selected>{item}</option>
+              else return <option>{item}</option>
+            })}
+          {advertisements && advertisements.length === 0 && (
+            <option selected>0</option>
+          )}
+        </Input>
+      </FormGroup>
+      <FormGroup>
         <Label for='image'>Hình ảnh</Label>
         <Input type='file' name='image' onChange={(e) => onChangeImage(e)} />
         <div className='d-flex'>
@@ -79,8 +122,7 @@ export default function CreateBrand() {
             <img
               src={URL.createObjectURL(data.fileUpload)}
               alt={data.fileUpload}
-              width='220'
-              height='48'
+              width='100%'
             />
           )}
         </div>
@@ -90,7 +132,7 @@ export default function CreateBrand() {
         Submit
       </Button>
       <br />
-      <Link to='/admin/brand'>Quay về</Link>
+      <Link to='/admin/advertisement'>Quay về</Link>
     </Form>
   )
 }

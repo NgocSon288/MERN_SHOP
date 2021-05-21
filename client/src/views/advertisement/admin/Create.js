@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import CreateBrand from '../../../components/brand/admin/CreateBrand'
+import CreateAdvertisement from '../../../components/advertisement/admin/CreateAdvertisement'
 
 export default function Create({ title }) {
   useEffect(() => {
@@ -10,8 +10,8 @@ export default function Create({ title }) {
   return (
     <div>
       <div>
-        <h2 className='mb-4'>Thêm mới nhãn hiệu</h2>
-        <CreateBrand />
+        <h2 className='mb-4'>Thêm mới slide quảng cáo</h2>
+        <CreateAdvertisement />
       </div>
     </div>
   )

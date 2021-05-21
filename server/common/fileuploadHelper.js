@@ -201,6 +201,55 @@ const saveImageAndDeleteImageBrand = async function (req) {
   }
 }
 
+/////////////////////////////////////////////////////////////
+// Advertisement
+const saveImageAdvertisement = async function (req) {
+  try {
+    if (req.files) {
+      const fileupload = req.files[`fileUpload`]
+
+      const randStr = Math.random() * 100000
+      await fileupload.mv('public/images/advertisement/' + randStr + fileupload.name)
+      return randStr + fileupload.name
+    }
+  } catch (error) {
+    console.log('save error')
+  }
+}
+
+const deleteImageAdvertisementById = async function (_id) {
+  try {
+    const data = await Product.findOne({ _id: _id })
+
+    if (data) {
+      fs.unlink('public/images/advertisement/' + data.image, () => {})
+    }
+  } catch (error) {}
+}
+
+const saveImageAndDeleteImageAdvertisement = async function (req) {
+  try {
+    if (req.files) {
+      // image cũ
+      const { _id } = req.body
+      const fileNameOld = req.body.image
+
+      const fileupload = req.files[`fileUpload`]
+
+      const randStr = Math.random() * 100000
+      await fileupload.mv('public/images/advertisement/' + randStr + fileupload.name)
+
+      fs.unlink('public/images/advertisement/' + fileNameOld, () => {})
+
+      return randStr + fileupload.name
+    }
+
+    return req.body.logo
+  } catch (error) {
+    return req.body.logo
+  }
+}
+
 module.exports = {
   saveImageImageProduct,
   saveImageAndDeleteImageProduct,
@@ -214,4 +263,8 @@ module.exports = {
   saveImageBrand,
   deleteImageBrandById,
   saveImageAndDeleteImageBrand,
+
+  saveImageAdvertisement,
+  deleteImageAdvertisementById,
+  saveImageAndDeleteImageAdvertisement,
 }

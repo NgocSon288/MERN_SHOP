@@ -72,7 +72,7 @@ export default function EditBrand() {
         />
       </FormGroup>
       <FormGroup>
-        <Label for='description'>Mô rả</Label>
+        <Label for='description'>Mô tả</Label>
         <Input
           type='text'
           name='description'

@@ -48,6 +48,12 @@ export default function SideBarMenu() {
                 <span>Nhãn hiệu</span>
               </Link>
             </li>
+            <li>
+              <Link to='/admin/advertisement'>
+                <i className='fa fa-amazon'></i>
+                <span>Slide Quảng cáo</span>
+              </Link>
+            </li>
             {/* <li id='menu-home'>
               <Link to='/admin'>
                 <i className='fa fa-tachometer'></i>
