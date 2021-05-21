@@ -2,6 +2,7 @@ const fs = require('fs')
 
 const Product = require('./../models/Product')
 const User = require('./../models/User')
+const Brand = require('./../models/Brand')
 
 /////////////////////////////////////////////////////////////
 // Product
@@ -123,7 +124,7 @@ const deleteImageUserById = async function (_id) {
     const data = await Product.findOne({ _id: _id })
 
     if (data) {
-      fs.unlink('public/images/user' + data.image, () => {})
+      fs.unlink('public/images/user/' + data.image, () => {})
     }
   } catch (error) {}
 }
@@ -151,12 +152,66 @@ const saveImageAndDeleteImageUser = async function (req) {
   } catch (error) {}
 }
 
+/////////////////////////////////////////////////////////////
+// Brand
+const saveImageBrand = async function (req) {
+  try {
+    if (req.files) {
+      const fileupload = req.files[`fileUpload`]
+
+      const randStr = Math.random() * 100000
+      await fileupload.mv('public/images/brand/' + randStr + fileupload.name)
+      return randStr + fileupload.name
+    }
+  } catch (error) {
+    console.log('save error')
+  }
+}
+
+const deleteImageBrandById = async function (_id) {
+  try {
+    const data = await Product.findOne({ _id: _id })
+
+    if (data) {
+      fs.unlink('public/images/brand/' + data.image, () => {})
+    }
+  } catch (error) {}
+}
+
+const saveImageAndDeleteImageBrand = async function (req) {
+  try {
+    if (req.files) {
+      // image cũ
+      const { _id } = req.body
+      const fileNameOld = req.body.image
+
+      const fileupload = req.files[`fileUpload`]
+
+      const randStr = Math.random() * 100000
+      await fileupload.mv('public/images/brand/' + randStr + fileupload.name)
+
+      fs.unlink('public/images/brand/' + fileNameOld, () => {})
+
+      return randStr + fileupload.name
+    }
+
+    return req.body.logo
+  } catch (error) {
+    return req.body.logo
+  }
+}
+
 module.exports = {
   saveImageImageProduct,
   saveImageAndDeleteImageProduct,
   deleteImageProduct,
   deleteImageProductById,
+
   saveImageUser,
   deleteImageUserById,
   saveImageAndDeleteImageUser,
+
+  saveImageBrand,
+  deleteImageBrandById,
+  saveImageAndDeleteImageBrand,
 }

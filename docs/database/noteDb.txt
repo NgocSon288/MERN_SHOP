@@ -1,0 +1,12 @@
+Brand
+Advertisement
+UserCategory
+Comment
+User
+Order
+OrderDetaile
+Product         (Promotion, Description, isFreeship, ViewCount,IsInstallment,Rating, Brand)
+ProductCategory
+
+
+

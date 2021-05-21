@@ -11,6 +11,7 @@ import AdminLayout from './../layouts/AdminLayout'
 // ContextProvider
 import ProductContextProvider from '../contexts/admin/ProductContext'
 import CategoryContextProvider from '../contexts/admin/CategoryContext'
+import BrandContextProvider from '../contexts/admin/BrandContext'
 
 const productRoute = [
   // Admin Product route
@@ -34,7 +35,9 @@ const productRoute = [
     layout: AdminLayout,
     wrapContextProvider: ({ children }) => (
       <ProductContextProvider>
-        <CategoryContextProvider>{children}</CategoryContextProvider>
+        <CategoryContextProvider>
+          <BrandContextProvider>{children}</BrandContextProvider>
+        </CategoryContextProvider>
       </ProductContextProvider>
     ),
   },
@@ -47,7 +50,9 @@ const productRoute = [
     layout: AdminLayout,
     wrapContextProvider: ({ children }) => (
       <ProductContextProvider>
-        <CategoryContextProvider>{children}</CategoryContextProvider>
+        <CategoryContextProvider>
+          <BrandContextProvider>{children}</BrandContextProvider>
+        </CategoryContextProvider>
       </ProductContextProvider>
     ),
   },

@@ -42,13 +42,15 @@ export const authReducer = async (state, action) => {
     case TYPE.LOGIN: {
       const { user } = payload
       try {
-        const res = await userService.login(user)
+        const res = await userService.login(user) 
+        
         if (res.success) {
           localStorage.setItem(LOCAL_STORAGE_TOKEN_NAME, res.accessToken)
         }
 
         return await loadState(state)
       } catch (error) {
+          console.log('error', error);
         alert(error.response.data.message)
         if (error.message) return error.message
         else return { success: false, message: error.message }
@@ -63,8 +65,7 @@ export const authReducer = async (state, action) => {
           localStorage.setItem(LOCAL_STORAGE_TOKEN_NAME, res.accessToken)
 
         return await loadState(state)
-      } catch (error) {
-        console.log('error', error)
+      } catch (error) { 
         if (error.res.data) return error.res.data
         else return { success: false, message: error.message }
       }

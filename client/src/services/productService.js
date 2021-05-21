@@ -15,11 +15,13 @@ const productService = {
   create: async (product) => {
     const fd = new FormData()
     for (const [name, value] of Object.entries(product)) {
-      if (name === 'category') { 
+      if (name === 'category' || name === 'brand') {
         fd.append(name, value._id)
+      } else if (name === 'parameter') {
+        fd.append(name, JSON.stringify(value))
       } else if (name === 'fileUpload') {
         // eslint-disable-next-line no-loop-func
-        [...value].forEach((it, i) => { 
+        ;[...value].forEach((it, i) => {
           fd.append(name + (i + 1), it.val)
         })
       } else {
@@ -28,17 +30,19 @@ const productService = {
     }
 
     const res = await axios.post(`${urlStr}/products`, fd)
- 
+
     return res.data
   },
-  update: async (product) => { 
+  update: async (product) => {
     const fd = new FormData()
     for (const [name, value] of Object.entries(product)) {
-      if (name === 'category') {
+      if (name === 'category' || name === 'brand') {
         fd.append(name, value._id)
+      } else if (name === 'parameter') {
+        fd.append(name, JSON.stringify(value))
       } else if (name === 'fileUpload') {
         // eslint-disable-next-line no-loop-func
-        [...value].forEach((it, i) => {
+        ;[...value].forEach((it, i) => {
           fd.append(name + (i + 1), it.val)
         })
       } else {

@@ -18,28 +18,34 @@ export default function SideBarMenu() {
         </div>
         <div className='menu'>
           <ul id='menu'>
-            <li id='menu-home'>
+            <li>
               <Link to='/admin'>
                 <i className='fa fa-tachometer'></i>
                 <span>Trang chủ</span>
               </Link>
             </li>
-            <li id='menu-home'>
+            <li>
               <Link to='/admin/user'>
                 <i className='fa fa-user'></i>
                 <span>Tài khoản</span>
               </Link>
             </li>
-            <li id='menu-home'>
+            <li>
               <Link to='/admin/category'>
                 <i className='fa fa-balance-scale'></i>
                 <span>Loại sản phẩm</span>
               </Link>
             </li>
-            <li id='menu-home'>
+            <li>
               <Link to='/admin/product'>
                 <i className='fa fa-product-hunt'></i>
                 <span>Sản phẩm</span>
+              </Link>
+            </li>
+            <li>
+              <Link to='/admin/brand'>
+                <i className='fa fa-bandcamp'></i>
+                <span>Nhãn hiệu</span>
               </Link>
             </li>
             {/* <li id='menu-home'>

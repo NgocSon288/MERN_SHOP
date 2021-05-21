@@ -6,6 +6,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 
 import { ProductContext } from './../../../contexts/admin/ProductContext'
 import { CategoryContext } from './../../../contexts/admin/CategoryContext'
+import { BrandContext } from './../../../contexts/admin/BrandContext'
 import * as PRODUCT_TYPE from './../../../reducers/admin/productType'
 
 export default function Editproduct() {
@@ -14,6 +15,12 @@ export default function Editproduct() {
     price: '',
     content: '',
     category: {},
+    promotion: '', //1
+    description: '', // 1
+    isInstallment: false, //
+    isFreeship: false, //
+    brand: {}, //
+    parameter: [],
     image: '',
     _id: '',
     fileUpload: null,
@@ -21,11 +28,9 @@ export default function Editproduct() {
 
   const { categories } = useContext(CategoryContext)
   const { products, dispatch } = useContext(ProductContext)
+  const { brands } = useContext(BrandContext)
 
-  let { name, price, image, content } = data
-
-  useEffect(() => { 
-
+  useEffect(() => {
     var location = window.location.href
     const index = location.lastIndexOf('/') + 1
     const id = location.substring(index)
@@ -37,16 +42,24 @@ export default function Editproduct() {
       categories.length > 0
     ) {
       const product = products.find((pro) => pro._id === id)
+      if (product.parameter.length === 0) {
+        product.parameter.push({ name: '', value: '' })
+      }
       setData({ ...product })
     }
   }, [categories, products])
 
   const onSubmit = async (e) => {
+    convertParameter()
+
     try {
       dispatch({
         type: PRODUCT_TYPE.EDIT_BY_ID,
         payload: {
-          product: { ...data },
+          product: {
+            ...data,
+            parameter: [...data.parameter.filter((p) => p.name && p.value)],
+          },
         },
       })
     } catch (error) {
@@ -54,8 +67,25 @@ export default function Editproduct() {
     }
   }
 
+  const convertParameter = () => {
+    setData({
+      ...data,
+      parameter: [
+        ...data.parameter
+          .filter((p) => p.name && p.value)
+          .map((p) => {
+            return { name: p.name.trim(), value: p.value.trim() }
+          }),
+      ],
+    })
+  }
+
   const onChange = async (e) => {
-    setData({ ...data, [e.target.name]: e.target.value })
+    if (e.target.type === 'checkbox') {
+      setData({ ...data, [e.target.name]: e.target.checked })
+    } else {
+      setData({ ...data, [e.target.name]: e.target.value })
+    }
   }
 
   const onChangeImage = (e) => {
@@ -75,7 +105,7 @@ export default function Editproduct() {
     const swt = e.target.dataset.switch
 
     if (swt === 'img') {
-      let arrImage = image.split('|')
+      let arrImage = data.image.split('|')
       arrImage = arrImage.filter((item) => item !== e.target.dataset.item)
       setData({ ...data, image: arrImage.join('|') })
     } else {
@@ -86,11 +116,53 @@ export default function Editproduct() {
     }
   }
 
-  const onSelectChanged = (e) => {
+  const onSelectCategoryChanged = (e) => {
     const value = e.target.value
     const categoryNew = categories.find((item) => item.name === value)
 
     setData({ ...data, category: { ...categoryNew } })
+  }
+
+  const onSelectBrandChanged = (e) => {
+    const value = e.target.value
+    const brandNew = brands.find((item) => item.name === value)
+
+    setData({ ...data, brand: { ...brandNew } })
+  }
+
+  const onAddParameter = (e) => {
+    setData({
+      ...data,
+      parameter: [...data.parameter, { name: '', value: '' }],
+    })
+  }
+
+  const onDeleteParameter = (e) => {
+    const index = e.target.dataset.index
+    const newParam = [...data.parameter.filter((p, i) => i !== Number(index))]
+
+    setData({
+      ...data,
+      parameter: [...newParam],
+    })
+  }
+
+  const onParamItemChange = (e) => {
+    const value = e.target.value
+    const name = e.target.name
+    const index = Number(e.target.dataset.index)
+    const paramItem = data.parameter.find((p, i) => i === index)
+
+    const newParam = [
+      ...data.parameter.slice(0, index),
+      { ...paramItem, [name]: value },
+      ...data.parameter.slice(index + 1),
+    ]
+
+    setData({
+      ...data,
+      parameter: [...newParam],
+    })
   }
 
   return (
@@ -102,7 +174,7 @@ export default function Editproduct() {
           name='name'
           id='name'
           placeholder='Nhập tên'
-          value={name}
+          value={data.name}
           onChange={(e) => onChange(e)}
         />
       </FormGroup>
@@ -113,7 +185,51 @@ export default function Editproduct() {
           name='price'
           id='price'
           placeholder='Nhập giá'
-          value={price}
+          value={data.price}
+          onChange={(e) => onChange(e)}
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label for='promotion'>Giảm giá</Label>
+        <Input
+          type='text'
+          name='promotion'
+          id='promotion'
+          placeholder='Nhập giá giảm'
+          value={data.promotion}
+          onChange={(e) => onChange(e)}
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label check className='ml-3'>
+          <Input
+            type='checkbox'
+            onChange={(e) => onChange(e)}
+            name='isInstallment'
+            checked={data.isInstallment}
+          />{' '}
+          Cho phép trả góp
+        </Label>
+      </FormGroup>
+      <FormGroup>
+        <Label check className='ml-3'>
+          <Input
+            type='checkbox'
+            onChange={(e) => onChange(e)}
+            name='isFreeship'
+            checked={data.isFreeship}
+          />{' '}
+          Cho phép miễn phí vận chuyển
+        </Label>
+      </FormGroup>
+      <FormGroup>
+        <Label for='price'>Mô tả</Label>
+        <Input
+          type='text'
+          name='description'
+          id='description'
+          placeholder='Nhập mô tả'
+          value={data.description}
           onChange={(e) => onChange(e)}
         />
       </FormGroup>
@@ -123,7 +239,7 @@ export default function Editproduct() {
           type='select'
           name='category'
           id='category'
-          onChange={(e) => onSelectChanged(e)}
+          onChange={(e) => onSelectCategoryChanged(e)}
         >
           {categories &&
             [...categories].map((item) => {
@@ -134,16 +250,85 @@ export default function Editproduct() {
         </Input>
       </FormGroup>
       <FormGroup>
+        <Label for='category'>Nhãn hiệu</Label>
+        <Input
+          type='select'
+          name='brand'
+          id='brand'
+          onChange={(e) => onSelectBrandChanged(e)}
+        >
+          {brands &&
+            [...brands].map((item) => {
+              if (data.brand && item._id === data.brand._id)
+                return <option selected>{item.name}</option>
+              else return <option>{item.name}</option>
+            })}
+        </Input>
+      </FormGroup>
+      <FormGroup>
         <Label for='content'>Nội dung</Label>
         <CKEditor
           editor={ClassicEditor}
-          data={content}
+          data={data.content}
           onBlur={(event, editor) => {
             const value = editor.getData()
             setData({ ...data, content: value })
           }}
         />
       </FormGroup>
+      <FormGroup>
+        <Label for='content'>Thông số kỹ thuật</Label>
+        <table className='table table-success table-bordered table-striped'>
+          <tr>
+            <th>Tên tham số</th>
+            <th>Giá trị</th>
+            <th>Modified</th>
+          </tr>
+          {data.parameter &&
+            [...data.parameter].map((item, i) => (
+              <tr key={i}>
+                <td>
+                  <Input
+                    type='text'
+                    placeholder='Nhập tên tham số'
+                    name='name'
+                    value={item.name}
+                    data-index={i}
+                    onChange={(e) => onParamItemChange(e)}
+                  />
+                </td>
+                <td>
+                  <Input
+                    type='text'
+                    placeholder='Nhập giá trị'
+                    name='value'
+                    value={item.value}
+                    data-index={i}
+                    onChange={(e) => onParamItemChange(e)}
+                  />
+                </td>
+                <td>
+                  <button
+                    type='button'
+                    className='btn btn-danger'
+                    data-index={i}
+                    onClick={(e) => onDeleteParameter(e)}
+                  >
+                    Xoá
+                  </button>
+                </td>
+              </tr>
+            ))}
+        </table>
+        <button
+          className='btn btn-info'
+          type='button'
+          onClick={(e) => onAddParameter(e)}
+        >
+          Thêm
+        </button>
+      </FormGroup>
+
       <FormGroup>
         <Label for='image'>Hình ảnh</Label>
         <Input
@@ -156,8 +341,8 @@ export default function Editproduct() {
         <div className='d-flex'>
           {/* // eslint-disable-next-line array-callback-return */}
           <Row className='w-100 ml-1'>
-            {image &&
-              image.split('|').map(
+            {data.image &&
+              data.image.split('|').map(
                 (item) =>
                   item && (
                     <Col xm='3' sm='3' className='mt-4 px-1'>

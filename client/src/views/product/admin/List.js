@@ -13,7 +13,7 @@ export default function List({ title }) {
     <div>
       <div>
         <h2 className='mb-4'>Danh sách các sản phẩm</h2>
-        <Button color='primary' className='float-right mb-4' outline>
+        <Button color='primary' className='mb-4 btn' outline>
           <Link to='/admin/product/create'>Thêm sản phẩm</Link>
         </Button>
         <ListProduct />

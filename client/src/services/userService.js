@@ -44,8 +44,8 @@ const accountService = {
 
     return res.data
   },
-  updatePermission: async (_id) => { 
-    const res = await axios.put(`${urlStr}/users/permission/${_id}`) 
+  updatePermission: async (_id) => {
+    const res = await axios.put(`${urlStr}/users/permission/${_id}`)
     return res.data
   },
   delete: async (id) => {
