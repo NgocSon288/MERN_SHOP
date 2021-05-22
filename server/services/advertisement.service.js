@@ -48,8 +48,6 @@ module.exports = {
           displayOrder: displayOrder,
         })
 
-        console.log('ok 1', advertisement)
-
         const advertisements = await Advertisement.find({})
         advertisements.forEach(async (item) => {
           if (item.displayOrder >= displayOrder) {
@@ -58,12 +56,7 @@ module.exports = {
           }
         })
 
-        console.log('ok 2')
-
-        console.log('ok 3')
-
         await advertisement.save()
-        console.log('ok 4')
         return res.json({ success: true, message: 'Create successfully' })
       }
       return res
@@ -127,8 +120,7 @@ module.exports = {
             item._id !== id
           ) {
             item.displayOrder++
-            await item.save()
-            console.log(item.name)
+            await item.save() 
           }
         })
       } else if (displayOrderOld < displayOrder) {
@@ -139,8 +131,7 @@ module.exports = {
             item._id !== id
           ) {
             item.displayOrder--
-            await item.save()
-            console.log(item.name)
+            await item.save() 
           }
         })
       }

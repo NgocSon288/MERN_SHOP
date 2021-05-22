@@ -54,6 +54,12 @@ export default function SideBarMenu() {
                 <span>Slide Quảng cáo</span>
               </Link>
             </li>
+            <li>
+              <Link to='/admin/order'>
+                <i className='fa fa-cc-visa'></i>
+                <span>Hoá đơn</span>
+              </Link>
+            </li>
             {/* <li id='menu-home'>
               <Link to='/admin'>
                 <i className='fa fa-tachometer'></i>

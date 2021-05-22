@@ -5,6 +5,8 @@ const categoryUserRoute = require('./categoryUser.route')
 const userRoute = require('./user.route')
 const brandRoute = require('./brand.route')
 const advertisementRoute = require('./advertisement.route')
+const orderRoute = require('./order.route')
+const orderDetailRoute = require('./orderDetail.route')
 
 const router = express.Router()
 
@@ -30,5 +32,11 @@ router.use('/api/brands/', brandRoute)
 
 // Advertisement Route API
 router.use('/api/advertisements/', advertisementRoute)
+
+// Advertisement Route API
+router.use('/api/orders/', orderRoute)
+
+// Advertisement Route API
+router.use('/api/orderdetails/', orderDetailRoute)
 
 module.exports = router

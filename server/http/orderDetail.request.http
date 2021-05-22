@@ -1,0 +1,41 @@
+###
+# GetAll OrderDetail by orderId
+GET http://localhost:3000/api/orderdetails/60a7de7e3d4aea2b62135606
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGEzZjJkOGZkODQ2MDNlODM2NGI4YTYiLCJpYXQiOjE2MjE2MTA2NTl9.Hc8zdUaW5pk286zlUrKMdXzXl_uUT4FL9DjYYE28_RY
+
+ 
+
+### 
+# Create OrderDetail and Order
+POST  http://localhost:3000/api/orderdetails/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGE0OTUwYjcyMzE3ODYzMmNjMWE4NjYiLCJpYXQiOjE2MjE2NTUwNTB9.PFolJXlVSGkH7i9jfjptnONWCwvL7_6ZUjOPj4GPmno
+
+{
+    "message": "Giao hàng nhanh nha shop, tôi đang cần gấp",
+    "paymentMethod":"Đường cát",
+    "orderDetails": [
+        {
+        "count":"4", 
+        "product":"60a0ec56778587bafadbc7cb"
+        },
+        {
+        "count":"5", 
+        "product":"60a687d249a80059d632de26"
+        },
+        {
+        "count":"3", 
+        "product":"60a0eda4778587bafadbc7cc"
+        }
+    ]
+    
+}
+
+
+
+###
+# Delete OrderDetail
+DELETE  http://localhost:3000/api/orderdetails/60a7de7e3d4aea2b62135608 
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGEzZjJkOGZkODQ2MDNlODM2NGI4YTYiLCJpYXQiOjE2MjE2MTA2NTl9.Hc8zdUaW5pk286zlUrKMdXzXl_uUT4FL9DjYYE28_RY

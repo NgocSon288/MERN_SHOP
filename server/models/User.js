@@ -9,6 +9,7 @@ const User = new Schema({
   email: { type: String, required: true, default: '' },
   image: { type: String, required: true, default: '' },
   address: { type: String, required: true, default: '' },
+  phone: { type: String, required: true, default: '' },
   createdAt: { type: Date, default: Date.now },
   categoryUser: { type: Schema.Types.ObjectId, ref: 'CategoryUsers' },
 })

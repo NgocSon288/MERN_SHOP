@@ -14,7 +14,7 @@ GET http://localhost:3000/api/users/60a28d3f7ceccf23132019d9
 # Check Auth user
 GET http://localhost:3000/api/users/auth
 Content-Type: application/json
-Authorization: Bearer 1kbsdkhabskbdkjabaskjn29hdansdubosdbnj
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGEzZjJkOGZkODQ2MDNlODM2NGI4YTYiLCJpYXQiOjE2MjE2MTA2NTl9.Hc8zdUaW5pk286zlUrKMdXzXl_uUT4FL9DjYYE28_RY
 
 
 
@@ -41,8 +41,8 @@ POST  http://localhost:3000/api/users/login
 Content-Type: application/json
 
 {
-    "username":"son",
-    "password":"123"
+    "username":"admin",
+    "password":"admin"
 }
 
 

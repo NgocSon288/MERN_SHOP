@@ -30,16 +30,14 @@ module.exports = {
   create: async function (req, res, next) {
     try {
       if (req.files) {
-        const logo = await fileHelper.saveImageBrand(req)
-        console.log(logo)
+        const logo = await fileHelper.saveImageBrand(req) 
         const { name, description } = req.body
         const brand = new Brand({
           name: name,
           description: description,
           logo: logo,
         })
-
-        console.log('brand', brand)
+ 
 
         await brand.save()
         return res.json({ success: true, message: 'Create successfully' })
