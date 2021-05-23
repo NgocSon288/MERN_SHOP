@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Collapse, Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap'
 import { AuthContext } from './../../../contexts/client/AuthContext'
 
 export default function AdminHeader() {
+  const { authState, dispatch } = useContext(AuthContext)
+  const [user, setUser] = useState({})
+
+  useEffect(() => {
+    if (authState && authState.isAuthenticated) {
+      setUser({ ...authState.user._doc })
+    }
+  }, [authState])
+
   return (
     <div>
       <div className='header-main'>
@@ -29,19 +38,31 @@ export default function AdminHeader() {
             <ul>
               <li className='dropdown profile_details_drop'>
                 <a
-                  href='#'
+                  href='/'
                   className='dropdown-toggle'
                   data-toggle='dropdown'
                   aria-expanded='false'
-                  alt=''
                 >
                   <div className='profile_img'>
-                    <span className='prfil-img'>
-                      <img src='images/p1.png' alt='' />{' '}
+                    <span
+                      className='prfil-img'
+                      style={{ width: '70px', height: '70px' }}
+                    >
+                      <img
+                        src={`http://localhost:3000/images/user/${
+                          user && user.image
+                        }`}
+                        alt={user && user.image}
+                        width='70px'
+                        height='70px'
+                        style={{ borderRadius: '50%' }}
+                      />{' '}
                     </span>
                     <div className='user-name'>
-                      <p>Malorum</p>
-                      <span>Administrator</span>
+                      <p>{user.name}</p>
+                      <span>
+                        {user && user.categoryUser && user.categoryUser.name}
+                      </span>
                     </div>
                     <i className='fa fa-angle-down lnr'></i>
                     <i className='fa fa-angle-up lnr'></i>
@@ -52,19 +73,13 @@ export default function AdminHeader() {
                   <li>
                     {' '}
                     <a href='#'>
-                      <i className='fa fa-cog'></i> Settings
+                      <i className='fa fa-user'></i> Thông tin cá nhân
                     </a>{' '}
                   </li>
                   <li>
                     {' '}
                     <a href='#'>
-                      <i className='fa fa-user'></i> Profile
-                    </a>{' '}
-                  </li>
-                  <li>
-                    {' '}
-                    <a href='#'>
-                      <i className='fa fa-sign-out'></i> Logout
+                      <i className='fa fa-sign-out'></i> Đăng xuất
                     </a>{' '}
                   </li>
                 </ul>
