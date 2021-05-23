@@ -1,25 +1,28 @@
 // Admin
-import List from '../views/product/admin/List'
-import Create from '../views/product/admin/Create'
-import Edit from '../views/product/admin/Edit'
+import List from "../views/product/admin/List";
+import Create from "../views/product/admin/Create";
+import Edit from "../views/product/admin/Edit";
 
 // Client
+import Catalogue from "../views/product/client/Catalogue";
 
 //  Layouts
-import AdminLayout from './../layouts/AdminLayout'
+import AdminLayout from "./../layouts/AdminLayout";
+import ClientLayout from "./../layouts/ClientLayout";
 
 // ContextProvider
-import ProductContextProvider from '../contexts/admin/ProductContext'
-import CategoryContextProvider from '../contexts/admin/CategoryContext'
-import BrandContextProvider from '../contexts/admin/BrandContext'
+import ProductContextProvider from "../contexts/admin/ProductContext";
+import CategoryContextProvider from "../contexts/admin/CategoryContext";
+import BrandContextProvider from "../contexts/admin/BrandContext";
+import ClientProductContextProvider from "../contexts/client/ProductContext";
 
 const productRoute = [
   // Admin Product route
   // Admin List route
   {
-    path: '/admin/product/',
-    title: 'Quản trị sản phẩm',
-    icon: 'design_app',
+    path: "/admin/product/",
+    title: "Quản trị sản phẩm",
+    icon: "design_app",
     component: List,
     layout: AdminLayout,
     wrapContextProvider: ({ children }) => (
@@ -28,9 +31,9 @@ const productRoute = [
   },
   // Admin Create route
   {
-    path: '/admin/product/create',
-    title: 'Thêm mới sản phẩm',
-    icon: 'design_app',
+    path: "/admin/product/create",
+    title: "Thêm mới sản phẩm",
+    icon: "design_app",
     component: Create,
     layout: AdminLayout,
     wrapContextProvider: ({ children }) => (
@@ -43,9 +46,9 @@ const productRoute = [
   },
   // Admin Edit route
   {
-    path: '/admin/Product/edit/:id',
-    title: 'Cập nhật sản phẩm',
-    icon: 'design_app',
+    path: "/admin/Product/edit/:id",
+    title: "Cập nhật sản phẩm",
+    icon: "design_app",
     component: Edit,
     layout: AdminLayout,
     wrapContextProvider: ({ children }) => (
@@ -59,7 +62,21 @@ const productRoute = [
 
   //-----------------------------------------------------------------------------------------
   // Client Product route
+  {
+    path: "/Product/",
+    title: "Cửa hàng",
+    icon: "design_app",
+    component: Catalogue,
+    layout: ClientLayout,
+    wrapContextProvider: ({ children }) => (
+      <ClientProductContextProvider>
+        <CategoryContextProvider>
+          <BrandContextProvider>{children}</BrandContextProvider>
+        </CategoryContextProvider>
+      </ClientProductContextProvider>
+    ),
+  },
   // Client List route
-]
+];
 
-export default productRoute
+export default productRoute;
