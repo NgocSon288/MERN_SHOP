@@ -65,7 +65,7 @@ export default function SideBarMenu() {
                 <i className='fa fa-comment'></i>
                 <span>Đánh giá</span>
               </Link>
-            </li>
+            </li> 
             {/* <li id='menu-home'>
               <Link to='/admin'>
                 <i className='fa fa-tachometer'></i>

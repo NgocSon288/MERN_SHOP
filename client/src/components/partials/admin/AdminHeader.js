@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Collapse, Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap'
 import { AuthContext } from './../../../contexts/client/AuthContext'
+import * as AUTH_TYPE from './../../../reducers/client/authType'
 
 export default function AdminHeader() {
   const { authState, dispatch } = useContext(AuthContext)
@@ -12,6 +13,13 @@ export default function AdminHeader() {
       setUser({ ...authState.user._doc })
     }
   }, [authState])
+
+  const onLogout = (e)=>{
+    dispatch({
+        type: AUTH_TYPE.LOGOUT,
+        payload: null
+    })
+  }
 
   return (
     <div>
@@ -78,7 +86,7 @@ export default function AdminHeader() {
                   </li>
                   <li>
                     {' '}
-                    <a href='#'>
+                    <a href='#' onClick={(e) => onLogout(e)}>
                       <i className='fa fa-sign-out'></i> Đăng xuất
                     </a>{' '}
                   </li>

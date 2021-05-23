@@ -31,7 +31,7 @@ const updatePrivate = async function (req, res, next) {
     image: image,
     viewCount: pro.viewCount || 0,
     rating: pro.rating || 0,
-    parameter: [...(JSON.parse(parameter))],
+    parameter: [...JSON.parse(parameter)],
     content: content,
     brand: brand,
   }

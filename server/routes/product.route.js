@@ -27,6 +27,6 @@ route.delete('/:id', verifyToken, productService.delete)
 // @route PUT /api/products/:id
 // @desc Update product by id
 // @access Private
-route.put('/:id', verifyToken, productService.update)
+route.put('/:id', verifyToken, productService.update) 
 
 module.exports = route

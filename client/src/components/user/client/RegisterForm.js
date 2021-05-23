@@ -12,6 +12,7 @@ export default function RegisterForm() {
     password: '',
     email: '',
     address: '',
+    phone: '',
     image: null,
     fileUpload: null,
   })
@@ -35,7 +36,8 @@ export default function RegisterForm() {
       !user.password ||
       !user.email ||
       !user.address ||
-      !user.fileUpload  
+      !user.fileUpload ||
+      !user.phone
     ) {
       alert('Data is not valid')
       console.log(user)
@@ -94,6 +96,14 @@ export default function RegisterForm() {
                     value={user.email}
                     onChange={(e) => onChange(e)}
                   />
+                  <p className='mt-5'>Số điện thoại</p>
+                  <input
+                    type='text'
+                    className='name color-transparent text-input'
+                    name='phone'
+                    value={user.phone}
+                    onChange={(e) => onChange(e)}
+                  />
                 </div>
                 <div className='col'>
                   <p className=''>Địa chỉ</p>
@@ -116,7 +126,7 @@ export default function RegisterForm() {
                       src={URL.createObjectURL(user.fileUpload)}
                       alt='Avatar'
                       width='100%'
-                      height='200'
+                      height='330'
                       className='mt-2'
                     />
                   )}
@@ -126,7 +136,7 @@ export default function RegisterForm() {
                       src='http://localhost:3000/images/common/user-register-icon.jpeg'
                       alt='Avatar'
                       width='100%'
-                      height='200'
+                      height='330'
                       className='mt-2'
                     />
                   )}

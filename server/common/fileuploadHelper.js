@@ -122,10 +122,22 @@ const saveImageUser = async function (req) {
 const deleteImageUserById = async function (_id) {
   try {
     const data = await Product.findOne({ _id: _id })
+    console.log('id', _id)
+    console.log('data', data)
 
     if (data) {
+      console.log('xoa')
       fs.unlink('public/images/user/' + data.image, () => {})
+      console.log('da xoa')
+    } else {
+      console.log('khong co xoa')
     }
+  } catch (error) {}
+}
+
+const deleteImagePath = async function (path) {
+  try {
+    fs.unlink(path, () => {})
   } catch (error) {}
 }
 
@@ -293,6 +305,8 @@ const deleteImageCommentById = async function (_id) {
 }
 
 module.exports = {
+  deleteImagePath,
+
   saveImageProduct,
   saveImageAndDeleteImageProduct,
   deleteImageProduct,

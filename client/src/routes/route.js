@@ -5,7 +5,7 @@ import productRoute from './productRoute'
 import brandRoute from './brandRoute'
 import advertisementRoute from './advertisementRoute'
 import orderRoute from './orderRoute'
-import commentRoute from './commentRoute'
+import commentRoute from './commentRoute' 
 
 let route = [
   userRoute,
@@ -15,7 +15,7 @@ let route = [
   brandRoute,
   advertisementRoute,
   orderRoute,
-  commentRoute,
+  commentRoute, 
 ]
 
 route = route.flat()

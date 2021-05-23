@@ -41,6 +41,11 @@ export default function ClientHeader() {
                 Contact
               </Link>
             </NavItem>
+            <NavItem>
+              <Link className='pl-4' to='/contact'>
+                abcdrf
+              </Link>
+            </NavItem>
             {!authState.isAuthenticated && (
               <NavItem>
                 <Link className='pl-4' to='/account/login'>

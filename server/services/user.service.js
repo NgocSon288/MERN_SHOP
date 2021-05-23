@@ -176,8 +176,7 @@ module.exports = {
           message: "You do not have permission to delete admin's permissions.",
         })
       }
-
-      await fileHelper.deleteImageUserById(id)
+ 
 
       const user = await User.findByIdAndDelete(id)
       if (!user) {
@@ -185,6 +184,8 @@ module.exports = {
           .status(400)
           .json({ success: false, message: 'User not found' })
       }
+
+      await fileHelper.deleteImagePath('public/images/user/' + user.image)
 
       return res.json({ success: true, message: 'Delete successfully' })
     } catch (error) {
