@@ -42,15 +42,15 @@ export const authReducer = async (state, action) => {
     case TYPE.LOGIN: {
       const { user } = payload
       try {
-        const res = await userService.login(user) 
-        
+        const res = await userService.login(user)
+
         if (res.success) {
           localStorage.setItem(LOCAL_STORAGE_TOKEN_NAME, res.accessToken)
         }
 
         return await loadState(state)
       } catch (error) {
-          console.log('error', error);
+        console.log('error', error)
         alert(error.response.data.message)
         if (error.message) return error.message
         else return { success: false, message: error.message }
@@ -65,8 +65,25 @@ export const authReducer = async (state, action) => {
           localStorage.setItem(LOCAL_STORAGE_TOKEN_NAME, res.accessToken)
 
         return await loadState(state)
-      } catch (error) { 
+      } catch (error) {
         if (error.res.data) return error.res.data
+        else return { success: false, message: error.message }
+      }
+    }
+
+    case TYPE.EDIT: {
+      const { user } = payload
+      try {
+        const res = await userService.update(user)
+        console.log(res);
+        setTimeout(() => {
+          alert(res.message)
+        }, 200)
+
+        return await loadState(state)
+      } catch (error) {
+          console.log(error.response.data)
+        if (error.response.data) return error.response.data
         else return { success: false, message: error.message }
       }
     }

@@ -121,16 +121,10 @@ const saveImageUser = async function (req) {
 
 const deleteImageUserById = async function (_id) {
   try {
-    const data = await Product.findOne({ _id: _id })
-    console.log('id', _id)
-    console.log('data', data)
+    const data = await Product.findOne({ _id: _id }) 
 
-    if (data) {
-      console.log('xoa')
-      fs.unlink('public/images/user/' + data.image, () => {})
-      console.log('da xoa')
-    } else {
-      console.log('khong co xoa')
+    if (data) { 
+      fs.unlink('public/images/user/' + data.image, () => {}) 
     }
   } catch (error) {}
 }
@@ -143,7 +137,7 @@ const deleteImagePath = async function (path) {
 
 const saveImageAndDeleteImageUser = async function (req) {
   try {
-    if (req.files) {
+    if (req.files) { 
       // image cũ
       const { _id } = req.body
       const fileNameOld = req.body.image
@@ -153,13 +147,11 @@ const saveImageAndDeleteImageUser = async function (req) {
       const randStr = Math.random() * 100000
       await fileupload.mv('public/images/user/' + randStr + fileupload.name)
 
-      if (!check) {
-        fs.unlink('public/images/user/' + fileNameOld, () => {})
-      }
+      fs.unlink('public/images/user/' + fileNameOld, () => {})
 
       return randStr + fileupload.name
-    } else {
-      return req.image
+    } else { 
+      return req.body.image
     }
   } catch (error) {}
 }

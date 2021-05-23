@@ -41,21 +41,35 @@ POST  http://localhost:3000/api/users/login
 Content-Type: application/json
 
 {
-    "username":"admin",
-    "password":"admin"
+    "username":"son",
+    "password":"123"
 }
 
 
 
 ### 
 # Update user
-PUT  http://localhost:3000/api/users/60a28dc17ceccf23132019da
+PUT  http://localhost:3000/api/users/
 Content-Type: application/json
 
 {
     "name": "ADMIN",
     "displayName": "Quản Trị Viên",
     "description": "Thành viên có chức năng quản trị website và chức năng của khách hàng"
+}
+
+
+
+### 
+# Update account user
+PUT  http://localhost:3000/api/users/account
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGEzZjJkOGZkODQ2MDNlODM2NGI4YTYiLCJpYXQiOjE2MjE3NjM0NjJ9.sio40vF1SFDxUF7vSCClTtDDZYHM-iJscQUbEBY6W84
+
+{
+    "username": "son",
+    "password": "123",
+    "newPassword": "123"
 }
 
 

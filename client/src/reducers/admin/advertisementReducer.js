@@ -14,8 +14,7 @@ export const advertisementReducer = async (state, action) => {
 
     case TYPE.EDIT_BY_ID: {
       try {
-        const { advertisement } = payload
-        console.log(advertisement)
+        const { advertisement } = payload 
         const res = await advertisementService.update(advertisement)
 
         setTimeout(() => {

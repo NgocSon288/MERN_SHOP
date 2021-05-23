@@ -14,8 +14,7 @@ export const brandReducer = async (state, action) => {
 
     case TYPE.EDIT_BY_ID: {
       try {
-        const { brand } = payload
-        console.log(brand)
+        const { brand } = payload 
         const res = await brandService.update(brand)
 
         setTimeout(() => {

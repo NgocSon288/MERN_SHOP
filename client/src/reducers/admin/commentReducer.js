@@ -33,8 +33,7 @@ export const commentReducer = async (state, action) => {
     }
 
     case TYPE.CREATE: {
-      const { data } = payload
-      console.log(data)
+      const { data } = payload 
       let mess = ''
       try {
         const res = await commentService.create({ ...data })
@@ -42,8 +41,7 @@ export const commentReducer = async (state, action) => {
         mess = res.message
         state = [...state, { ...data }]
       } catch (error) {
-        mess = error.response.data.message
-        console.log(mess);
+        mess = error.response.data.message 
       }
 
       setTimeout(() => {

@@ -1,3 +1,4 @@
 export const SET_USERS = 'SET_USERS'
 export const EDIT_PERMISSION_BY_ID = 'EDIT_PERMISSION_BY_ID'
+export const EDIT_ACCOUNT = 'EDIT_ACCOUNT'
 export const DELETE_BY_ID = 'DELETE_BY_ID'

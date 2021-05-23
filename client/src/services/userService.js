@@ -34,13 +34,17 @@ const accountService = {
     return res.data
   },
   update: async (account) => {
-    const { _id } = account
     const fd = new FormData()
     for (const [name, value] of Object.entries(account)) {
       fd.append(name, value)
     }
 
-    const res = await axios.put(`${urlStr}/users/${_id}`, fd)
+    const res = await axios.put(`${urlStr}/users/`, fd)
+
+    return res.data
+  },
+  updateAccount: async (account) => { 
+    const res = await axios.put(`${urlStr}/users/account`, account)
 
     return res.data
   },

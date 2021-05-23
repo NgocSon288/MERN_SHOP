@@ -23,8 +23,7 @@ export default function CreateBrand() {
     setData({ ...data, fileUpload: e.target.files[0] })
   }
 
-  const onSubmit = async (e) => {
-      console.log(data);
+  const onSubmit = async (e) => { 
     if (!data.name || !data.description) {
       alert('Data is not valid')
       return

@@ -8,16 +8,16 @@ export default function AdminHeader() {
   const { authState, dispatch } = useContext(AuthContext)
   const [user, setUser] = useState({})
 
-  useEffect(() => {
+  useEffect(() => { 
     if (authState && authState.isAuthenticated) {
       setUser({ ...authState.user._doc })
     }
   }, [authState])
-
-  const onLogout = (e)=>{
+ 
+  const onLogout = (e) => {
     dispatch({
-        type: AUTH_TYPE.LOGOUT,
-        payload: null
+      type: AUTH_TYPE.LOGOUT,
+      payload: null,
     })
   }
 
@@ -79,16 +79,19 @@ export default function AdminHeader() {
                 </a>
                 <ul className='dropdown-menu drp-mnu'>
                   <li>
-                    {' '}
-                    <a href='/admin/user/profile'>
+                    <Link to='/admin/user/profile'>
                       <i className='fa fa-user'></i> Thông tin cá nhân
-                    </a>{' '}
+                    </Link>
                   </li>
                   <li>
-                    {' '}
-                    <a href='#' onClick={(e) => onLogout(e)}>
+                    <Link to='/admin/user/account'>
+                      <i className='fa fa-user'></i> Cập nhật tài khoản
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to='/' onClick={(e) => onLogout(e)}>
                       <i className='fa fa-sign-out'></i> Đăng xuất
-                    </a>{' '}
+                    </Link>
                   </li>
                 </ul>
               </li>

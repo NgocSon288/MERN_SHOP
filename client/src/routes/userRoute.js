@@ -1,6 +1,7 @@
 // Admin
 import List from './../views/user/admin/List'
 import Profile from './../views/user/admin/Profile'
+import EditAccount from './../views/user/admin/EditAccount'
 
 // Client
 import Login from '../views/user/client/Login'
@@ -62,9 +63,20 @@ const userRoute = [
     component: Profile,
     layout: AdminLayout,
     wrapContextProvider: ({ children }) => (
-      <AuthContextProvider>
-        <UserContextProvider>{children}</UserContextProvider>
-      </AuthContextProvider>
+      <AuthContextProvider>{children}</AuthContextProvider>
+    ),
+  },
+  // Admin Edit Account route
+  {
+    path: '/admin/user/account',
+    title: 'Cập nhật tài khoản',
+    icon: 'design_app',
+    component: EditAccount,
+    layout: AdminLayout,
+    wrapContextProvider: ({ children }) => (
+      <UserContextProvider>
+        <AuthContextProvider>{children}</AuthContextProvider>
+      </UserContextProvider>
     ),
   },
 ]

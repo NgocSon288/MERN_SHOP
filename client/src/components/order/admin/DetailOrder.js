@@ -36,8 +36,7 @@ export default function DetailOrder() {
       const index = location.lastIndexOf('/') + 1
       const orderId = location.substring(index)
 
-      const ord = orders.find((o) => o._id === orderId)
-      console.log(ord)
+      const ord = orders.find((o) => o._id === orderId) 
 
       setOrder({
         ...ord,

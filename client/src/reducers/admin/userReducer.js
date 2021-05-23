@@ -38,6 +38,25 @@ export const userReducer = async (state, action) => {
         return state
       }
     }
+    case TYPE.EDIT_ACCOUNT: {
+      try { 
+        const {account}  = payload
+        const res = await userService.updateAccount(account)
+ 
+
+        if (res.success) {
+          setTimeout(() => {
+            alert(res.message)
+          }, 200)
+        }
+  
+        return state
+      } catch (error) {
+        console.log('error', error.response.data.message)
+        alert(error.response.data.message)
+        return state
+      }
+    }
 
     case TYPE.DELETE_BY_ID: {
       try {

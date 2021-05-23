@@ -34,10 +34,15 @@ route.post('/', userService.create)
 // @access Private
 route.delete('/:id', verifyToken, userService.delete)
 
-// @route PUT /api/users/:id
-// @desc Update user by id
-// @access Public
-route.put('/:id', userService.update)
+// @route PUT /api/users/
+// @desc Update user by current id
+// @access Privete
+route.put('/', verifyToken, userService.update)
+
+// @route PUT /api/users/account
+// @desc Update account by current id
+// @access Privete
+route.put('/account', verifyToken, userService.updateAccount)
 
 // @route PUT /api/users/permission/:id
 // @desc Update permission user by id

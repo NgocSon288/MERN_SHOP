@@ -39,8 +39,7 @@ export default function RegisterForm() {
       !user.fileUpload ||
       !user.phone
     ) {
-      alert('Data is not valid')
-      console.log(user)
+      alert('Data is not valid') 
       return
     }
 

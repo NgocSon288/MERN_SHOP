@@ -197,34 +197,52 @@ module.exports = {
       // trả về image cũ hoặc mới
       const image = await fileHelper.saveImageAndDeleteImageUser(req)
 
-      const { id } = req.params
-      const { name, password, email, address, categoryUser, phone } = req.body
-      const oldUser = await User.findOne({ _id: id })
+      const { userId } = req
+      const { name, email, address, phone } = req.body
+      const oldUser = await User.findById(userId)
       if (!oldUser) {
-        res.status(400).json({ success: false, message: 'User not found' })
-      }
-      const newUser = {
-        name: name,
-        username: oldUser.username,
-        password: password,
-        email: email,
-        phone: phone,
-        image: image,
-        address: address,
-        categoryUser: categoryUser,
+        return res
+          .status(400)
+          .json({ success: false, message: 'User not found' })
       }
 
-      const user = await User.findByIdAndUpdate({ _id: id }, newUser, {
-        new: true,
-      })
+      oldUser.name = name
+      oldUser.email = email
+      oldUser.phone = phone
+      oldUser.image = image
+      oldUser.address = address
+      await oldUser.save()
 
+      return res.json({ success: true, message: 'Update successfully' })
+    } catch (error) {
+      return res.status(500).json({ success: false, message: error.message })
+    }
+  },
+  updateAccount: async function (req, res, next) {
+    try {
+      const { userId } = req
+      const { username, password, newPassword } = req.body
+      const user = await User.findById(userId)
       if (!user) {
         res.status(400).json({ success: false, message: 'User not found' })
+      } 
+
+      const passwordValid = await argon2.verify(user.password, password)
+
+      if (!passwordValid) {
+        return res
+          .status(400)
+          .json({ success: false, message: 'Incorrect Username or Password' })
       }
+
+      const hashedPassword = await argon2.hash(newPassword)
+
+      user.password = hashedPassword
+
+      await user.save()
 
       res.json({ success: true, message: 'Update successfully' })
     } catch (error) {
-      console.log(error.message)
       return res.status(500).json({ success: false, message: error.message })
     }
   },
