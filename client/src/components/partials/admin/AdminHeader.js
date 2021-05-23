@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Collapse, Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap'
+import { AuthContext } from './../../../contexts/client/AuthContext'
 
 export default function AdminHeader() {
   return (

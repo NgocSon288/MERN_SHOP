@@ -9,7 +9,7 @@ import { CategoryContext } from './../../../contexts/admin/CategoryContext'
 import { BrandContext } from './../../../contexts/admin/BrandContext'
 import * as PRODUCT_TYPE from './../../../reducers/admin/productType'
 
-export default function Createproduct() {
+export default function CreateProduct() {
   const [data, setData] = useState({
     name: '',
     price: '',

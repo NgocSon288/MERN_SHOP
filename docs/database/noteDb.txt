@@ -2,10 +2,9 @@ Brand       //
 Advertisement   //
 UserCategory    //
 Comment 
-UserComment
 User        //
-Order
-OrderDetaile
+Order       //
+OrderDetaile        //
 Product          // (Promotion, Description, isFreeship, ViewCount,IsInstallment,Rating, Brand)
 ProductCategory //
 

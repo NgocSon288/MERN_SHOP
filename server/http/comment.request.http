@@ -1,0 +1,34 @@
+# Get all comments
+GET http://localhost:3000/api/comments/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGEzZjJkOGZkODQ2MDNlODM2NGI4YTYiLCJpYXQiOjE2MjE2MTA2NTl9.Hc8zdUaW5pk286zlUrKMdXzXl_uUT4FL9DjYYE28_RY
+
+
+
+###
+# Get comment by id
+GET http://localhost:3000/api/comments/60a8913d43ab235abfdb9eee
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGEzZjJkOGZkODQ2MDNlODM2NGI4YTYiLCJpYXQiOjE2MjE2MTA2NTl9.Hc8zdUaW5pk286zlUrKMdXzXl_uUT4FL9DjYYE28_RY
+ 
+
+###
+# Create comment
+POST http://localhost:3000/api/comments/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGEzZjJkOGZkODQ2MDNlODM2NGI4YTYiLCJpYXQiOjE2MjE2MTA2NTl9.Hc8zdUaW5pk286zlUrKMdXzXl_uUT4FL9DjYYE28_RY
+
+{
+    "starNumber":5,
+    "reason":"Điện thoại tốt 1",
+    "description":"Điện thoại này xịn quá 😍😍😻 1",
+    "product":"60a687d249a80059d632de26"
+}
+
+
+###
+# Delete comment by id
+DELETE http://localhost:3000/api/comments/60a89063e45d8959720eaa5e
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGEzZjJkOGZkODQ2MDNlODM2NGI4YTYiLCJpYXQiOjE2MjE2MTA2NTl9.Hc8zdUaW5pk286zlUrKMdXzXl_uUT4FL9DjYYE28_RY
+  

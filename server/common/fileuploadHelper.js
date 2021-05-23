@@ -6,7 +6,7 @@ const Brand = require('./../models/Brand')
 
 /////////////////////////////////////////////////////////////
 // Product
-const saveImageImageProduct = async function (req) {
+const saveImageProduct = async function (req) {
   try {
     if (req.files) {
       // danh sách các image mới
@@ -100,7 +100,7 @@ const deleteImageProductById = async function (_id) {
     data.image.split('|').forEach((item) => arrFileNamesOld.push(item))
 
     arrFileNamesOld.forEach((item) => {
-      fs.unlink('public/images/' + item, () => {})
+      fs.unlink('public/images/comment/' + item, () => {})
     })
   } catch (error) {}
 }
@@ -209,7 +209,9 @@ const saveImageAdvertisement = async function (req) {
       const fileupload = req.files[`fileUpload`]
 
       const randStr = Math.random() * 100000
-      await fileupload.mv('public/images/advertisement/' + randStr + fileupload.name)
+      await fileupload.mv(
+        'public/images/advertisement/' + randStr + fileupload.name
+      )
       return randStr + fileupload.name
     }
   } catch (error) {
@@ -237,7 +239,9 @@ const saveImageAndDeleteImageAdvertisement = async function (req) {
       const fileupload = req.files[`fileUpload`]
 
       const randStr = Math.random() * 100000
-      await fileupload.mv('public/images/advertisement/' + randStr + fileupload.name)
+      await fileupload.mv(
+        'public/images/advertisement/' + randStr + fileupload.name
+      )
 
       fs.unlink('public/images/advertisement/' + fileNameOld, () => {})
 
@@ -250,8 +254,46 @@ const saveImageAndDeleteImageAdvertisement = async function (req) {
   }
 }
 
+/////////////////////////////////////////////////////////////
+// Comment
+const saveImageComment = async function (req) {
+  try {
+    if (req.files) {
+      // danh sách các image mới
+      const arrFileNames = []
+
+      let i = 1
+      while (req.files[`fileUpload${i}`]) {
+        const fileupload = req.files[`fileUpload${i}`]
+
+        const randStr = Math.random() * 100000
+        await fileupload.mv(
+          'public/images/comment/' + randStr + fileupload.name
+        )
+        arrFileNames.push(randStr + fileupload.name)
+        i++
+      }
+      return arrFileNames.join('|')
+    }
+  } catch (error) {}
+}
+
+const deleteImageCommentById = async function (_id) {
+  try {
+    // danh sách các image cũ
+    const arrFileNamesOld = []
+
+    const data = await Product.findOne({ _id: _id })
+    data.image.split('|').forEach((item) => arrFileNamesOld.push(item))
+
+    arrFileNamesOld.forEach((item) => {
+      fs.unlink('public/images/comment/' + item, () => {})
+    })
+  } catch (error) {}
+}
+
 module.exports = {
-  saveImageImageProduct,
+  saveImageProduct,
   saveImageAndDeleteImageProduct,
   deleteImageProduct,
   deleteImageProductById,
@@ -267,4 +309,7 @@ module.exports = {
   saveImageAdvertisement,
   deleteImageAdvertisementById,
   saveImageAndDeleteImageAdvertisement,
+
+  saveImageComment,
+  deleteImageCommentById,
 }

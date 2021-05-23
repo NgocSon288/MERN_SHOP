@@ -7,6 +7,7 @@ const brandRoute = require('./brand.route')
 const advertisementRoute = require('./advertisement.route')
 const orderRoute = require('./order.route')
 const orderDetailRoute = require('./orderDetail.route')
+const commentRoute = require('./comment.route')
 
 const router = express.Router()
 
@@ -38,5 +39,8 @@ router.use('/api/orders/', orderRoute)
 
 // Advertisement Route API
 router.use('/api/orderdetails/', orderDetailRoute)
+
+// Comment Route API
+router.use('/api/comments/', commentRoute)
 
 module.exports = router

@@ -77,7 +77,7 @@ module.exports = {
   create: async function (req, res, next) {
     try {
       if (req.files) {
-        const image = await fileHelper.saveImageImageProduct(req)
+        const image = await fileHelper.saveImageProduct(req)
 
         const {
           name,
