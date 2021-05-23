@@ -80,7 +80,7 @@ export default function AdminHeader() {
                 <ul className='dropdown-menu drp-mnu'>
                   <li>
                     {' '}
-                    <a href='#'>
+                    <a href='/admin/user/profile'>
                       <i className='fa fa-user'></i> Thông tin cá nhân
                     </a>{' '}
                   </li>

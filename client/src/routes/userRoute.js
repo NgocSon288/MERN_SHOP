@@ -1,5 +1,6 @@
 // Admin
 import List from './../views/user/admin/List'
+import Profile from './../views/user/admin/Profile'
 
 // Client
 import Login from '../views/user/client/Login'
@@ -46,6 +47,19 @@ const userRoute = [
     title: 'Quản lý người dừng',
     icon: 'design_app',
     component: List,
+    layout: AdminLayout,
+    wrapContextProvider: ({ children }) => (
+      <AuthContextProvider>
+        <UserContextProvider>{children}</UserContextProvider>
+      </AuthContextProvider>
+    ),
+  },
+  // Admin Edit route
+  {
+    path: '/admin/user/profile',
+    title: 'Thông tin cá nhân',
+    icon: 'design_app',
+    component: Profile,
     layout: AdminLayout,
     wrapContextProvider: ({ children }) => (
       <AuthContextProvider>

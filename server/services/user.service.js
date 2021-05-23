@@ -104,7 +104,7 @@ module.exports = {
   create: async function (req, res, next) {
     try {
       if (req.files) {
-        const { name, username, password, email, address } = req.body
+        const { name, username, password, email, address, phone } = req.body
         const checkUser = await User.findOne({ username })
 
         if (checkUser) {
@@ -123,6 +123,7 @@ module.exports = {
           username: username,
           password: hashedPassword,
           email: email,
+          phone: phone,
           image: image,
           address: address,
           categoryUser: categoryUser._id,
@@ -176,7 +177,6 @@ module.exports = {
           message: "You do not have permission to delete admin's permissions.",
         })
       }
- 
 
       const user = await User.findByIdAndDelete(id)
       if (!user) {
@@ -194,10 +194,11 @@ module.exports = {
   },
   update: async function (req, res, next) {
     try {
+      // trả về image cũ hoặc mới
       const image = await fileHelper.saveImageAndDeleteImageUser(req)
 
       const { id } = req.params
-      const { name, password, email, address, categoryUser } = req.body
+      const { name, password, email, address, categoryUser, phone } = req.body
       const oldUser = await User.findOne({ _id: id })
       if (!oldUser) {
         res.status(400).json({ success: false, message: 'User not found' })
@@ -207,6 +208,7 @@ module.exports = {
         username: oldUser.username,
         password: password,
         email: email,
+        phone: phone,
         image: image,
         address: address,
         categoryUser: categoryUser,
