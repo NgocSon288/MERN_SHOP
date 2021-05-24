@@ -11,10 +11,14 @@ import AdminLayout from "./../layouts/AdminLayout";
 import ClientLayout from "./../layouts/ClientLayout";
 
 // ContextProvider
+// Admin
 import ProductContextProvider from "../contexts/admin/ProductContext";
 import CategoryContextProvider from "../contexts/admin/CategoryContext";
 import BrandContextProvider from "../contexts/admin/BrandContext";
+// Client
 import ClientProductContextProvider from "../contexts/client/ProductContext";
+import ClientCategoryContextProvider from "../contexts/client/CategoryContext";
+import ClientBrandContextProvider from "../contexts/client/BrandContext";
 
 const productRoute = [
   // Admin Product route
@@ -70,9 +74,9 @@ const productRoute = [
     layout: ClientLayout,
     wrapContextProvider: ({ children }) => (
       <ClientProductContextProvider>
-        <CategoryContextProvider>
-          <BrandContextProvider>{children}</BrandContextProvider>
-        </CategoryContextProvider>
+        <ClientCategoryContextProvider>
+          <ClientBrandContextProvider>{children}</ClientBrandContextProvider>
+        </ClientCategoryContextProvider>
       </ClientProductContextProvider>
     ),
   },
