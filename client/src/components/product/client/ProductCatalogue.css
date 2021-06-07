@@ -1,0 +1,84 @@
+.wrapper .div-img-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.wrapper > div {
+  box-shadow: 0px 0px 15px 0px #d6d6d6;
+  padding: 15px 25px !important;
+  margin-bottom: 30px;
+}
+
+.wrapper .div-img-hover .ten-san-pham {
+  text-align: center;
+  min-height: 60px;
+}
+
+.wrapper .div-img-hover .ten-san-pham a {
+  font-size: 20px;
+}
+
+.wrapper .div-img-hover .btn-them,
+.btn-them-back {
+  color: white;
+  background-color: #0879c9;
+  border-radius: 5px;
+  border: none;
+  box-shadow: -1px 1px 5px gray;
+  margin-top: 15px;
+}
+
+.wrapper .div-img-hover .btn-them:hover,
+.btn-them-back:hover {
+  color: white;
+  background-color: #072941;
+  box-shadow: -1px 1px 5px gray;
+}
+.wrapper .div-img-hover .product-new-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  background-color: red;
+  border-radius: 5px;
+  padding: 3px 5px;
+  font-size: 12px;
+}
+
+.wrapper .div-img-hover .img-hover {
+  width: 100%;
+}
+.wrap-img-sp {
+  position: relative;
+  border-bottom: 1px solid gray;
+  padding-bottom: 20px;
+}
+
+.wrap-img-sp .xem-chi-tiet {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  background-color: rgb(193, 0, 247);
+  border-radius: 5px;
+  padding: 5px auto;
+  width: 100px;
+  text-align: center;
+  transform: translateX(-50%);
+  transition: 0.4s;
+  opacity: 0;
+}
+
+.wrap-img-sp .xem-chi-tiet a {
+  color: white;
+}
+
+.wrap-img-sp .xem-chi-tiet:hover {
+  color: white;
+  box-shadow: -3px 3px 10px gray;
+  background-color: rgb(126, 1, 160);
+}
+
+.wrap-img-sp:hover .xem-chi-tiet {
+  top: 70%;
+  opacity: 1;
+}

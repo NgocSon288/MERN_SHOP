@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import ProductCatalogue from "../../../components/product/client/ProductCatalogue";
-import DropdownListCategory from "../../../components/category/client/DropdownListCategory";
+import FilterMenu from "../../../components/category/client/FilterMenu";
 
 import { Row, Col } from "reactstrap";
 
@@ -11,13 +11,12 @@ export default function Catalogue({ title }) {
   });
 
   return (
-    <div>
+    <div style={{ marginLeft: "10%", marginRight: "10%", paddingTop: "22px" }}>
       <Row>
-        <Col xs="3">
-          <DropdownListCategory />
+        <Col lg="3">
+          <FilterMenu />
         </Col>
-        <Col xs="9">
-          <h2 className="mb-4">Danh sách các sản phẩm</h2>
+        <Col lg="9">
           <ProductCatalogue />
         </Col>
       </Row>

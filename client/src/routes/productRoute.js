@@ -4,7 +4,7 @@ import Create from "../views/product/admin/Create";
 import Edit from "../views/product/admin/Edit";
 
 // Client
-import Catalogue from "../views/product/client/Catalogue";
+import Catalogue from "../views/product/client/Products";
 
 //  Layouts
 import AdminLayout from "./../layouts/AdminLayout";
