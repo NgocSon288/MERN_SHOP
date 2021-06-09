@@ -30,7 +30,7 @@ export default function ProductCatalogue() {
                   <img
                     src={
                       `http://localhost:3000/images/product/${
-                        item.image.split("|")[0]
+                        item.image.split("|")[3]
                       }` ||
                       "https://tse3.mm.bing.net/th?id=OIP.03Nx1O7saqRog5kMdOZSuwHaHa&pid=Api&P=0&w=300&h=300"
                     }
