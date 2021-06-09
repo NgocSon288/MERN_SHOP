@@ -162,11 +162,10 @@ export default function CreateProduct() {
       parameter: [...newParam],
     })
   }
-
+  
   return (
     <Form>
       <FormGroup>
-        <Label for='name'>Tên sản phẩm</Label>
         <Input
           type='text'
           name='name'

@@ -41,6 +41,6 @@ router.use('/api/orders/', orderRoute)
 router.use('/api/orderdetails/', orderDetailRoute)
 
 // Comment Route API
-router.use('/api/comments/', commentRoute)
+router.use('/api/comments/', commentRoute) 
 
 module.exports = router
