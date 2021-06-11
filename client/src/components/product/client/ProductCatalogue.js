@@ -1,23 +1,42 @@
 import React, { useEffect, useContext } from "react";
-import {
-  Row,
-  Card,
-  CardImg,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardText,
-  Button,
-} from "reactstrap";
+import { Row } from "reactstrap";
 
 import { ProductContext } from "../../../contexts/client/ProductContext";
+import { ProductSessionContext } from "../../../contexts/client/ProductSessionContext";
+import * as PRODUCT_SESSION_TYPE from "./../../../reducers/client/productSessionType";
+
+import { LOCAL_STORAGE_CART } from "../../../common/constants";
 
 import "./ProductCatalogue.css";
 
 export default function ProductCatalogue() {
   const { products, dispatch } = useContext(ProductContext);
+  const { productSessions, dispatch: dispatchProductSession } = useContext(
+    ProductSessionContext
+  );
 
-  useEffect(() => {}, [products]);
+  useEffect(() => {}, [products, productSessions]);
+
+  const onAddToCart = async (product) => {
+    try {
+      dispatchProductSession({
+        type: PRODUCT_SESSION_TYPE.ADD_TO_CART,
+        payload: { product: product },
+      });
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+  const test = async () => {
+    try {
+      dispatchProductSession({
+        type: PRODUCT_SESSION_TYPE.SET_PRODUCT_SESSIONS,
+        payload: null,
+      });
+    } catch (error) {
+      alert(error.message);
+    }
+  };
 
   return (
     <div class="wrapper">
@@ -30,7 +49,7 @@ export default function ProductCatalogue() {
                   <img
                     src={
                       `http://localhost:3000/images/product/${
-                        item.image.split("|")[3]
+                        item.image.split("|")[0]
                       }` ||
                       "https://tse3.mm.bing.net/th?id=OIP.03Nx1O7saqRog5kMdOZSuwHaHa&pid=Api&P=0&w=300&h=300"
                     }
@@ -70,12 +89,15 @@ export default function ProductCatalogue() {
                       </span>
                     </del> */}
                   </div>
-                  <button class="btn-them">Thêm vào giỏ</button>
+                  <button class="btn-them" onClick={() => onAddToCart(item)}>
+                    Thêm vào giỏ
+                  </button>
                 </div>
               </div>
             </div>
           ))}
       </Row>
+      <button onClick={() => test()}>test</button>
     </div>
   );
 }

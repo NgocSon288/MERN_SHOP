@@ -1,0 +1,9 @@
+# Get all products
+GET http://localhost:3000/api/productSessions/
+
+
+
+###
+# Get product by id
+GET http://localhost:3000/api/productSessions/609a29dc6542d153f86da754
+ 

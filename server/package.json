@@ -11,10 +11,13 @@
   "license": "ISC",
   "dependencies": {
     "argon2": "^0.27.2",
+    "cookie-parser": "^1.4.5",
+    "cookies": "^0.8.0",
     "cors": "^2.8.5",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
+    "express-session": "^1.17.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.8"
   },

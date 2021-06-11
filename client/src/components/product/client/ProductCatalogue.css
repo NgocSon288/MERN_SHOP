@@ -2,7 +2,9 @@
   position: relative;
   overflow: hidden;
 }
-
+.wrapper .div-img-hover img {
+  height: 150px;
+}
 .wrapper > div {
   box-shadow: 0px 0px 15px 0px #d6d6d6;
   padding: 15px 25px !important;
