@@ -69,6 +69,47 @@ export const productSessionReducer = async (state, action) => {
         return state;
       }
     }
+    case TYPE.DELETE_BY_ID: {
+      const { product } = payload;
+
+      var cartList = JSON.parse(localStorage.getItem(LOCAL_STORAGE_CART));
+      if (cartList == null) {
+        cartList = [];
+      }
+      cartList = cartList.filter((e) => e.id != product._id);
+      localStorage.setItem(LOCAL_STORAGE_CART, JSON.stringify(cartList));
+
+      state = state.filter((item) => item._id != product._id);
+      console.log(state);
+      return state;
+    }
+    case TYPE.EDIT_BY_ID: {
+      const { product, newAmount } = payload;
+
+      //Storage
+      var cartList = JSON.parse(localStorage.getItem(LOCAL_STORAGE_CART));
+      if (cartList == null) {
+        cartList = [];
+      }
+
+      for (var i = 0; i < cartList.length; i++) {
+        if (cartList[i].id == product._id) {
+          cartList[i].amount = newAmount;
+          break;
+        }
+      }
+      localStorage.setItem(LOCAL_STORAGE_CART, JSON.stringify(cartList));
+
+      //State
+      for (var i = 0; i < state.length; i++) {
+        if (state[i]._id == product._id) {
+          state[i].amount = newAmount;
+          break;
+        }
+      }
+      console.log(state);
+      return state;
+    }
     default: {
       //console.log("reducer");
     }

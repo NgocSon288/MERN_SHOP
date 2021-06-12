@@ -5,8 +5,6 @@ import { ProductContext } from "../../../contexts/client/ProductContext";
 import { ProductSessionContext } from "../../../contexts/client/ProductSessionContext";
 import * as PRODUCT_SESSION_TYPE from "./../../../reducers/client/productSessionType";
 
-import { LOCAL_STORAGE_CART } from "../../../common/constants";
-
 import "./ProductCatalogue.css";
 
 export default function ProductCatalogue() {
@@ -22,16 +20,6 @@ export default function ProductCatalogue() {
       dispatchProductSession({
         type: PRODUCT_SESSION_TYPE.ADD_TO_CART,
         payload: { product: product },
-      });
-    } catch (error) {
-      alert(error.message);
-    }
-  };
-  const test = async () => {
-    try {
-      dispatchProductSession({
-        type: PRODUCT_SESSION_TYPE.SET_PRODUCT_SESSIONS,
-        payload: null,
       });
     } catch (error) {
       alert(error.message);
@@ -97,7 +85,6 @@ export default function ProductCatalogue() {
             </div>
           ))}
       </Row>
-      <button onClick={() => test()}>test</button>
     </div>
   );
 }
