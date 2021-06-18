@@ -45,7 +45,7 @@ export default function CreateCategory() {
   }
 
   return (
-      <Form onSubmit={onSubmit}>
+      <Form onSubmit={onSubmit} style={{width: '40%'}}>
         <FormGroup>
           <Label for='name'>Tên sản phẩm</Label>
           <Input

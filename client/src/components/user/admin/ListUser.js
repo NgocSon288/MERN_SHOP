@@ -1,20 +1,26 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import { Table } from 'reactstrap'
+import Pagination from 'react-js-pagination'
 
 import { UserContext } from './../../../contexts/admin/UserContext'
 import { AuthContext } from './../../../contexts/client/AuthContext'
 import * as USER_TYPE from './../../../reducers/admin/userType.js'
 import * as AUTH_TYPE from './../../../reducers/client/authType'
+
 import './ListUser.css'
 
-export default function ListUser( ) {
+export default function ListUser() {
   let { users, dispatch } = useContext(UserContext)
   let { authState, dispatch: dispatchAuth } = useContext(AuthContext)
-
   let userCurrent = null
+  
+  // Params pagination
+  let [activePage, setActivePage] = useState(1)
+  let [totalItemsCount, setTotalItemsCount] = useState(1)
+  let [usesActivePage, setUsersActivePage] = useState([])
+  let itemsCountPerPage = 3 
 
-  useEffect(() => { 
-
+  useEffect(() => {
     dispatchAuth({
       type: AUTH_TYPE.SET_AUTH,
       payload: null,
@@ -25,9 +31,19 @@ export default function ListUser( ) {
     if (authState && authState.user && authState.user._doc) {
       // eslint-disable-next-line react-hooks/exhaustive-deps
       userCurrent = { ...authState.user._doc }
+
+      // filter pagination
+      setTotalItemsCount(users.length)
+      let index = (activePage - 1) * itemsCountPerPage
+      setUsersActivePage([...users.slice(index, index + itemsCountPerPage)])
     }
   }, [users, authState])
 
+  useEffect(() => {
+    if (users && users.length > 0) {
+    }
+  }, [users])
+ 
   const onUpdatePermission = (e) => {
     if (e.target.dataset.id === userCurrent._id) {
       alert('Can not update permissions for your own account')
@@ -46,7 +62,7 @@ export default function ListUser( ) {
     if (e.target.dataset.id === userCurrent._id) {
       alert('Can not delete your own account')
       return
-    } 
+    }
 
     dispatch({
       type: USER_TYPE.DELETE_BY_ID,
@@ -54,6 +70,13 @@ export default function ListUser( ) {
         _id: e.target.dataset.id,
       },
     })
+  }
+
+  // function pagination
+  const handlePageChange = (pageNumber) => {
+    let index = (pageNumber - 1) * itemsCountPerPage
+    setUsersActivePage([...users.slice(index, index + itemsCountPerPage)])
+    setActivePage(pageNumber)
   }
 
   return (
@@ -72,11 +95,11 @@ export default function ListUser( ) {
           </tr>
         </thead>
         <tbody>
-          {users &&
+          {usesActivePage &&
             authState &&
-            users.map((item, i) => (
+            usesActivePage.map((item, i) => (
               <tr key={i}>
-                <th scope='row'>{i + 1}</th>
+                <th scope='row'>{(activePage-1) * itemsCountPerPage + i+1}</th>
                 <td>{item.name}</td>
                 <td>
                   <img
@@ -102,13 +125,22 @@ export default function ListUser( ) {
                     data-id={item._id}
                     onClick={(e) => onRemoveUser(e)}
                   >
-                    Remove
+                     Xoá
                   </button>
                 </td>
               </tr>
             ))}
         </tbody>
       </Table>
+      <div className='my-pagination'>
+        <Pagination
+          activePage={activePage}
+          itemsCountPerPage={itemsCountPerPage}
+          totalItemsCount={totalItemsCount}
+          pageRangeDisplayed={5}
+          onChange={handlePageChange}
+        />
+      </div>
     </div>
   )
 }

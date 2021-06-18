@@ -1,0 +1,10 @@
+.wrap-image{
+    position: relative;
+    border: 1px solid black;
+}
+
+.wrap-image button{
+    position: absolute;
+    top: 0;
+    right: 0;
+}

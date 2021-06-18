@@ -1,3 +1,16 @@
 .tag-update-category {
   cursor: pointer;
 }
+
+.my-pagination .pagination li {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #bcc1ff;
+  border-radius: 2px;
+  text-align: center;
+  padding: 2px 2px 0px 3px;
+}
+
+form label{
+    font-weight: bold;
+}

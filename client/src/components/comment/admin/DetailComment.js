@@ -41,7 +41,7 @@ export default function CreateComment() {
   }
 
   return (
-    <Form>
+    <Form style={{width: '40%'}}>
       <FormGroup>
         <Label for='reason'>Lý đo</Label>
         <Input

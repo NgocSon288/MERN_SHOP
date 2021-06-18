@@ -47,7 +47,7 @@ export default function CreateBrand() {
   }
 
   return (
-    <Form>
+    <Form style={{width: '40%'}}>
       <FormGroup>
         <Label for='name'>Tên nhãn hiệu</Label>
         <Input

@@ -1,6 +1,7 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import { Table } from 'reactstrap'
 import { Link } from 'react-router-dom'
+import Pagination from 'react-js-pagination'
 
 import { OrderContext } from '../../../contexts/admin/OrderContext'
 import * as ORDER_TYPE from '../../../reducers/admin/orderType.js'
@@ -8,7 +9,17 @@ import * as ORDER_TYPE from '../../../reducers/admin/orderType.js'
 export default function ListOrder() {
   let { orders, dispatch } = useContext(OrderContext)
 
+  // Params pagination
+  let [activePage, setActivePage] = useState(1)
+  let [totalItemsCount, setTotalItemsCount] = useState(1)
+  let [ordersActivePage, setOrdersActivePage] = useState([])
+  let itemsCountPerPage = 5
+
   useEffect(() => {
+    // filter pagination
+    setTotalItemsCount(orders.length)
+    let index = (activePage - 1) * itemsCountPerPage
+    setOrdersActivePage([...orders.slice(index, index + itemsCountPerPage)])
   }, [orders])
 
   const removeItem = async ({ _id }) => {
@@ -22,7 +33,15 @@ export default function ListOrder() {
     }
   }
 
+  // function pagination
+  const handlePageChange = (pageNumber) => {
+    let index = (pageNumber - 1) * itemsCountPerPage
+    setOrdersActivePage([...orders.slice(index, index + itemsCountPerPage)])
+    setActivePage(pageNumber)
+  }
+
   return (
+    <div>
       <Table>
         <thead>
           <tr>
@@ -35,27 +54,40 @@ export default function ListOrder() {
           </tr>
         </thead>
         <tbody>
-          {orders.map((item, i) => (
-            <tr key={i}>
-              <th scope='row'>{i + 1}</th>
-              <td>{item.user.name}</td>
-              <td>{item.phone}</td>
-              <td>{item.address}</td>
-              <td>{item.createdAt}</td>
-              <td>
-                <button className='btn btn-info'>
-                  <Link to={'/admin/order/' + item._id}>Xem chi tiết</Link>
-                </button>
-                <button
-                  className='btn btn-danger ml-2'
-                  onClick={() => removeItem(item)}
-                >
-                  Remove
-                </button>
-              </td>
-            </tr>
-          ))}
+          {ordersActivePage &&
+            ordersActivePage.map((item, i) => (
+              <tr key={i}>
+                <th scope='row'>
+                  {(activePage - 1) * itemsCountPerPage + i + 1}
+                </th>
+                <td>{item.user.name}</td>
+                <td>{item.phone}</td>
+                <td>{item.address}</td>
+                <td>{item.createdAt}</td>
+                <td>
+                  <button className='btn btn-info'>
+                    <Link to={'/admin/order/' + item._id}>Chi tiết</Link>
+                  </button>
+                  <button
+                    className='btn btn-danger ml-2'
+                    onClick={() => removeItem(item)}
+                  >
+                    Xoá
+                  </button>
+                </td>
+              </tr>
+            ))}
         </tbody>
       </Table>
+      <div className='my-pagination'>
+        <Pagination
+          activePage={activePage}
+          itemsCountPerPage={itemsCountPerPage}
+          totalItemsCount={totalItemsCount}
+          pageRangeDisplayed={5}
+          onChange={handlePageChange}
+        />
+      </div>
+    </div>
   )
 }
