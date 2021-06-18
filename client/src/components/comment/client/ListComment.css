@@ -1,0 +1,16 @@
+.thaoluan{
+    font-size: 14px;
+    margin-right: 20px;
+    cursor: pointer;
+    color: #007bff;
+}
+.thaoluan :hover
+{
+    text-decoration: underline;
+}
+.icon-kh span{
+    font-size: 20px;
+    padding: 15px;
+    border-radius:50%;
+    background-color:aquamarine;
+  }

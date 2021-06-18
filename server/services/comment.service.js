@@ -23,7 +23,6 @@ module.exports = {
       const comments = await Comment.find()
         .populate('user', ['name', 'image'])
         .populate('product', ['name', 'image'])
-
       res.json({ success: true, data: comments })
     } catch (error) {
       res.status(500).json({ success: false, message: error })
@@ -35,12 +34,26 @@ module.exports = {
       const product = await Comment.findOne({ _id: id })
         .populate('user', ['name', 'image'])
         .populate('product', ['name', 'image'])
-
       if (!product) {
         res.status(400).json({ success: false, message: 'Comment not found' })
       }
 
       res.json({ success: true, data: product })
+    } catch (error) {
+      res.status(500).json({ success: false, message: error })
+    }
+  },
+  getByIdProduct: async function (req, res, next) {
+    try {
+      const { productid } = req.params
+      const comment = await Comment.find({product: { _id: productid }})
+        .populate('user', ['name', 'image'])
+        .populate('product', ['name', 'image'])
+      if (!comment) {
+        res.status(400).json({ success: false, message: 'Comment not found' })
+      }
+
+      res.json({ success: true, data: comment })
     } catch (error) {
       res.status(500).json({ success: false, message: error })
     }

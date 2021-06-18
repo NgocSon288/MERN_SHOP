@@ -12,6 +12,11 @@ const commentService = {
 
     return res.data
   },
+  getByIdProduct: async (productid) => {
+    const res = await axios.get(`${urlStr}/comments/product/${productid}`)
+
+    return res.data
+  },
   create: async (product) => { 
     const fd = new FormData()
     for (const [name, value] of Object.entries(product)) {

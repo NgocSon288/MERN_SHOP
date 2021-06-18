@@ -11,7 +11,12 @@ GET http://localhost:3000/api/comments/60a8913d43ab235abfdb9eee
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGEzZjJkOGZkODQ2MDNlODM2NGI4YTYiLCJpYXQiOjE2MjE2MTA2NTl9.Hc8zdUaW5pk286zlUrKMdXzXl_uUT4FL9DjYYE28_RY
  
-
+###
+# Get comment by product id
+GET http://localhost:3000/api/comments/product/60a687d249a80059d632de26
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGEzZjJkOGZkODQ2MDNlODM2NGI4YTYiLCJpYXQiOjE2MjE2MTA2NTl9.Hc8zdUaW5pk286zlUrKMdXzXl_uUT4FL9DjYYE28_RY
+ 
 ###
 # Create comment
 POST http://localhost:3000/api/comments/

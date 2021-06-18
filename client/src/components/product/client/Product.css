@@ -1,0 +1,331 @@
+
+.slide-show{
+  width:100%;     /* cho slide chinh bang width man hinh */
+  height: 300px; 
+  background-color: #9dd7db; 
+  overflow: hidden;   /* an di may cai slide khac slide chinh */
+  position: relative;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.img-dien-thoai-show:hover .s1{
+  animation: none;
+}
+
+.slides{
+  width: 300%;    /* vi co tong cong 5 hinh anh, nen la 5 * 100% = 500% */
+  height: 100%;
+  display: flex;  /* chi cac item ben trong nam tren mot dong*/
+}
+
+.slides > div{ 
+  width:33.33%;      /* 100% / 5 = 20% */
+  height: 100%;
+  transition: all 0.4s ease;
+}
+
+.slides > div img{
+  width: 100%; 
+  height: 100%;   
+}
+.label-img img{
+  border: 1px solid transparent;
+  opacity: 0.7;
+}
+
+.label-img:hover img{
+  border: 1px solid red;
+  opacity: 1;
+}
+
+#r1:hover ~ .s1{
+  margin-left: 0%;
+}
+
+#r2:hover ~ .s1{
+  margin-left: -33.33%;
+}
+
+#r3:hover ~ .s1{
+  margin-left: -66.66%;
+}
+
+.s1{
+  animation: slide-change 9s infinite;
+}
+  
+@keyframes slide-change{
+  5%{ 
+    margin-left: -33.33%;             
+  } 
+  33.33%{ 
+    margin-left: -33.33%; 
+  }
+  38.33%{
+    margin-left: -66.66%;        
+  }
+  66.66%{ 
+    margin-left: -66.66%;             
+  } 
+  71.66%{ 
+    margin-left: 0%;             
+  } 
+  100%{ 
+    margin-left: 0%;             
+  }
+} 
+input[type='radio']{
+  display: none;
+} 
+
+#r1:checked ~ .slides{
+  margin-left: 0;
+
+}
+
+#r2:checked ~ .s1{ 
+  margin-left: -20%;  
+}
+
+#r3:checked ~ .s1{ 
+  margin-left: -40%;
+}
+
+#r4:checked ~ .s1{ 
+  margin-left: -60%;
+}
+
+#r5:checked ~ .s1{ 
+  margin-left: -80%; 
+}
+.redirection-for{
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.redirection-for label{ 
+  background-color: transparent;
+  border: 1px solid white;
+  margin: 20px 30px 50px 30px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.slide-show:hover .redirection-for label i{
+  color: rgba(255, 255, 255, 0.63);
+}
+
+.redirection-for label i{ 
+  position: absolute;
+  font-size: 40px;
+  color: transparent;
+  top: 0;
+  left: 0;
+  transition: all 0.4s ease;
+} 
+
+.redirection-for label:hover i{ 
+  color: #007bffa6 !important;
+}
+.slide-show .left, .slide-show .right{
+  color: transparent;
+  position: absolute;
+  font-size: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.slide-show:hover .left, .slide-show:hover .right{
+  color: white; 
+}
+
+.slide-show .left:hover, .slide-show .right:hover{
+  color: #007bff !important; 
+}
+
+.slide-show .left{
+  left: 5%;
+}
+
+.slide-show .right{
+   right: 5%;
+}
+  .thong-tin-nhanh-img img{
+    width: 100%;
+  }
+    
+  .my-act{
+    color: rgb(255, 181, 0);
+    font-size: 20px;
+  }
+  .my-comment-start li a i, .star-font{
+    font-size: 20px;
+    color: rgb(255, 181, 0);
+  }
+  ul.list-inline li{
+    float: left;
+    margin-left: 5px;
+  } 
+  .my-comment-start li a i, .star-font{
+    font-size: 20px;
+    color: rgb(255, 181, 0);
+  }
+  .img-dien-thoai-show:hover .s1{
+    animation: none;
+  }
+  .opstion p{
+    font-size: 20px;
+  }
+
+  .opstion p span{
+    font-weight: bold;
+  }
+  
+  .opstion div{
+    font-size: 20px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+  
+  .opstion div button{
+    font-size: 16px;
+    width: 180px;
+    text-align: center;
+    margin: 5px 0px;
+    margin-right: 20px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+  }
+  
+  .opstion div button:hover{
+    background-color:rgb(146, 140, 140);
+  }
+  
+  .btnClick{
+    border: 2px solid rgb(114, 7, 7) !important;
+  }
+  .label-tra-gop{
+    vertical-align: center;
+    font-size:18px;
+    color: red;
+  }
+  .lable-phi-ship{
+    color: red;
+    border-radius: 5px;
+    background-color: rgb(189, 194, 22);
+    padding: 5px 10px;
+    font-size:16px;
+    margin-top: 10px;
+  }
+  .mua-ngay{
+    border-radius: 5px;
+    font-size:16px;
+   } 
+   .mua-ngay p{
+     margin-bottom:0px;
+     color: white !important;
+   }
+   .mua-ngay span{
+     color: white !important;
+   }
+   .thong-so{
+    list-style: none;
+  }
+  .thong-so .thong-so-item{ 
+    border-bottom: 1px solid rgb(200, 200, 200);
+  }
+  .thong-so .thong-so-item p{ 
+    margin-bottom: 0px;
+    margin-top: 15px;
+    color: black;
+  }
+  .thong-so .thong-so-item p:nth-child(1){ 
+    font-weight: bold;
+  }
+  .mua-ngay{
+    border-radius: 5px;
+    font-size:16px;
+   } 
+   .mua-ngay p{
+     margin-bottom:0px;
+     color: white !important;
+   }
+   .mua-ngay span{
+     color: white !important;
+   }
+   .display-text{
+    font-size:24px;
+  }
+  .card-body ul li .fa-check-circle{
+    font-size: 16px;
+    color: green;
+    margin-right:5px;
+  }
+  .card-body ul li .fa-gift{
+    font-size: 26px;
+    color: red;
+    margin-right: 5px;
+  }
+  .star{
+    margin-bottom: 15px;
+    padding-left: 3px;
+  }
+  .wrap-img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    width: 100%;
+    height:100%;
+    transition: 0.4s all;
+  } 
+  .head-title{
+    margin-top: 100px;
+    margin-bottom: 20px;
+    font-size: 30px;
+  }
+  
+#my-binh-luan-coll, #my-binh-luan-coll2{
+  cursor: pointer;
+  color: #0056b3;
+}
+.icon-kh>img{
+  width: 60px;
+  height: 60px;
+  font-size: 20px;
+  border-radius:100%;
+  background-color:aquamarine;
+}
+.my-line{
+  display: flex;
+  justify-content: start;
+  margin-bottom: 5px;
+}
+
+.my-line ul{
+  margin-left: 20px;
+  width: 170px;
+}
+
+.my-line>div{
+  margin-left: 20px;
+  background-color: rgb(200, 200, 200) !important;
+}
+.my-line div div{
+  background-color: 
+  rgb(120, 120, 120) !important;
+}
+.danh-gia ul li{
+  padding: 0px;
+}
+.image-kh
+{
+}
