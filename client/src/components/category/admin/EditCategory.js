@@ -49,7 +49,7 @@ export default function EditCategory() {
   }
 
   return (
-      <Form>
+      <Form style={{width: '40%'}}>
         <FormGroup>
           <Label for='name'>Tên sản phẩm</Label>
           <Input

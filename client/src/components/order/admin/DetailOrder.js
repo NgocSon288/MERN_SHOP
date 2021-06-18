@@ -57,7 +57,7 @@ export default function DetailOrder() {
 
   return (
     <div>
-      <Form>
+      <Form style={{width: '40%'}}>
         <FormGroup className='mt-4'>
           <Label for='name' className='bold'>
             Tên khách hàng

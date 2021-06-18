@@ -5,7 +5,8 @@ export const brandReducer = async (state, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case TYPE.SET_BRANDS: {
+    case TYPE.SET_BRANDS: { 
+
       const res = await brandService.getAll();
       state = res.data;
 

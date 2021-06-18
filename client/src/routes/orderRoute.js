@@ -4,9 +4,11 @@ import Detail from '../views/order/admin/Detail'
 // import Edit from '../views/order/admin/Edit'
 
 // Client
+import Card from './../views/order/client/Card'
 
 //  Layouts
 import AdminLayout from '../layouts/AdminLayout'
+import ClientLayout from '../layouts/ClientLayout'
 
 // ContextProvider
 import OrderContextProvider from '../contexts/admin/OrderContext'
@@ -42,7 +44,15 @@ const orderRoute = [
 
   //-----------------------------------------------------------------------------------------
   // Client Category route
-  // Client List route
+  // Client List card item route 
+  {
+    path: '/order',
+    title: 'Danh sách các sản phẩm giỏ hàng',
+    icon: 'design_app',
+    component: Card,
+    layout: ClientLayout,
+    wrapContextProvider: null,
+  },
 ]
 
 export default orderRoute

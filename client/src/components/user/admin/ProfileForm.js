@@ -50,7 +50,7 @@ export default function ProfileForm() {
   }
 
   return (
-    <Form>
+    <Form style={{width: '40%'}}>
       <FormGroup>
         <Label for='name'>Tên</Label>
         <Input
@@ -116,7 +116,7 @@ export default function ProfileForm() {
             <img
               src={`http://localhost:3000/images/user/${user.image}`}
               alt={user.image}
-              width='400'
+              width='100%'
             />
           )}
         </div>

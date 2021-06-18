@@ -4,6 +4,8 @@ import { Collapse, Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap'
 import { AuthContext } from './../../../contexts/client/AuthContext'
 import * as AUTH_TYPE from './../../../reducers/client/authType'
 
+import './AdminHeader.css'
+
 export default function AdminHeader() {
   const { authState, dispatch } = useContext(AuthContext)
   const [user, setUser] = useState({})

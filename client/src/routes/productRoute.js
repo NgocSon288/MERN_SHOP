@@ -4,7 +4,7 @@ import Create from "../views/product/admin/Create";
 import Edit from "../views/product/admin/Edit";
 
 // Client
-import Catalogue from "../views/product/client/Catalogue";
+import Catalogue from "../views/product/client/Products";
 
 //  Layouts
 import AdminLayout from "./../layouts/AdminLayout";
@@ -21,6 +21,7 @@ import ClientCategoryContextProvider from "../contexts/client/CategoryContext";
 import ClientBrandContextProvider from "../contexts/client/BrandContext";
 import Detail from "../views/product/client/ProductDetail";
 import ClientCommentContextProvider from "../contexts/client/commentContext"
+import ClientProductSessionContextProvider from "../contexts/client/ProductSessionContext";
 
 const productRoute = [
   // Admin Product route
@@ -76,9 +77,11 @@ const productRoute = [
     layout: ClientLayout,
     wrapContextProvider: ({ children }) => (
       <ClientProductContextProvider>
-        <ClientCategoryContextProvider>
-          <ClientBrandContextProvider>{children}</ClientBrandContextProvider>
-        </ClientCategoryContextProvider>
+        <ClientProductSessionContextProvider>
+          <ClientCategoryContextProvider>
+            <ClientBrandContextProvider>{children}</ClientBrandContextProvider>
+          </ClientCategoryContextProvider>
+        </ClientProductSessionContextProvider>
       </ClientProductContextProvider>
     ),
   },
