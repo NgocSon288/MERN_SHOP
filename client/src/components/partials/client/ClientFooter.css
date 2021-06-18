@@ -1,0 +1,172 @@
+.my-copy{
+    color: #ffffff !important;
+    margin-top: 20px;
+    font-size: 12px;
+  }
+  .my-copy a{
+    text-decoration: none;
+    color: red !important;
+  }
+  
+  .footer, .my-footer{
+    background-color: #232f3e  !important;
+    color: #ffffff !important;
+    padding: 20px 100px; 
+  }
+  
+  .footer > div{
+    border-bottom: 1px solid rgb(255, 255, 255);
+  }
+  
+  .my-footer .my-dia-chi{
+    font-size: 14px;
+    color: #777;
+  }
+  
+  .footer .my-caption-f{
+    line-height: 50px;
+  }
+  .footer .hotline{
+    color: red;
+    font-weight: bold;
+  } 
+  
+  .footer ul{
+    list-style-type: none;
+    padding-left: 0px;
+  }
+  
+  .footer ul li a{
+    color: #ffffff;
+    transition: 0.2s;
+    text-decoration: none;
+  }
+  
+  .footer ul li:hover a{
+    color: #007bff;
+  }
+
+  .my-dia-chi{
+    text-indent: 50px;
+  }
+  
+  .my-dia-chi span{
+    font-weight: bold;
+  }
+  
+  .my-facebook:hover{
+    color: #005bb7; 
+  }
+  
+  .my-twitter:hover{
+    color: #1dcaff; 
+  }
+  
+  .my-google:hover{
+     color: rgb(211, 72, 54); 
+  }
+  
+  .my-instagram:hover{
+     color: #517fa4; 
+  }
+  
+  .my-youtube:hover{
+     color: #bb0000; 
+  }
+  
+  .my-icon-f:hover{
+    transition: 0.2s all;
+  }
+   
+  .my-mb{
+    padding-bottom: 20px;
+  }
+  
+  @media screen and (min-width: 769px) { 
+    .my-mb{ 
+      margin-top: 10px !important; 
+    }
+    .cols{
+      display: flex;
+       justify-content: space-between;
+       flex-wrap: wrap;
+       align-items: center;
+    }
+    .cols .cols-2{
+      width: 30%;
+      margin-top: 10px;
+    } 
+  }
+  
+  
+  @media screen and (max-width: 768px) { 
+    .my-mb:not(:nth-child(1)){ 
+      margin-top: 20px !important; 
+    }
+    .cols{
+      display: flex;
+       justify-content: space-around;
+       align-items: center;
+    }
+    .cols .cols-2{
+      width: 15%;
+    }
+    .my-ap{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .my-ap .my-app-img{
+      max-width: 50%; 
+    }
+    .my-ap .my-app-img a img{ 
+      width: 200px !important;
+    }
+  }
+  
+  img.my-icon-f{
+    width: 77%;
+  }
+  
+  .mess-date{
+    color: rgb(63, 63, 63); 
+    font-size: 10px !important;
+  }
+  
+  .my-hiden{
+    display: none !important;
+  }
+
+  .social-icons{
+    justify-content: flex-end !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .pr-0{
+    padding-right: 0 !important;
+  }
+
+  .social-icons a {
+    font-size: 30px;
+    color: black;
+    margin-left: 10px;
+  }
+
+  .len-dau-trang{ 
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    transition: 0.4s all;
+    font-size: 30px ;
+    padding:0px 15px;
+    background-color: #007bff;
+    color: black;
+    border-radius: 5px;
+  } 
+  .len-dau-trang:hover{ 
+    box-shadow: 0px 2px 5px gray, -2px 0px 5px gray, 0px -2px gray, 2px 0px 5px gray;
+  }
+  .len-dau-trang i{
+    font-weight: bold;
+  }
