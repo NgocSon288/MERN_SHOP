@@ -58,6 +58,23 @@ export default function CreateComment() {
 
     setData({ ...data, fileUpload: fu }) // set nguyên files vì chọn nhiềus
   }
+  const onClickDeleteImage = (e) => {
+    e.preventDefault()
+
+    const swt = e.target.dataset.switch
+
+    if (swt === 'img') {
+      let arrImage = data.image.split('|')
+      arrImage = arrImage.filter((item) => item !== e.target.dataset.item)
+      setData({ ...data, image: arrImage.join('|') })
+    } else {
+      const fileU = [...data.fileUpload].filter(
+        (item) => item.key != e.target.dataset.key
+      )
+      setData({ ...data, fileUpload: fileU })
+    }
+  }
+
   const onChangeStar= (newValue)=>{
     setData({...data, starNumber: newValue})
   }
