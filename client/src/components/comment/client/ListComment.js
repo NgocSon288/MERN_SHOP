@@ -33,14 +33,121 @@ export default function ListComment() {
   const showComment = (i) => {
 	$('#my-comment' + i).slideToggle(400);
   }
-
+  const tBComment= ()=> {
+	  var s=0
+	  for(var i=0;i<comments.length;i++)
+	   {
+		   var s=s+comments[i].starNumber;
+	   }
+	  var tb=s/comments.length;
+	  return tb;
+  }
+  const thongKe=(star)=>{
+	  var count=0
+	  for(var i=0;i<comments.length;i++)
+	  {
+		  if(comments[i].starNumber==star)
+		  count++
+	  }
+	  var thongke=(count/comments.length)*100
+	  return thongke+"%"
+  }
   return (
-<div className="container py-xl-4 py-lg-2">	
+<div>
 <h2 id="danh-gia-kh" className="head-title">
     KHÁCH HÀNG ĐÁNH GIÁ
 </h2>
- <div class="danh-gia w-100" style={{backgroundColor:" #eee"}}>
 	<div class="danh-gia-sao w-100" style={{padding: "20px"}}>
+	<h3 class="my-danh-gia">Đánh giá</h3>
+						<div class="row">
+							<div class="col-4 d-flex flex-column text-center align-items-center" style={{borderRight: "1px solid gray"}}>
+								<span style={{fontSize: "50px", color: "black"}}>{tBComment()}</span>
+								<ul class="list-unstyled list-inline">
+								{[...Array(5)].map((star,i)=>{
+			                      const rating=i+1
+								  return(
+									tBComment() >= rating ?
+								(<li>
+									<FaStar size={25}
+									color={"#ffc107"}
+									/>
+								</li>)
+								:(
+									<li>
+										<FaRegStar size={25}
+										color={"#ffc107"}
+									/>
+									</li>
+								)
+								);
+		                        })}
+								</ul>
+								<span style={{fontSize: "20px", color: "black"}}>{comments.length} đánh giá</span>	
+							</div>
+							<div class="col-8 d-flex flex-column justify-content-center">
+								<div class="my-line">
+									<ul class="list-unstyled list-inline mb-0">
+										<li><i class="fa fa-star my-act" aria-hidden="true"></i></li>
+										<li><i class="fa fa-star my-act" aria-hidden="true"></i></li>
+										<li><i class="fa fa-star my-act" aria-hidden="true"></i></li>
+										<li><i class="fa fa-star my-act" aria-hidden="true"></i></li>  
+										<li><i class="fa fa-star my-act" aria-hidden="true"></i></li>  
+									</ul>
+									<div class="progress w-50">
+										<div class="progress-bar bg-warning" style={{width:thongKe(5)}}></div>
+									</div>
+								</div>
+								<div class="my-line">
+									<ul class="list-unstyled list-inline mb-0">
+										<li><i class="fa fa-star my-act" aria-hidden="true"></i></li>
+										<li><i class="fa fa-star my-act" aria-hidden="true"></i></li>
+										<li><i class="fa fa-star my-act" aria-hidden="true"></i></li>
+										<li><i class="fa fa-star my-act" aria-hidden="true"></i></li> 
+										<li><i class="far fa-star star-font" aria-hidden="true"></i></li>
+									</ul>
+									<div class="progress w-50">
+										<div class="progress-bar bg-warning" style={{width:thongKe(4)}}></div>
+									</div>
+								</div>
+								<div class="my-line">
+									<ul class="list-unstyled list-inline mb-0">
+										<li><i class="fa fa-star my-act" aria-hidden="true"></i></li>
+										<li><i class="fa fa-star my-act" aria-hidden="true"></i></li>
+										<li><i class="fa fa-star my-act" aria-hidden="true"></i></li>
+										<li><i class="far fa-star star-font" aria-hidden="true"></i></li>
+										<li><i class="far fa-star star-font" aria-hidden="true"></i></li>
+									</ul>
+									<div class="progress w-50">
+										<div class="progress-bar bg-warning" style={{width:thongKe(3)}}></div>
+									</div>
+								</div>
+								<div class="my-line">
+									<ul class="list-unstyled list-inline mb-0">
+										<li><i class="fa fa-star my-act" aria-hidden="true"></i></li>
+										<li><i class="fa fa-star my-act" aria-hidden="true"></i></li>
+										<li><i class="far fa-star star-font" aria-hidden="true"></i></li>
+										<li><i class="far fa-star star-font" aria-hidden="true"></i></li>
+										<li><i class="far fa-star star-font" aria-hidden="true"></i></li>
+									</ul>
+									<div class="progress w-50">
+										<div class="progress-bar bg-warning" style={{width:thongKe(2)}}></div>
+									</div>
+								</div>
+								<div class="my-line">
+									<ul class="list-unstyled list-inline mb-0">
+										<li><i class="fa fa-star my-act" aria-hidden="true"></i></li>
+										<li><i class="far fa-star star-font" aria-hidden="true"></i></li>
+										<li><i class="far fa-star star-font" aria-hidden="true"></i></li>
+										<li><i class="far fa-star star-font" aria-hidden="true"></i></li>
+										<li><i class="far fa-star star-font" aria-hidden="true"></i></li>
+									</ul>
+									<div class="progress w-50">
+										<div class="progress-bar bg-warning" style={{width:thongKe(1)}}></div>
+									</div>
+								</div> 
+							</div>
+						</div>
+	
   <h3 className="my-binh-luan text-left" style={{fontSize:"26px", marginTop: "50px"}}>
   Bình luận
    </h3>
@@ -102,7 +209,6 @@ export default function ListComment() {
 						</div>
 						 ))}
 				</div>
-   </div>
    </div>
   )
 }

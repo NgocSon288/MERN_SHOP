@@ -5,7 +5,7 @@ import { ProductContext } from './../../../contexts/client/ProductContext'
 import { CommentContext } from './../../../contexts/client/commentContext'
 import * as COMMENT_TYPE from './../../../reducers/client/commentType'
 import ReactStars from 'react-rating-stars-component'
-import star from 'react-rating-stars-component/dist/star'
+import {FaStar,FaRegStar} from "react-icons/fa"
 export default function CreateComment() {
   const [data, setData] = useState({
     starNumber: 0,
@@ -16,16 +16,16 @@ export default function CreateComment() {
   })
   const { products, dispatch } = useContext(ProductContext)
   const { dispatch: dispatchComment } = useContext(CommentContext)
+  var location = window.location.href
+  const index = location.lastIndexOf('/') + 1
+  const id = location.substring(index)
   useEffect(() => {}, [data])
 
   useEffect(() => {
-    var location = window.location.href
-    const index = location.lastIndexOf('/') + 1
-    const id = location.substring(index)
     if (products && products.length > 0) {
       setData({
         ...data,
-        product: products[0]._id,
+        product: products.find((p) => p._id === id),
       })
     }
   }, [products])
@@ -36,12 +36,11 @@ export default function CreateComment() {
         type: COMMENT_TYPE.CREATE,
         payload: { data },
       })
-
       setData({
         starNumber: 0,
         reason: '',
         description: '',
-        product: products[0]._id, // hiện tại thì cho một compobox sản phẩm
+        product: products.find((p) => p._id === id), // hiện tại thì cho một compobox sản phẩm
         fileUpload: null,
       })
     } catch (error) {
@@ -62,15 +61,9 @@ export default function CreateComment() {
   const onChangeStar= (newValue)=>{
     setData({...data, starNumber: newValue})
   }
-  const onSelectChanged = (e) => {
-    const value = e.target.value
-    const productIdNew = products.find((item) => item.name === value)._id
-
-    setData({ ...data, product: productIdNew })
-  }
   const onChange = async (e) => {
     const newData = { ...data, [e.target.name]: e.target.value }
-
+    console.log(data.reason)
     setData(newData)
   }
   return (
@@ -100,30 +93,16 @@ export default function CreateComment() {
       <FormGroup>
         
    <ReactStars
-   size= {50}
-   count= {10}
-   color= {"black"}
-   activeColor= {"red"}
+   size= {25}
+   count= {5}
    value= {0}
-   emptyIcon= {<i className="far fa-star" />}
-   filledIcon= {<i className="fa fa-star" />}
+   emptyIcon= {<FaRegStar/>}
+   filledIcon= {<FaStar/>}
    onChange={newValue => {
      onChangeStar(newValue)}
   }
   />,
       </FormGroup>
-      <FormGroup>
-        <Label for='product'>Sản phẩm cần đánh giá</Label>
-        <Input
-          type='select'
-          name='product'
-          onChange={(e) => onSelectChanged(e)}
-        >
-          {products &&
-            [...products].map((item) => <option>{item.name}</option>)}
-        </Input>
-      </FormGroup>
-
       <FormGroup>
         <Label for='image'>Hình ảnh</Label>
         <Input
