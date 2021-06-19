@@ -3,6 +3,7 @@ import { Table, Input } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import {FaStar,FaRegStar} from "react-icons/fa"
 import './ListComment.css'
+import $ from 'jquery'
 import { CommentContext } from './../../../contexts/client/commentContext'
 import { ProductContext } from "../../../contexts/client/ProductContext";
 import * as COMMENT_TYPE from './../../../reducers/client/commentType'
@@ -26,8 +27,13 @@ export default function ListComment() {
 	  })
   }, [])
   useEffect(() => {
+	for(var i=0;i<comments.length;i++)
+		$('#my-comment'+i).hide();
 	
   }, [comments])
+  const showComment = (i) => {
+	$('#my-comment' + i).slideToggle(400);
+  }
   const tBComment= ()=> {
 	  var s=0
 	  for(var i=0;i<comments.length;i++)
@@ -191,7 +197,7 @@ export default function ListComment() {
 							</div>))
                   } 
 							<div style={{marginTop:"20px"}}>
-								<span className="thaoluan" id={"my-binh-luan-coll" + i} >Thảo luận</span>
+								<span className="thaoluan" id={"my-binh-luan-coll" + i} onClick={() => showComment(i)}>Thảo luận</span>
 								<a href=""><span style={{fontSize: "14px"}}><i className="fa fa-thumbs-up mr-1" aria-hidden="true"></i>Hữu ích (13)</span></a>
 							</div>
 							<div id={"my-comment" + i} className="w-100">

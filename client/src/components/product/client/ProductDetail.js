@@ -29,6 +29,7 @@ export default function ProductDetail() {
   const { products, dispatch } = useContext(ProductContext)
 	
   useEffect(() => {
+	$('#my-coll').hide();
     var location = window.location.href
     const index = location.lastIndexOf('/') + 1
     const id = location.substring(index)
@@ -49,6 +50,16 @@ export default function ProductDetail() {
       })
     }
   }, [products])
+  const showDetail = () => {
+	$('#my-coll').slideToggle(400);
+	let text = $('#btnXemThem').text(); 
+	if(text=="Xem thêm"){ 
+		$('#btnXemThem').text("Thu gọn"); 
+	}
+	else{ 
+		$('#btnXemThem').text('Xem thêm');  
+	}
+  }
   return (
     <div>
         <div className="py-0 chi-tiet-san-pham">
@@ -110,7 +121,7 @@ export default function ProductDetail() {
 							</div>
 							<del className="mx-2 font-weight-light" id="del-gia">{data.price}</del>
 							<span className="item_price mx-3 text-danger" id="span-gia">{data.promotion}<span className="badge badge-danger"
-									style={{fontSize: "10px",verticalAlign: "top",marginTop: "5px" }} >đ</span></span>
+									style={{fontSize: "10px",verticalAlign: top,marginTop: "5px" }} >đ</span></span>
 						
 							<span className="label-tra-gop">Trả góp 0%</span> 
 
@@ -191,7 +202,7 @@ export default function ProductDetail() {
 			</h3>
 			<div dangerouslySetInnerHTML={{__html:data.content}} class="coll" id="my-coll">
 			</div>
-			<button id="btnXemThem"  class="btn btn-primary mt-5" style={{borderRadius: "5px",fontSize:"16px", marginLeft:"50%"}}>
+			<button id="btnXemThem" onClick={() => showDetail()} class="btn btn-primary mt-5" style={{borderRadius: "5px",fontSize:"16px", marginLeft:"50%"}}>
 						Xem thêm
 			</button> 
            </div>
