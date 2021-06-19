@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 import { Row } from "reactstrap";
 
 import { ProductContext } from "../../../contexts/client/ProductContext";
@@ -46,7 +47,7 @@ export default function ProductCatalogue({ products }) {
                     alt=""
                   />
                   <div class="xem-chi-tiet">
-                    <a href="#">Xem chi tiết</a>
+                    <Link to={`/Product-Detail/${item._id}`}>Xem chi tiết</Link>
                   </div>
                   <span class="product-new-top">Trả góp 0%</span>
                 </div>
