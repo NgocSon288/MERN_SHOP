@@ -21,7 +21,7 @@ export default function Catalogue({ title }) {
     setProductABC([...a]);
   };
 
-  console.log("product: ", productABC);
+  //console.log("product: ", productABC);
 
   return (
     <div style={{ marginLeft: "10%", marginRight: "10%", paddingTop: "22px" }}>

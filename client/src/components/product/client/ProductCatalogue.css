@@ -1,8 +1,12 @@
 .wrapper .div-img-hover {
   position: relative;
   overflow: hidden;
-  padding-bottom: 10px;
+  margin-bottom: 15px;
 }
+.wrapper .div-img-hover div .text-container {
+  min-height: 200px;
+}
+
 .wrapper .div-img-hover img {
   height: 150px;
 }
@@ -19,6 +23,7 @@
 
 .wrapper .div-img-hover .ten-san-pham a {
   font-size: 20px;
+  text-decoration: none;
 }
 
 .wrapper .div-img-hover .btn-them,
@@ -73,6 +78,7 @@
 
 .wrap-img-sp .xem-chi-tiet a {
   color: white;
+  text-decoration: none;
 }
 
 .wrap-img-sp .xem-chi-tiet:hover {
@@ -84,4 +90,8 @@
 .wrap-img-sp:hover .xem-chi-tiet {
   top: 70%;
   opacity: 1;
+}
+.my-pagination {
+  width: 20%;
+  margin: auto;
 }
