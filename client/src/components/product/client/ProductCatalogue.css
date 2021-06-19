@@ -1,6 +1,7 @@
 .wrapper .div-img-hover {
   position: relative;
   overflow: hidden;
+  padding-bottom: 10px;
 }
 .wrapper .div-img-hover img {
   height: 150px;

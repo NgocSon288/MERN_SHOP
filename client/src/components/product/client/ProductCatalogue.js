@@ -7,13 +7,14 @@ import * as PRODUCT_SESSION_TYPE from "./../../../reducers/client/productSession
 
 import "./ProductCatalogue.css";
 
-export default function ProductCatalogue() {
-  const { products, dispatch } = useContext(ProductContext);
+export default function ProductCatalogue({ products }) {
+  //const { products, dispatch } = useContext(ProductContext);
+  //products = products;
   const { productSessions, dispatch: dispatchProductSession } = useContext(
     ProductSessionContext
   );
 
-  useEffect(() => {}, [products, productSessions]);
+  useEffect(() => {}, [productSessions]);
 
   const onAddToCart = async (product) => {
     try {
@@ -63,8 +64,8 @@ export default function ProductCatalogue() {
                         đ
                       </span>
                     </p>
-                    {/* <del class="text-center">
-                      40.990.000{" "}
+                    <del class="text-center">
+                      {item.promotion}{" "}
                       <span
                         class="VND badge badge-default"
                         style={{
@@ -75,7 +76,7 @@ export default function ProductCatalogue() {
                       >
                         đ
                       </span>
-                    </del> */}
+                    </del>
                   </div>
                   <button class="btn-them" onClick={() => onAddToCart(item)}>
                     Thêm vào giỏ
