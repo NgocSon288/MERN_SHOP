@@ -9,6 +9,8 @@ import { CategoryContext } from './../../../contexts/admin/CategoryContext'
 import { BrandContext } from './../../../contexts/admin/BrandContext'
 import * as PRODUCT_TYPE from './../../../reducers/admin/productType'
 
+import './EditProduct.css'
+
 export default function EditProduct() {
   const [data, setData] = useState({
     name: '',
@@ -167,7 +169,7 @@ export default function EditProduct() {
 
   return (
     <Form>
-      <FormGroup>
+      <FormGroup style={{ width: '40%' }}>
         <Label for='name'>Tên sản phẩm</Label>
         <Input
           type='text'
@@ -178,7 +180,7 @@ export default function EditProduct() {
           onChange={(e) => onChange(e)}
         />
       </FormGroup>
-      <FormGroup>
+      <FormGroup style={{ width: '40%' }}>
         <Label for='price'>Giá</Label>
         <Input
           type='text'
@@ -189,7 +191,7 @@ export default function EditProduct() {
           onChange={(e) => onChange(e)}
         />
       </FormGroup>
-      <FormGroup>
+      <FormGroup style={{ width: '40%' }}>
         <Label for='promotion'>Giảm giá</Label>
         <Input
           type='text'
@@ -200,7 +202,7 @@ export default function EditProduct() {
           onChange={(e) => onChange(e)}
         />
       </FormGroup>
-      <FormGroup>
+      <FormGroup style={{ width: '40%' }}>
         <Label check className='ml-3'>
           <Input
             type='checkbox'
@@ -211,7 +213,7 @@ export default function EditProduct() {
           Cho phép trả góp
         </Label>
       </FormGroup>
-      <FormGroup>
+      <FormGroup style={{ width: '40%' }}>
         <Label check className='ml-3'>
           <Input
             type='checkbox'
@@ -222,7 +224,7 @@ export default function EditProduct() {
           Cho phép miễn phí vận chuyển
         </Label>
       </FormGroup>
-      <FormGroup>
+      <FormGroup style={{ width: '40%' }}>
         <Label for='price'>Mô tả</Label>
         <Input
           type='text'
@@ -233,7 +235,7 @@ export default function EditProduct() {
           onChange={(e) => onChange(e)}
         />
       </FormGroup>
-      <FormGroup>
+      <FormGroup style={{ width: '40%' }}>
         <Label for='category'>Loại sản phẩm</Label>
         <Input
           type='select'
@@ -249,7 +251,7 @@ export default function EditProduct() {
             })}
         </Input>
       </FormGroup>
-      <FormGroup>
+      <FormGroup style={{ width: '40%' }}>
         <Label for='category'>Nhãn hiệu</Label>
         <Input
           type='select'
@@ -265,7 +267,7 @@ export default function EditProduct() {
             })}
         </Input>
       </FormGroup>
-      <FormGroup>
+      <FormGroup style={{ width: '40%' }}>
         <Label for='content'>Nội dung</Label>
         <CKEditor
           editor={ClassicEditor}
@@ -276,9 +278,9 @@ export default function EditProduct() {
           }}
         />
       </FormGroup>
-      <FormGroup>
+      <FormGroup style={{ width: '40%' }}>
         <Label for='content'>Thông số kỹ thuật</Label>
-        <table className='table table-success table-bordered table-striped'>
+        <table className='table table-bordered table-striped'>
           <tr>
             <th>Tên tham số</th>
             <th>Giá trị</th>
@@ -291,6 +293,7 @@ export default function EditProduct() {
                   <Input
                     type='text'
                     placeholder='Nhập tên tham số'
+                    style={{ border: '1px solid' }}
                     name='name'
                     value={item.name}
                     data-index={i}
@@ -301,6 +304,7 @@ export default function EditProduct() {
                   <Input
                     type='text'
                     placeholder='Nhập giá trị'
+                    style={{ border: '1px solid' }}
                     name='value'
                     value={item.value}
                     data-index={i}
@@ -311,6 +315,7 @@ export default function EditProduct() {
                   <button
                     type='button'
                     className='btn btn-danger'
+                    style={{ border: '1px solid red', color: 'red' }}
                     data-index={i}
                     onClick={(e) => onDeleteParameter(e)}
                   >
@@ -359,7 +364,7 @@ export default function EditProduct() {
                           data-switch='img'
                           onClick={(e) => onClickDeleteImage(e)}
                         >
-                          Delete
+                          x
                         </button>
                       </div>
                     </Col>
@@ -381,7 +386,7 @@ export default function EditProduct() {
                       data-switch='file'
                       onClick={(e) => onClickDeleteImage(e)}
                     >
-                      Delete
+                      X
                     </button>
                   </div>
                 </Col>

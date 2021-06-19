@@ -7,11 +7,13 @@ import AdminSideBarMenu from './../components/partials/admin/AdminSideBarMenu'
 import { AuthContext } from './../contexts/client/AuthContext'
 import { Spinner } from 'reactstrap'
 import * as AUTH_TYPE from './../reducers/client/authType'
+
 import './../assets/admin/css/style.css'
+import './AdminLayout.css'
 
 export default function ClientLayout(props) {
   const { authState, dispatch } = useContext(AuthContext)
- 
+
   useEffect(() => {
     dispatch({
       type: AUTH_TYPE.SET_AUTH,
@@ -22,9 +24,11 @@ export default function ClientLayout(props) {
 
   if (authState.authLoading) {
     return (
-      <div className='d-flex justify-content-center mt-2'>
-        <Spinner color='primary' />
-        <h1>Loading...</h1>
+      <div className='d-flex justify-content-center align-items-center mt-2 my-loading'>
+        <div className='text-center'>
+          <Spinner color='primary' />
+          <h1>Loading...</h1>
+        </div>
       </div>
     )
   }

@@ -9,7 +9,7 @@ export default function ClientLayout(props) {
       <ClientHeader /> 
       
       {props.children}
-
+      
       <ClientFooter />
     </React.Fragment>
   )

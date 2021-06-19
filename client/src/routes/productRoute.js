@@ -19,6 +19,8 @@ import BrandContextProvider from "../contexts/admin/BrandContext";
 import ClientProductContextProvider from "../contexts/client/ProductContext";
 import ClientCategoryContextProvider from "../contexts/client/CategoryContext";
 import ClientBrandContextProvider from "../contexts/client/BrandContext";
+import Detail from "../views/product/client/ProductDetail";
+import ClientCommentContextProvider from "../contexts/client/commentContext"
 import ClientProductSessionContextProvider from "../contexts/client/ProductSessionContext";
 
 const productRoute = [
@@ -81,6 +83,20 @@ const productRoute = [
           </ClientCategoryContextProvider>
         </ClientProductSessionContextProvider>
       </ClientProductContextProvider>
+    ),
+  },
+  {
+    path: "/Product-Detail/:id",
+    title: "Chi tiết sản phẩm",
+    icon: "design_app",
+    component: Detail,
+    layout: ClientLayout,
+    wrapContextProvider: ({ children }) => (
+          <ClientProductContextProvider>
+            <ClientCommentContextProvider>
+            {children}
+            </ClientCommentContextProvider>
+          </ClientProductContextProvider>
     ),
   },
   // Client List route

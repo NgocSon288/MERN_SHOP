@@ -14,6 +14,10 @@ route.get('/', verifyToken, commentService.getAll)
 // @access Privete
 route.get('/:id',verifyToken, commentService.getById)
 
+// @route GET /api/comments/:productid
+// @desc Get comment by id
+// @access Privete
+route.get('/product/:productid',verifyToken,commentService.getByIdProduct)
 // @route POST /api/comments/
 // @desc Create comment
 // @access Private

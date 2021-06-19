@@ -15,15 +15,7 @@ import ClientLayout from './../layouts/ClientLayout'
 
 const route = [
   // Admin Sites route
-  // Admin Home
-  {
-    path: '/admin',
-    title: 'Trang chủ admin',
-    icon: 'design_app',
-    component: AdminHome,
-    layout: AdminLayout,
-    wrapContextProvider: null
-  },
+   
 
   //-----------------------------------------------------------------------------------------
   // Client Sites route

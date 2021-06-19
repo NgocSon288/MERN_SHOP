@@ -50,13 +50,13 @@ export default function ListAdvertisement() {
               <td>{item.url}</td>
               <td>
                 <button className='btn btn-info'>
-                  <Link to={'/admin/advertisement/edit/' + item._id}>Edit</Link>
+                  <Link to={'/admin/advertisement/edit/' + item._id}>Cập nhật</Link>
                 </button>
                 <button
                   className='btn btn-danger ml-2'
                   onClick={() => removeItem(item._id)}
                 >
-                  Remove
+                  Xoá
                 </button>
               </td>
             </tr>

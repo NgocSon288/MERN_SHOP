@@ -61,7 +61,7 @@ export default function CreateAdvertisement() {
     setData({ ...data, displayOrder: value })
   }
   return (
-    <Form>
+    <Form style={{width: '40%' }}>
       <FormGroup>
         <Label for='name'>Tên slide</Label>
         <Input

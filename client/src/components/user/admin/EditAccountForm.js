@@ -70,7 +70,7 @@ export default function EditAccountForm() {
   }
 
   return (
-    <Form>
+    <Form style={{width: '40%'}}>
       <FormGroup>
         <Label for='username'>Tài khoản</Label>
         <Input

@@ -68,7 +68,7 @@ export default function EditAdvertisement() {
   }
 
   return (
-    <Form>
+    <Form style={{width: '40%'}}>
       <FormGroup>
         <Label for='name'>Tên slide</Label>
         <Input
