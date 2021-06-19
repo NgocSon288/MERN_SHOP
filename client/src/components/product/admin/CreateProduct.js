@@ -74,7 +74,7 @@ export default function CreateProduct() {
         fileUpload: null,
       })
     } catch (error) {
-      alert(error.message)
+      alert(error.message + 'sasd')
     }
   }
 
