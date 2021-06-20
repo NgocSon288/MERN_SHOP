@@ -203,24 +203,24 @@ export default function ClientHeader() {
             <div className="my-dropdow">
               <List>
                 <li>
-                  <Link to="/Product/" className="li2">
+                  <a href="/Product?categories=Dien_thoai" className="li2">
                     ĐIỆN THOẠI
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link to="/Product/" className="li2">
+                  <a href="/Product?categories=Laptop" className="li2">
                     LAPTOP
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link to="/Product/" className="li2">
+                  <a href="/Product?categories=Tablet" className="li2">
                     TABLET
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <Link to="/Product/" className="li2">
+                  <a href="/Product?categories=Smart_Watch" className="li2">
                     SMART WATCH
-                  </Link>
+                  </a>
                 </li>
               </List>
             </div>

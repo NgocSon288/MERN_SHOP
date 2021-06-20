@@ -6,7 +6,7 @@ import * as PRODUCT_SESSION_TYPE from "./../../reducers/client/productSessionTyp
 
 export const ProductSessionContext = createContext();
 
-export default function ProductContextProvider({ children }) {
+export default function ProductSessionContextProvider({ children }) {
   const [productSessions, dispatch] = useAsyncReducer(
     productSessionReducer,
     []

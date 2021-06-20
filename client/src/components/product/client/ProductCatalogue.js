@@ -30,6 +30,7 @@ export default function ProductCatalogue({ products }) {
         type: PRODUCT_SESSION_TYPE.ADD_TO_CART,
         payload: { product: product },
       });
+      alert("Add to Cart successfully!");
     } catch (error) {
       alert(error.message);
     }
