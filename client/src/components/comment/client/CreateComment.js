@@ -118,7 +118,7 @@ export default function CreateComment() {
    onChange={newValue => {
      onChangeStar(newValue)}
   }
-  />,
+  />
       </FormGroup>
       <FormGroup>
         <Label for='image'>Hình ảnh</Label>

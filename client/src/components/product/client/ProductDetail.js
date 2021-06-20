@@ -14,6 +14,7 @@ import ReactStars from "react-rating-stars-component";
 import { ProductContext } from "../../../contexts/client/ProductContext";
 import ReadMoreReact from 'read-more-react';
 import {FaStar,FaRegStar} from "react-icons/fa"
+import $ from 'jquery'
 export default function ProductDetail() {
  const [data, setData] = useState({
     name: '',
