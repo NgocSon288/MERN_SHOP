@@ -12,10 +12,9 @@ import { ProductContext } from "../../../contexts/client/ProductContext";
 
 import "./FilterMenu.css";
 
-export default function FilterMenu({ filter }) {
+export default function FilterMenu({ filter, products }) {
   let { categories, dispatch } = useContext(CategoryContext);
   let { brands, dispatch: dispatchBrand } = useContext(BrandContext);
-  let { products } = useContext(ProductContext);
 
   useEffect(() => {}, [categories, brands]);
 

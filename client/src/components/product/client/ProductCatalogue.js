@@ -22,9 +22,7 @@ export default function ProductCatalogue({ products }) {
     ProductSessionContext
   );
 
-  useEffect(() => {
-    console.log("productSession");
-  }, [productSessions]);
+  useEffect(() => {}, [productSessions]);
 
   const onAddToCart = async (product) => {
     try {
@@ -38,7 +36,6 @@ export default function ProductCatalogue({ products }) {
   };
 
   useEffect(() => {
-    console.log("products");
     if (products) {
       setTotalItemsCount(products.length);
       let index = (activePage - 1) * itemsCountPerPage;
@@ -56,8 +53,8 @@ export default function ProductCatalogue({ products }) {
     ]);
     setActivePage(pageNumber);
   };
-  console.log("products:", products);
-  console.log("productsActivePage:", productsActivePage);
+  //console.log("products:", products);
+  //console.log("productsActivePage:", productsActivePage);
 
   return (
     <div>

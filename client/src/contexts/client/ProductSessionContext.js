@@ -13,7 +13,7 @@ export default function ProductContextProvider({ children }) {
   );
 
   useEffect(() => {
-    console.log("into");
+    //console.log("into");
     dispatch({
       type: PRODUCT_SESSION_TYPE.SET_PRODUCT_SESSIONS,
       payload: null,

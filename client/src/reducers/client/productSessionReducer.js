@@ -23,7 +23,7 @@ export const productSessionReducer = async (state, action) => {
         productCartList = [...productCartList, { ...productCartListItem }];
       }
 
-      console.log(productCartList);
+      //console.log(productCartList);
 
       state = productCartList;
 
