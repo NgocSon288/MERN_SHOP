@@ -14,6 +14,8 @@ import ReactStars from "react-rating-stars-component";
 import { ProductContext } from "../../../contexts/client/ProductContext";
 import ReadMoreReact from 'read-more-react';
 import {FaStar,FaRegStar} from "react-icons/fa"
+import $ from 'jquery'
+
 export default function ProductDetail() {
  const [data, setData] = useState({
     name: '',
@@ -121,7 +123,7 @@ export default function ProductDetail() {
 							</div>
 							<del className="mx-2 font-weight-light" id="del-gia">{data.price}</del>
 							<span className="item_price mx-3 text-danger" id="span-gia">{data.promotion}<span className="badge badge-danger"
-									style={{fontSize: "10px",verticalAlign: top,marginTop: "5px" }} >đ</span></span>
+									style={{fontSize: "10px",verticalAlign: 'top',marginTop: "5px" }} >đ</span></span>
 						
 							<span className="label-tra-gop">Trả góp 0%</span> 
 
