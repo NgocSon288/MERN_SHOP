@@ -78,7 +78,7 @@ export default function Catalogue({ title }) {
         setProductAfterQuery([...products]);
       }
     }
-  }, [products]);
+  }, [products, title]);
 
   // useEffect(() => {
   //   document.title = title;
