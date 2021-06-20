@@ -80,8 +80,6 @@ export default function Catalogue({ title }) {
     }
   }, [products]);
 
-  console.log(removeVietnameseTones("Điện thoại"));
-
   // useEffect(() => {
   //   document.title = title;
   //   if (products) {
