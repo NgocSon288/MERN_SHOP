@@ -9,7 +9,6 @@ export default function ClientFooter() {
     useEffect(() => {
         const handleScroll = () =>{
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop
-            console.log(winScroll)
             if(winScroll > 300){
                 setGotop(true);
             }
@@ -98,27 +97,27 @@ export default function ClientFooter() {
                         <List className="social-icons" type="unstyled">
                             <li>
                                 <a href="#" className="facebook" title="Facebook">
-                                    <i className="fa fa-facebook-f my-facebook my-icon-f" aria-hidden="true"></i> 
+                                <i className="fab fa-facebook-f my-facebook my-icon-f" aria-hidden="true"></i> 
                                 </a>
                             </li>
                             <li>
                                 <a href="#" className="twitter" title="Twitter">
-                                    <i className="fa fa-twitter my-twitter my-icon-f" aria-hidden="true"></i> 
+                                    <i className="fab fa-twitter my-twitter my-icon-f" aria-hidden="true"></i> 
                                 </a>
                             </li>
                             <li>
                                 <a href="#" className="googleplus" title="Google">
-                                    <i className="fa fa-google-plus my-google my-icon-f" aria-hidden="true"></i> 
+                                    <i className="fab fa-google-plus-g my-icon-f" aria-hidden="true"></i> 
                                 </a>
                             </li>
                             <li>
                                 <a href="#" className="instagram wthree" title="Instagram">
-                                    <i className="fa fa-instagram my-instagram my-icon-f" aria-hidden="true"></i> 
+                                    <i className="fab fa-instagram my-instagram my-icon-f" aria-hidden="true"></i> 
                                 </a>
                             </li>
                             <li>
                                 <a href="#" className="youtube" title="youtube">
-                                    <i className="fa fa-youtube my-youtube my-icon-f" aria-hidden="true"></i> 
+                                    <i className="fab fa-youtube my-youtube my-icon-f" aria-hidden="true"></i> 
                                 </a>
                             </li>
                         </List>
@@ -127,8 +126,8 @@ export default function ClientFooter() {
             </Row>
             <div className="clearfix"></div>
             </div>
-            {gotop && (<a href="#" class="len-dau-trang">  
-                <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+            {gotop && (<a href="#" className="len-dau-trang">  
+                <i className="fa fa-angle-double-up" aria-hidden="true"></i>
             </a>) }
         </div>
     )

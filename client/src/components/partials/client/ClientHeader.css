@@ -1,327 +1,346 @@
 *{
-    text-align: justify; 
-    font-family: Arial;
+  text-align: justify; 
+  font-family: Arial;
 }
 
 html{
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 /* header */
 .my-head{
-    background-color: #232f3e !important; 
-  }
-  .my-header{
-    position: relative;
-  }
-  
-  .my-logo{ 
-    height: 60px;
-    width: auto;
-  }
-  .my-search-button:hover i{
-    /* background-color: rgb(0, 123, 255); */
-    color: white;
-  }
-  
-  
-  @media screen and (min-width: 1201px) { 
-    .my-row{
-      width: 300px;
-      height: 100%;
-    }
-    
-    .my-form{
-      margin-top: 16px;
-      margin-left: 30px;
-      height: 40px;
-    }
-    
-    .my-search-text{
-      font-family: Roboto, Helvetica, Arial, sans-serif;
-      display: inline-block;
-      height: 100%;
-      color: #000 !important;
-      background-color: white !important;
-      border: 1px solid rgb(0, 123, 255)!important; 
-      border-right: none !important;
-      border-radius: 20px !important;
-      border-top-right-radius: 0px !important;
-      border-bottom-right-radius: 0px !important;
-      font-size: 18px !important;  
-    }
-    .my-search-text::placeholder{
-      color: #85898f;
-    }
-    
-    .my-search-button{
-      height: 100%; 
-      border-radius: 20px !important;
-      border-top-left-radius: 0px !important;
-      border-bottom-left-radius: 0px !important;
-    } 
-    
-    .my-search-button i{
-      padding-top: 5px;
-      font-size: 20px;
-      color: rgb(0, 123, 255);
-    }
-  }
-  
-  @media screen and (max-width: 1200px) { 
-    .my-row{
-      width: 50px;
-      height: 50px;
-    }
-    
-    .my-form{
-      height: 50px;
-      height: 50px;
-    }
-    
-    .my-search-text{
-      display: none; 
-    }
-    
-    /* 1px solid rgb(0, 123, 255); */
-  
-    .my-search-button{ 
-      display: block;
-      margin-left: 25px !important;
-      margin-top: 25px !important;
-      padding: 13px 28px 10px 10px !important;
-      border-radius: 50% !important;
-    } 
-    
-    .my-search-button i{ 
-      font-size: 20px;
-      position: absolute;
-      top: 10px;
-    } 
-  }
-  
-  
-  @media screen and (min-width: 806px) { 
-    .my-header-right-item2{
-      display: block;
-    } 
-    .my-user-responsive{
-      display: none;
-    }
-    .my-lg{
-      display: block;
-    }
-    .my-sm{
-      display: none;
-    }
-  }
-  
-  @media screen and (max-width: 806px) { 
-    .my-header-right-item2{
-      display: none;
-    } 
-    .my-header-right-item:first-child{
-      display: none;
-    }
-    .my-user-responsive{
-      display: block;
-      width: 50px;
-      height: 50px;
-    }
-    .my-user-responsive img{
-      border-radius: 50%;
-    }
-    .my-lg{
-      display: none;
-    }
-    .my-sm{
-      display: block;
-      
-    }
-    .my-sm i{
-      font-size: 40px;
-    } 
-  }
-  
-  .my-header-right{
-    position: absolute;
+  background-color: #232f3e !important; 
+}
+.my-header{
+  position: relative;
+}
+
+.my-logo{ 
+  height: 60px;
+  width: auto;
+}
+.my-search-button:hover i{
+  /* background-color: rgb(0, 123, 255); */
+  color: white;
+}
+
+
+@media screen and (min-width: 1201px) { 
+  .my-row{
+    width: 300px;
     height: 100%;
-    width: auto;
-    top: 0;
-    right: 0;
-  
   }
   
-  .my-header-right-item{
+  .my-form{
+    margin-top: 16px;
+    margin-left: 30px;
+    height: 40px;
+  }
+  
+  .my-search-text{
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    display: inline-block;
+    height: 100%;
+    color: #000 !important;
+    background-color: white !important;
+    border: 1px solid rgb(0, 123, 255)!important; 
+    border-right: none !important;
+    border-radius: 20px !important;
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    font-size: 18px !important;  
+  }
+  .my-search-text::placeholder{
+    color: #85898f;
+  }
+  
+  .my-search-button{
+    height: 100%; 
+    border-radius: 50% !important;
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+  } 
+  
+  .my-search-button i{
+    padding-top: 3px;
     font-size: 20px;
-    transition: 0.2s all !important;
-    color: white;
+    color: rgb(0, 123, 255);
   }
 
-  .my-login-header{
+  .header-user-name{
+    word-break: break-word;
+    max-width: 270px;
+    white-space:pre-wrap;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 1200px) { 
+  .my-header{
+    max-width: 750px !important
+  }
+
+  .header-user-name{
+    word-break: break-word;
+    max-width: 160px;
+    white-space:pre-wrap;
+  }
+
+  .my-row{
+    width: 50px;
+    height: 50px;
+  }
+
+  .my-form{
+    width: 50px;
+    height: 50px;
+  }
+  
+  .my-search-text{
+    display: none; 
+  }
+  
+  /* 1px solid rgb(0, 123, 255); */
+
+  .my-search-button{ 
+    height: 100%; 
+    display: block;
+    margin-left: 20px !important;
+    margin-top: 20px !important;
+    padding: 13px 28px 10px 10px !important;
+    border-radius: 50% !important;
+  } 
+  
+  .my-search-button i{ 
     font-size: 20px;
-    transition: 0.2s all !important;
-    color: white;
-  }
-
-  .my-logout-header{
-    cursor: pointer;
-  }
-
-  .my-logout-header:hover{
-    text-decoration: underline;
-    color:#0056b3;
-  }
-
-  .my-active{
-    color: white;
-  }
-  
-  .my-header-right-item:hover{ 
-    color: #ffffff !important;
-    text-shadow: 1px 1px 2px rgb(137, 92, 226), 3px 3px 25px blue, 5px 3px 5px darkblue; 
-  }
-  
-  .my-no{
+    z-index: 2;
     position: absolute;
-    font-size: 10px !important ;
+    top: 9px;
+  } 
+}
+
+
+@media screen and (min-width: 806px) { 
+  .my-header-right-item2{
+    display: block;
+  } 
+  .my-user-responsive{
+    display: none;
   }
+  .my-lg{
+    display: block;
+  }
+  .my-sm{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 806px) { 
+  .my-header-right-item2{
+    display: none;
+  } 
+  .my-header-right-item:first-child{
+    display: none;
+  }
+  .my-user-responsive{
+    display: block;
+    width: 50px;
+    height: 50px;
+  }
+  .my-user-responsive img{
+    border-radius: 50%;
+  }
+  .my-lg{
+    display: none;
+  }
+  .my-sm{
+    display: block;
+    
+  }
+  .my-sm i{
+    font-size: 40px;
+  } 
+}
+
+.my-header-right{
+  position: absolute;
+  height: 100%;
+  width: auto;
+  top: 0;
+  right: 0;
+}
+
+.my-header-right-item{
+  font-size: 20px;
+  transition: 0.2s all !important;
+  color: white;
+}
+
+.my-login-header{
+  font-size: 20px;
+  transition: 0.2s all !important;
+  color: white;
+}
+
+.my-logout-header{
+  cursor: pointer;
+}
+
+.my-logout-header:hover{
+  text-decoration: underline;
+  color:#0056b3;
+}
+
+.my-active{
+  color: white;
+}
+
+.my-header-right-item:hover{ 
+  color: #ffffff !important;
+  text-shadow: 1px 1px 2px rgb(137, 92, 226), 3px 3px 25px blue, 5px 3px 5px darkblue; 
+}
+
+.my-no{
+  position: absolute;
+  font-size: 10px !important ;
+}
 
 /* navigation */
-  .my-nav{
-    list-style: none !important;
-    font-size: 20px !important;
-  }
-  
-  .my-nav li{
-    display: inline-block;
-    margin: auto 30px;
-  }
-  
-  .my-nav li a{
-    transition: 0.1s all !important;
-    font-weight: bold;
-    padding: 10px 5px;
-    color: #fff !important;
-  }
-  
-  .my-nav li:hover a:not(.li2){  
-    color: #ffffff !important; 
-    text-decoration: none !important;
-    text-shadow: 1px 1px 2px rgb(98, 89, 118), 3px 3px 25px blue, 5px 3px 5px darkblue; 
-  }
-  
-  .my-nav li.my-parent-2{
-    position: relative; 
-  }
-  .my-nav li.my-parent-2 div{
-    position: absolute; 
-    top: 90%;
-    left: 0%;  
-    width: 400%;
-    z-index: 1; 
-    display: none;
-    background-color: #232f3e !important;
-    transition: 4s all;
-    border: none;
-    opacity: 0;
-    padding-left: 10px;
-    transition: 0.4s all !important;
-  } 
-  .my-nav li.my-parent-2 div ul{
-    width: auto; 
-    padding-left: 0px;
-  }
-  .my-nav li.my-parent-2 div ul li{ 
-    /* margin: 10px 0 0 0px; */
+.my-nav{
+  list-style: none !important;
+  font-size: 20px !important;
+}
+
+.my-nav li{
+  display: inline-block;
+  margin: auto 30px;
+}
+
+.my-nav li a{
+  transition: 0.1s all !important;
+  font-weight: bold;
+  padding: 10px 5px;
+  color: #fff !important;
+}
+
+.my-nav li:hover a:not(.li2){  
+  color: #ffffff !important; 
+  text-decoration: none !important;
+  text-shadow: 1px 1px 2px rgb(98, 89, 118), 3px 3px 25px blue, 5px 3px 5px darkblue; 
+}
+
+.my-nav li.my-parent-2{
+  position: relative;
+}
+.my-nav li.my-parent-2 div{
+  position: absolute; 
+  top: 90%;
+  left: 0%;  
+  width: 300%;
+  z-index: 1; 
+  display: none;
+  background-color: #232f3e !important;
+  transition: 4s all;
+  border: none;
+  opacity: 0;
+  padding-left: 8px;
+  padding-bottom: 5px;
+  transition: 0.4s all !important;
+} 
+.my-nav li.my-parent-2 div ul{
+  width: auto; 
+  padding-left: 0px;
+}
+.my-nav li.my-parent-2 div ul li{ 
+  /* margin: 10px 0 0 0px; */
+  display: block;
+  padding: 10px 10px 5px 10px;
+}
+.my-nav li.my-parent-2:hover div{
+  display: block; 
+  opacity: 1;
+  transition: 0.4s all !important;
+}
+.my-nav li.my-parent-2:hover div ul li:not(:last-child) a{
+  display: block;
+  text-decoration: none;
+  border-bottom: 1px solid rgb(102, 95, 95);
+}
+.my-nav li.my-parent-2:hover div ul li a{ 
+  text-decoration: none; 
+}
+
+.my-nav li.my-parent-2 div ul li:hover a{ 
+  color: #ffffff !important;
+  text-shadow: 1px 1px 2px rgb(21, 0, 255), 0 0 25px blue, 0 0 5px darkblue;
+}
+
+.Navigation{
+  position: relative;
+}
+
+.Navigation .icon{
+  display: none;
+  position: absolute;
+  right: 10px;
+  top: -15px;
+}
+
+@media screen and (max-width: 806px) { 
+  .Navigation a.icon {
+    float: right;
     display: block;
-    padding: 10px 10px 5px 10px;
   }
-  .my-nav li.my-parent-2:hover div{
-    display: block; 
-    opacity: 1;
-    transition: 0.4s all !important;
+  .my-responsive .my-active{
+    background-color: #232f3e;
   }
-  .my-nav li.my-parent-2:hover div ul li:not(:last-child) a{
-    display: block;
-    text-decoration: none;
+  /* khi responsive */
+
+  .my-responsive{
+    width: 100%;
+    flex-direction: column; 
+    align-items: start !important;
+    background-color: #232f3e;
+    padding-left:0px;
+  }
+  .my-responsive li{
+    width: 100%; 
+  }
+  .my-responsive li div ul li{
+    width: 99%; 
+  }
+  .my-responsive li a{
     border-bottom: 1px solid rgb(102, 95, 95);
   }
-  .my-nav li.my-parent-2:hover div ul li a{ 
-    text-decoration: none; 
+  .my-responsive li div ul li:last-child a{ 
+    border-bottom: none;
   }
-  
-  .my-nav li.my-parent-2 div ul li:hover a{ 
-    color: #ffffff !important;
-    text-shadow: 1px 1px 2px rgb(21, 0, 255), 0 0 25px blue, 0 0 5px darkblue;
+  .my-responsive li a{
+    display: block; 
   }
-  
-  .Navigation{
-    position: relative;
+  .my-responsive li div.my-dropdow{
+    position: static; 
+    background-color: #0f1b27;
+    font-size: 18px;
   }
-  
-  .Navigation .icon{
+
+  .my-nav-temp{
+    width: 100%;
+  }
+  .my-nav-temp li:not(.my-active){ 
     display: none;
-    position: absolute;
-    right: 10px;
-    top: -15px;
+    padding: 10px;
   }
-  
-  @media screen and (max-width: 806px) { 
-    .Navigation a.icon {
-      float: right;
-      display: block;
-    }
-    .my-responsive .my-active{
-      background-color: #232f3e;
-    }
-    /* khi responsive */
-  
-    .my-responsive{
-      width: 100%;
-      flex-direction: column; 
-      align-items: start !important;
-      background-color: #232f3e;
-      padding-left:0px;
-    }
-    .my-responsive li{
-      width: 100%; 
-    }
-    .my-responsive li div ul li{
-      width: 99%; 
-    }
-    .my-responsive li a{
-      border-bottom: 1px solid rgb(102, 95, 95);
-    }
-    .my-responsive li div ul li:last-child a{ 
-      border-bottom: none;
-    }
-    .my-responsive li a{
-      display: block; 
-    }
-    .my-responsive li div.my-dropdow{
-      position: static; 
-      background-color: #0f1b27;
-      font-size: 18px;
-    }
-  
-    .my-nav-temp{
-      width: 100%;
-    }
-    .my-nav-temp li:not(.my-active){ 
-      display: none;
-      padding: 10px;
-    }
-    .my-nav-temp li.my-active{
-      width: 100%;    
-      background-color: #232f3e;
-      margin-left:-10px;
-    }
-    .my-nav-temp li.my-active a{
-      display: block;
-    }
-  
-    .my-nav li.my-parent-2 div{
-      width: 100%;
-    }
+  .my-nav-temp li.my-active{
+    width: 100%;    
+    background-color: #232f3e;
+    margin-left:-10px;
   }
+  .my-nav-temp li.my-active a{
+    display: block;
+  }
+
+  .my-nav li.my-parent-2 div{
+    width: 100%;
+  }
+}

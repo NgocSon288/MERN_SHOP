@@ -1,35 +1,90 @@
-import React, {useEffect} from 'react'
+import React, {useState} from 'react'
+import {
+  Carousel,
+  CarouselItem,
+  CarouselControl,
+  CarouselIndicators,
+  CarouselCaption
+} from 'reactstrap';
 import './ClientHome.css'
 export default function ClientHome() {
+  const items = [
+    {
+      src: `http://localhost:3000/images/home/slide-1.jpg`,
+      width: window.innerWidth,
+      altText: 'Slide 1'
+    },
+    {
+      src: `http://localhost:3000/images/home/slide-2.jpg`,
+      altText: 'Slide 2'
+    },
+    {
+      src: `http://localhost:3000/images/home/slide-3.jpg`,
+      altText: 'Slide 3'
+    },
+    {
+      src: `http://localhost:3000/images/home/slide-4.jpg`,
+      altText: 'Slide 4'
+    },
+    {
+      src: `http://localhost:3000/images/home/slide-5.jpg`,
+      altText: 'Slide 5'
+    }
+  ];
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [animating, setAnimating] = useState(false);
+
+  const next = () => {
+    if (animating) return;
+    const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
+    setActiveIndex(nextIndex);
+  }
+
+  const previous = () => {
+    if (animating) return;
+    const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
+    console.log(items.length)
+    setActiveIndex(nextIndex);
+  }
+
+  const goToIndex = (newIndex) => {
+    if (animating) return;
+    setActiveIndex(newIndex);
+  }
+
+  const slides = items.map((item) => {
+    return (
+      <CarouselItem
+        onExiting={() => setAnimating(true)}
+        onExited={() => setAnimating(false)}
+        key={item.src}
+      >
+        <img src={item.src} alt={item.altText} width={window.innerWidth} height='700px'/>
+        <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
+      </CarouselItem>
+    );
+  });
   
   return (
     <div>
-      <div className="slide-show">
-          <div className="slides">
-            <input type="radio" name="slide" id="r1"/>
-            <input type="radio" name="slide" id="r2"/>
-            <input type="radio" name="slide" id="r3"/>
-            <input type="radio" name="slide" id="r4"/>
-            <input type="radio" name="slide" id="r5"/> 
-      
-            <div className="s1"><img src={(`http://localhost:3000/images/home/slide-1.jpg`)} alt=""/></div>
-            <div><img src={(`http://localhost:3000/images/home/slide-2.jpg`)} alt=""/></div>
-            <div><img src={(`http://localhost:3000/images/home/slide-3.jpg`)} alt=""/></div>
-            <div><img src={(`http://localhost:3000/images/home/slide-4.jpg`)} alt=""/></div>
-            <div><img src={(`http://localhost:3000/images/home/slide-5.jpg`)} alt=""/></div>
-          </div>
-      
-          <div className="redirection-for">
-            <label for="r1"><i className="fa fa-heart" aria-hidden="true"></i></label>
-            <label for="r2"><i className="fa fa-heart" aria-hidden="true"></i></label>
-            <label for="r3"><i className="fa fa-heart" aria-hidden="true"></i></label>
-            <label for="r4"><i className="fa fa-heart" aria-hidden="true"></i></label>
-            <label for="r5"><i className="fa fa-heart" aria-hidden="true"></i></label>
-          </div>
-
-          <span className="left"><i className="fa fa-angle-double-left" aria-hidden="true"></i></span>
-          <span className="right"><i className="fa fa-angle-double-right" aria-hidden="true"></i></span>
-      </div>
+      <Carousel
+        activeIndex={activeIndex}
+        next={next}
+        previous={previous}
+        interval={120000}
+        stopOnHover={true}
+        showThumbs={false}
+        showStatus={false}
+        showIndicators={false}
+        transitionTime={10}
+        useKeyboardArrows={true}
+      >
+        <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
+        {slides}
+        <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
+        <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
+      </Carousel>
 
       <div className="sp-dien-thoai">
         <div className="container">
