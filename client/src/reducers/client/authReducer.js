@@ -40,14 +40,13 @@ export const authReducer = async (state, action) => {
     }
 
     case TYPE.LOGIN: {
-      const { user } = payload
+      const { user } = payload 
       try {
-        const res = await userService.login(user)
+        const res = await userService.login(user) 
 
-        if (res.success) {
+        if (res.success) { 
           localStorage.setItem(LOCAL_STORAGE_TOKEN_NAME, res.accessToken)
-        }
-
+        } 
         return await loadState(state)
       } catch (error) {
         console.log('error', error)
@@ -74,8 +73,7 @@ export const authReducer = async (state, action) => {
     case TYPE.EDIT: {
       const { user } = payload
       try {
-        const res = await userService.update(user)
-        console.log(res);
+        const res = await userService.update(user) 
         setTimeout(() => {
           alert(res.message)
         }, 200)

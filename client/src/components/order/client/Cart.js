@@ -5,14 +5,28 @@ import { Link } from 'react-router-dom'
 import CartAddress from './CartAddress'
 import CartItem from './CartItem'
 import { ProductSessionContext } from './../../../contexts/client/ProductSessionContext'
-import * as PRODUCT_SESSION_TYPE from './../../../reducers/client/productSessionType' 
+import * as PRODUCT_SESSION_TYPE from './../../../reducers/client/productSessionType'
+import { AuthContext } from './../../../contexts/client/AuthContext'
 
 import './Cart.css'
 
 export default function Card() {
-  let { productSessions, dispatch } = useContext(ProductSessionContext) 
+  let { productSessions, dispatch } = useContext(ProductSessionContext)
+//   const [user, setUser] = useState({})
+//   const { authState } = useContext(AuthContext)
   let [items, setItems] = useState([...productSessions])
+  let [totalAll, setTotal] = useState({
+    total: 0,
+    totalDel: 0,
+    totalSub: 0,
+  })
 
+//   useEffect(() => {
+//     if (authState && authState.isAuthenticated) { 
+//         console.log('user', user)
+//       setUser({ ...authState.user._doc })
+//     }
+//   }, [authState])
 
   useEffect(() => {
     if (productSessions && productSessions.length >= 0) {
@@ -23,6 +37,34 @@ export default function Card() {
   useEffect(() => {
     console.log(items)
   })
+
+  useEffect(() => {
+    setTotalAll()
+  }, [items, productSessions])
+
+  const onChangeAmount = () => {
+    setTotalAll()
+  }
+
+  const setTotalAll = () => {
+    let total = 0
+    let totalDel = 0
+    let totalSub = 0
+    if (items) {
+      items.forEach((item) => {
+        total += item.price * item.amount
+      })
+
+      totalDel = total * 0.1
+      totalSub = total - totalDel
+
+      setTotal({
+        total: total,
+        totalDel: totalDel,
+        totalSub: totalSub,
+      })
+    }
+  }
 
   const onDeleteProduct = (item) => {
     dispatch({
@@ -36,7 +78,7 @@ export default function Card() {
   return (
     <>
       <div className='container mb-5 my-wrap'>
-        <CartAddress></CartAddress> 
+        <CartAddress></CartAddress>
         {(!items || items.length <= 0) && (
           <div className='my-empty-cart'>
             <img
@@ -48,7 +90,11 @@ export default function Card() {
         )}
         {items &&
           items.map((item) => (
-            <CartItem item={item} onDeleteProduct={onDeleteProduct}></CartItem>
+            <CartItem
+              item={item}
+              onDeleteProduct={onDeleteProduct}
+              onChangeAmount={onChangeAmount}
+            ></CartItem>
           ))}
       </div>
 
@@ -65,6 +111,7 @@ export default function Card() {
                   id='name'
                   data-meta='Họ và tên'
                   placeholder='Họ và tên của người nhận'
+                  value={1}
                   className='w-100 validate-input-dat-hang'
                 />
               </div>
@@ -77,6 +124,7 @@ export default function Card() {
                   id='phone'
                   data-meta='Số điện thoại'
                   placeholder='Số điện thoại người nhận'
+                  value={1}
                   className='w-100 validate-input-dat-hang'
                 />
               </div>
@@ -89,6 +137,7 @@ export default function Card() {
                   id='address'
                   data-meta='Địa chỉ'
                   placeholder='Địa chỉ người nhận'
+                  value={1}
                   className='w-100 validate-input-dat-hang'
                 />
               </div>
@@ -122,12 +171,12 @@ export default function Card() {
 
             <div className='d-flex justify-content-between foot'>
               <span>Tổng tiền:</span>
-              <span id='total'> đ</span>
+              <span id='total'>{totalAll.total} đ</span>
             </div>
             <div className='d-flex justify-content-between foot'>
               <span>Giảm giá:</span>
               <del>
-                <span id='total-del'>5,460,000 đ</span>
+                <span id='total-del'>{totalAll.totalDel} đ</span>
               </del>
             </div>
             <div className='d-flex justify-content-between foot'>
@@ -136,7 +185,7 @@ export default function Card() {
               </span>
               <span>
                 <strong id='total-sub' className='text-danger'>
-                  145,000,000 đ
+                  {totalAll.totalSub} đ
                 </strong>
               </span>
             </div>

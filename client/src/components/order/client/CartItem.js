@@ -5,7 +5,7 @@ import './CartItem.css'
 import { ProductSessionContext } from './../../../contexts/client/ProductSessionContext'
 import * as PRODUCT_SESSION_TYPE from './../../../reducers/client/productSessionType'
 
-export default function CartItem({ item, onDeleteProduct }) {
+export default function CartItem({ item, onDeleteProduct, onChangeAmount: onChangeAmountParent }) {
   let { productSessions, dispatch } = useContext(ProductSessionContext)
   const [amount, setAmount] = useState(item.amount)
 
@@ -16,11 +16,15 @@ export default function CartItem({ item, onDeleteProduct }) {
   })
 
   const descreaseAmount = () => {
+    if (item.amount <= 1) {
+      return
+    }
     dispatch({
       type: PRODUCT_SESSION_TYPE.EDIT_BY_ID,
       payload: { product: { ...item }, newAmount: item.amount - 1 },
     })
     setAmount(item.amount)
+    onChangeAmountParent();
   }
   const increaseAmount = () => {
     dispatch({
@@ -28,6 +32,7 @@ export default function CartItem({ item, onDeleteProduct }) {
       payload: { product: { ...item }, newAmount: item.amount + 1 },
     })
     setAmount(item.amount)
+    onChangeAmountParent()
   }
 
   const onChangeAmount = (e) => {

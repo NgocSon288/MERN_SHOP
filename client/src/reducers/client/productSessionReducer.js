@@ -79,8 +79,7 @@ export const productSessionReducer = async (state, action) => {
       cartList = cartList.filter((e) => e.id != product._id);
       localStorage.setItem(LOCAL_STORAGE_CART, JSON.stringify(cartList));
 
-      state = state.filter((item) => item._id != product._id); 
-      console.log('state', state);
+      state = state.filter((item) => item._id != product._id);  
       return state;
     }
     case TYPE.EDIT_BY_ID: {

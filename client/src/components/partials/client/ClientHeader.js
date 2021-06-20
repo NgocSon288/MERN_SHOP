@@ -69,8 +69,7 @@ export default function ClientHeader() {
   const onChange = async (e) => {
     var key = document.getElementById("search").value;
     setKeyword(key);
-  };
-  //console.log(keyword);
+  }; 
 
   return (
     <div className="my-head">

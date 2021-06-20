@@ -25,8 +25,7 @@ export default function EditAccountForm() {
     })
   }, [])
 
-  useEffect(() => {
-    console.log(authState)
+  useEffect(() => { 
     if (authState && authState.user && authState.user._doc) {
       setAccount({ ...account, username: authState.user._doc.username })
     }
