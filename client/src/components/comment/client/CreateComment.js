@@ -80,7 +80,6 @@ export default function CreateComment() {
   }
   const onChange = async (e) => {
     const newData = { ...data, [e.target.name]: e.target.value }
-    console.log(data.reason)
     setData(newData)
   }
   return (

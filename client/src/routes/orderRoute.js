@@ -13,7 +13,8 @@ import ClientLayout from '../layouts/ClientLayout'
 // ContextProvider
 import OrderContextProvider from '../contexts/admin/OrderContext'
 import OrderDetailContextProvider from '../contexts/admin/OrderDetailContext'
-import ProductContextProvider from './../contexts/client/ProductSessionContext' 
+import ProductContextProvider from './../contexts/client/ProductSessionContext'
+import ClientOrderContextProvider from './../contexts/client/OrderContext'
 
 const orderRoute = [
   // Admin Category route
@@ -52,8 +53,10 @@ const orderRoute = [
     icon: 'design_app',
     component: Cart,
     layout: ClientLayout,
-    wrapContextProvider: ({ children }) => ( 
-        <ProductContextProvider>{children}</ProductContextProvider> 
+    wrapContextProvider: ({ children }) => (
+      <ClientOrderContextProvider>
+        <ProductContextProvider>{children}</ProductContextProvider>
+      </ClientOrderContextProvider>
     ),
   },
 ]

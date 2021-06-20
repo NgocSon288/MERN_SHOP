@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom'
+
 import './CartAddress.css' 
 
 export default function CartAddress() { 
@@ -5,7 +7,7 @@ export default function CartAddress() {
       <div className="container">
         <ol className='dia-chi'>
           <li>
-            <a href='index.html'>Trang chủ</a>
+            <Link to='/'>Trang chủ</Link>
           </li>
           <li className='active'>Giỏ hàng</li> 
         </ol>

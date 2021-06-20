@@ -104,6 +104,7 @@ export default function DetailOrder() {
             <th>#</th>
             <th>Tên sản phẩm</th>
             <th>Hình ảnh</th>
+            <th>Số lượng</th>
             <th>Giá</th>
             <th>Giảm giá</th>
             <th>Modified</th>
@@ -124,6 +125,7 @@ export default function DetailOrder() {
                   height='111'
                 />
               </td>
+              <td>{item.count}</td>
               <td>{item.product.price}</td>
               <td>{item.product.promotion}</td>
               <td>

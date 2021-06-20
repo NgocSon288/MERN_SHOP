@@ -26,7 +26,6 @@ export default function ClientHeader() {
   const { categories } = useContext(CategoryContext)
 
   useEffect(() => {}, [categories])
-  console.log(categories);
   
   useEffect(() => {
     dispatch({

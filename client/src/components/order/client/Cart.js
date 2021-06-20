@@ -7,26 +7,36 @@ import CartItem from './CartItem'
 import { ProductSessionContext } from './../../../contexts/client/ProductSessionContext'
 import * as PRODUCT_SESSION_TYPE from './../../../reducers/client/productSessionType'
 import { AuthContext } from './../../../contexts/client/AuthContext'
+import { OrderContext } from './../../../contexts/client/OrderContext'
+import * as ORDER_TYPE from './../../../reducers/client/orderType'
 
 import './Cart.css'
 
 export default function Card() {
   let { productSessions, dispatch } = useContext(ProductSessionContext)
-//   const [user, setUser] = useState({})
-//   const { authState } = useContext(AuthContext)
-  let [items, setItems] = useState([...productSessions])
+  let { dispatch: orderDispatch } = useContext(OrderContext)
+  const [user, setUser] = useState({ name: '', phone: '', address: '' })
+  const { authState } = useContext(AuthContext)
+  let [items, setItems] = useState([])
   let [totalAll, setTotal] = useState({
     total: 0,
     totalDel: 0,
     totalSub: 0,
   })
+  let [orderInfo, setOrderInfo] = useState({
+    message: '',
+    paymentMethod: 'Tiền mặt khi nhận hàng',
+  })
 
-//   useEffect(() => {
-//     if (authState && authState.isAuthenticated) { 
-//         console.log('user', user)
-//       setUser({ ...authState.user._doc })
-//     }
-//   }, [authState])
+  useEffect(() => {}, [user])
+
+  useEffect(() => {
+    if (authState && authState.isAuthenticated) {
+      setUser({ ...authState.user._doc })
+    } else {
+      setUser({ name: '', phone: '', address: '' })
+    }
+  }, [authState])
 
   useEffect(() => {
     if (productSessions && productSessions.length >= 0) {
@@ -34,9 +44,7 @@ export default function Card() {
     }
   }, [productSessions])
 
-  useEffect(() => {
-    console.log(items)
-  })
+  useEffect(() => {})
 
   useEffect(() => {
     setTotalAll()
@@ -73,6 +81,50 @@ export default function Card() {
     })
 
     setItems([...productSessions])
+  }
+  const onChange = async (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value })
+  }
+  const onOrder = () => {
+    if (!authState || !authState.isAuthenticated) {
+      alert('Vui lòng đăng nhập trước khi đặt hàng!')
+      return
+    }
+
+    if (items.length <= 0) {
+      alert('Không có sản phẩm nào trong giỏ')
+
+      return
+    }
+
+    // eslint-disable-next-line no-restricted-globals
+    const check = confirm('Bạn có muốn đặt hàng!')
+    if (!check) {
+      return
+    }
+
+    var data = {
+      ...orderInfo,
+      orderDetails: [
+        ...items.map((m) => {
+          return { count: m.amount, product: m._id }
+        }),
+      ],
+    }
+    dispatch({
+      type: PRODUCT_SESSION_TYPE.DELETE_ALL,
+      payload: null,
+    })
+    orderDispatch({
+      type: ORDER_TYPE.CREATE,
+      payload: { data },
+    })
+
+    setItems([])
+    setOrderInfo({
+      message: '',
+      paymentMethod: 'Tiền mặt khi nhận hàng',
+    })
   }
 
   return (
@@ -111,7 +163,10 @@ export default function Card() {
                   id='name'
                   data-meta='Họ và tên'
                   placeholder='Họ và tên của người nhận'
-                  value={1}
+                  name='name'
+                  value={user.name}
+                  onChange={(e) => onChange(e)}
+                  disabled
                   className='w-100 validate-input-dat-hang'
                 />
               </div>
@@ -122,9 +177,12 @@ export default function Card() {
                 <input
                   type='text'
                   id='phone'
+                  name='phone'
                   data-meta='Số điện thoại'
                   placeholder='Số điện thoại người nhận'
-                  value={1}
+                  value={user.phone}
+                  onChange={(e) => onChange(e)}
+                  disabled
                   className='w-100 validate-input-dat-hang'
                 />
               </div>
@@ -135,9 +193,12 @@ export default function Card() {
                 <input
                   type='text'
                   id='address'
+                  name='address'
                   data-meta='Địa chỉ'
                   placeholder='Địa chỉ người nhận'
-                  value={1}
+                  value={user.address}
+                  disabled
+                  onChange={(e) => onChange(e)}
                   className='w-100 validate-input-dat-hang'
                 />
               </div>
@@ -150,6 +211,10 @@ export default function Card() {
                   id=''
                   rows='3'
                   className='w-100'
+                  value={orderInfo.message}
+                  onChange={(e) => {
+                    setOrderInfo({ ...orderInfo, message: e.target.value })
+                  }}
                   placeholder='Yêu cầu khác (không bắt buộc)'
                 ></textarea>
               </div>
@@ -157,12 +222,30 @@ export default function Card() {
             <div className='group row my-3'>
               <span className='col-md-3'>Hình thức thanh toán:</span>
               <div className='col-md-9'>
-                <select name='' id=''>
-                  <option value='1'>Tiền mặt khi nhận hàng</option>
-                  <option value='2'>Cà thẻ khi nhận hàng</option>
-                  <option value='3'>Thanh toán qua internet Banking</option>
-                  <option value='4'>Thanh toán qua thẻ Visa</option>
-                  <option value='5'>Thanh toán qua QR Code</option>
+                <select
+                  name=''
+                  onChange={(e) =>
+                    setOrderInfo({
+                      ...orderInfo,
+                      paymentMethod: e.target.value,
+                    })
+                  }
+                >
+                  <option value='Tiền mặt khi nhận hàng'>
+                    Tiền mặt khi nhận hàng
+                  </option>
+                  <option value='Cà thẻ khi nhận hàng'>
+                    Cà thẻ khi nhận hàng
+                  </option>
+                  <option value='Thanh toán qua internet Banking'>
+                    Thanh toán qua internet Banking
+                  </option>
+                  <option value='Thanh toán qua thẻ Visa'>
+                    Thanh toán qua thẻ Visa
+                  </option>
+                  <option value='Thanh toán qua QR Code'>
+                    Thanh toán qua QR Code
+                  </option>
                 </select>
               </div>
             </div>
@@ -199,7 +282,11 @@ export default function Card() {
                 </Link>
               </div>
               <div className='col-6'>
-                <button className='btn w-100 py-3 btn-mua-hang' id='dat-hang'>
+                <button
+                  className='btn w-100 py-3 btn-mua-hang'
+                  id='dat-hang'
+                  onClick={onOrder}
+                >
                   ĐẶT HÀNG
                 </button>
               </div>

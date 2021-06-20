@@ -64,6 +64,8 @@ export default function ListBrand() {
                   <img
                     src={`http://localhost:3000/images/brand/${item.logo}`}
                     alt={item.logo}
+                    width='220'
+                    height='48'
                   />
                 </td>
                 <td>{item.description}</td>

@@ -13,7 +13,7 @@ export default function ListProduct() {
   let [activePage, setActivePage] = useState(1)
   let [totalItemsCount, setTotalItemsCount] = useState(1)
   let [categoriesActivePage, setCategoriesActivePage] = useState([])
-  let itemsCountPerPage = 3
+  let itemsCountPerPage = 8
 
   useEffect(() => {
     if (products && products.length > 0) {
