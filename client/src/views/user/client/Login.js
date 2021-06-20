@@ -18,7 +18,7 @@ export default function LoginAccount({ title }) {
       type: AUTH_TYPE.SET_AUTH,
       payload: null,
     })
-  }, [])
+  }, [dispatch, title])
   useEffect(() => {}, [authState])
 
   if (authState.authLoading) {

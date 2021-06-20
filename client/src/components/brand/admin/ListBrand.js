@@ -21,7 +21,7 @@ export default function ListBrand() {
       let index = (activePage - 1) * itemsCountPerPage
       setBrandsActivePage([...brands.slice(index, index + itemsCountPerPage)])
     }
-  }, [brands])
+  }, [activePage, brands, itemsCountPerPage])
 
   const removeItem = async (_id) => {
     const check = window.confirm('Are you sure you want to remove')

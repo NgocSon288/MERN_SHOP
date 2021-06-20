@@ -8,7 +8,7 @@ export default function ClientFooter() {
     const [gotop, setGotop] = useState(0);
     useEffect(() => {
         const handleScroll = () =>{
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop 
             if(winScroll > 300){
                 setGotop(true);
             }

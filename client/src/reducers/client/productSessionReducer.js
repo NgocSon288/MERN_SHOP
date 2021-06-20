@@ -1,4 +1,3 @@
-import productSessionService from "../../services/productSessionService";
 import productService from "../../services/productService";
 import * as TYPE from "./productSessionType";
 
@@ -17,7 +16,8 @@ export const productSessionReducer = async (state, action) => {
       const res = await productService.getAll();
       var productsList = res.data;
       var productCartList = [];
-      for (i = 0; i < cartList.length; i++) {
+      for (let i = 0; i < cartList.length; i++) {
+        // eslint-disable-next-line no-loop-func
         var item = productsList.find((e) => e._id == cartList[i].id);
         var productCartListItem = { ...item, amount: cartList[i].amount };
         productCartList = [...productCartList, { ...productCartListItem }];
@@ -79,8 +79,8 @@ export const productSessionReducer = async (state, action) => {
       cartList = cartList.filter((e) => e.id != product._id);
       localStorage.setItem(LOCAL_STORAGE_CART, JSON.stringify(cartList));
 
-      state = state.filter((item) => item._id != product._id);
-      console.log(state);
+      state = state.filter((item) => item._id != product._id); 
+      console.log('state', state);
       return state;
     }
     case TYPE.EDIT_BY_ID: {
@@ -106,8 +106,7 @@ export const productSessionReducer = async (state, action) => {
           state[i].amount = newAmount;
           break;
         }
-      }
-      console.log(state);
+      } 
       return state;
     }
     default: {
