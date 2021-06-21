@@ -54,6 +54,10 @@ export default function ProductCatalogue({ products }) {
     ]);
     setActivePage(pageNumber);
   };
+
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
   //console.log("products:", products);
   //console.log("productsActivePage:", productsActivePage);
 
@@ -91,7 +95,7 @@ export default function ProductCatalogue({ products }) {
                     </h4>
                     <div class="mt-2 text-center mb-0">
                       <p class="text-center mx-auto text-danger mb-0">
-                        {item.price}
+                        {numberWithCommas(item.price)}
                         <span
                           class="VND badge badge-danger"
                           style={{ verticalAlign: "top", fontSize: "10px" }}
@@ -100,7 +104,7 @@ export default function ProductCatalogue({ products }) {
                         </span>
                       </p>
                       <del class="text-center">
-                        {item.promotion}{" "}
+                        {numberWithCommas(item.promotion)}{" "}
                         <span
                           class="VND badge badge-default"
                           style={{
