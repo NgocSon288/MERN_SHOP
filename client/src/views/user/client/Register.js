@@ -18,7 +18,7 @@ export default function RegisterAccount({ title }) {
       type: AUTH_TYPE.SET_AUTH,
       payload: null,
     })
-  }, [dispatch, title])
+  }, [title])
   useEffect(() => {}, [authState])
 
   if (authState.authLoading) {

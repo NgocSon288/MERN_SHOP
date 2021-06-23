@@ -7,13 +7,13 @@ export default function SideBarMenu() {
   return (
     <div>
       <div className='sidebar-menu'>
-        <div className='logo2'> 
-            <img
-              src='http://localhost:3000/images/admin/logo.jpeg'
-              alt='Logo'
-              width='100%'
-              height='100%'
-            /> 
+        <div className='logo2'>
+          <img
+            src='http://localhost:3000/images/layout/logo.png'
+            alt='Logo'
+            width='100%'
+            height='100%'
+          />
         </div>
         <div className='menu'>
           <ul id='menu'>
@@ -31,25 +31,25 @@ export default function SideBarMenu() {
             </li>
             <li>
               <Link to='/admin/product' className='menu-item'>
-                <i className='fa fa-product-hunt my-icon'></i>
+                <i className='fab fa-airbnb my-icon'></i>
                 <span>Sản phẩm</span>
               </Link>
             </li>
             <li>
               <Link to='/admin/brand' className='menu-item'>
-                <i className='fa fa-bandcamp my-icon'></i>
+                <i className='fas fa-apple-alt my-icon'></i>
                 <span>Nhãn hiệu</span>
               </Link>
             </li>
             <li>
               <Link to='/admin/advertisement' className='menu-item'>
-                <i className='fa fa-amazon my-icon'></i>
+                <i className='fas fa-ad my-icon'></i>
                 <span>Slide Quảng cáo</span>
               </Link>
             </li>
             <li>
               <Link to='/admin/order' className='menu-item'>
-                <i className='fa fa-cc-visa my-icon'></i>
+                <i className='fab fa-amazon-pay my-icon'></i>
                 <span>Hoá đơn</span>
               </Link>
             </li>

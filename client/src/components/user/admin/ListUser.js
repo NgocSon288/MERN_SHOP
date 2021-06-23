@@ -12,7 +12,7 @@ import './ListUser.css'
 export default function ListUser() {
   let { users, dispatch } = useContext(UserContext)
   let { authState, dispatch: dispatchAuth } = useContext(AuthContext)
-  let userCurrent = null
+  let [userCurrent, setUserCurrent]= useState({})
   
   // Params pagination
   let [activePage, setActivePage] = useState(1)
@@ -29,13 +29,11 @@ export default function ListUser() {
 
   useEffect(() => {
     if (authState && authState.user && authState.user._doc) {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      userCurrent = { ...authState.user._doc }
-
-      // filter pagination
-      setTotalItemsCount(users.length)
-      let index = (activePage - 1) * itemsCountPerPage
-      setUsersActivePage([...users.slice(index, index + itemsCountPerPage)])
+        setUserCurrent({ ...authState.user._doc })
+        // filter pagination
+        setTotalItemsCount(users.length)
+        let index = (activePage - 1) * itemsCountPerPage
+        setUsersActivePage([...users.slice(index, index + itemsCountPerPage)])
     }
   }, [users, authState])
 

@@ -3,6 +3,6 @@
 }
 
 .profile_details ul li ul.dropdown-menu.drp-mnu {
-    min-width: 230px !important;
-    left: 5px !important;
+  min-width: 240px !important;
+  left: 14px !important;
 }

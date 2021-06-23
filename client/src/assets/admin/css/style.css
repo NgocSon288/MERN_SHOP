@@ -288,8 +288,9 @@ span.logo-clr{
 }
 /*start search*/
 .search-box {
+    margin-left:60px;
     float: left;
-    width:40%;
+    width:50%;
     margin-top: 0.5em;
 	position: relative;
     z-index: 1;
