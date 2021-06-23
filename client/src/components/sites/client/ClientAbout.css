@@ -1,0 +1,429 @@
+
+.mapouter {
+   position: relative;
+	text-align: right;
+    max-height: 680px;
+	max-width: 1080px;
+}
+.gmap_canvas {
+	overflow: hidden;
+	background: none !important;
+	max-height: 680px;
+	max-width: 1080px;
+}
+h3.tittle-top {
+    color: #000;
+    font-size: 38px;
+    letter-spacing: 1px;
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.19);
+}
+h3.tittle-top span {
+    color: #0879c9;
+    font-size: 50px;
+    letter-spacing: 0;
+}
+.sp-dien-thoai{
+    padding-top: 50px;
+  }
+  .sp-dien-thoai .ten{
+    font-size: 24px !important;
+    transition: 0.2s all; 
+  }
+  
+  .sp-dien-thoai .ten:hover{
+    text-shadow: 1px 1px 1px  rgb(107, 92, 134);
+  }
+  
+  .sp-dien-thoai a{
+    text-decoration: none !important;
+  }
+  
+  .sp-dien-thoai h5{
+    color: #bf081f;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .sp-dien-thoai h5 > span{
+    font-size: 8px !important;
+    background-color: #bf081f;
+    color: #ffffff;
+    vertical-align: top;
+    margin-left: 2px;
+  }
+  
+  .sp-dien-thoai h6 .xem-them{
+    text-decoration: none;
+    color: #0097e6;
+    background-color: #ffffff;
+    border: 1px solid #0097e6;
+    padding: 5px 10px;
+    border-radius: 10px;
+    transition: 0.2s all;
+    font-size: 16px !important;
+  }
+  
+  .sp-dien-thoai h6 .xem-them:hover{
+    color: #ffffff;
+    background-color: #0097e6;
+  }
+  .show-san-pham a, .show-san-pham h5, .show-san-pham h6, .show-san-pham h4{
+    text-align: center !important;
+  }
+.slideanim {
+    visibility: hidden;
+  }
+.slide {
+    animation-name: slide;
+    animation-duration: 1s;
+    visibility: visible;
+  }
+  @keyframes slide {
+    0% {
+      opacity: 0;
+      transform: translateY(70%);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+  
+.slideanim1 {
+    visibility: hidden;
+  }
+  .slide1 {
+    animation-name: slide1;
+    animation-duration: 1s;
+    visibility: visible;
+  }
+@keyframes slide1 {
+    0% {
+      opacity: 0;
+      transform: translate(70%, 70%);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translate(0%, 0%);
+    }
+  }
+  
+.slideanim2 {
+    visibility: hidden;
+  }
+.slide2 {
+    animation-name: slide2;
+    animation-duration: 1s;
+    visibility: visible;
+  }
+@keyframes slide2 {
+    0% {
+      opacity: 0;
+      transform: translate(-70%, 70%);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translate(0%, 0%);
+    }
+  }
+.slideanim3 {
+    visibility: hidden;
+  }
+  
+  .slide3 {
+    animation-name: slide3;
+    animation-duration: 1s;
+    visibility: visible;
+  }
+  
+  @keyframes slide3 {
+    0% {
+      opacity: 0;
+      transform: translateX(-70%);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+  }
+  .slideanim4 {
+    visibility: hidden;
+  }
+  
+  .slide4 {
+    animation-name: slide4;
+    animation-duration: 1s;
+    visibility: visible;
+  }
+  
+  @keyframes slide4 {
+    0% {
+      opacity: 0;
+      transform: translateX(70%);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+  } s
+figure.effect {
+	background: #F5F5F5;
+}
+
+figure.effect img {
+	opacity: 0.95; 
+	transition: opacity 0.35s, transform 0.35s; 
+	transform: scale3d(1.05,1.05,1);
+}
+
+figure.effect figcaption::before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(255,255,255,0.5);
+	content: ''; 
+	transition: transform 0.6s; 
+	transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,-100%,0);
+}
+
+figure.effect:hover img {
+	opacity: 0.6; 
+	transform: scale3d(1,1,1);
+}
+
+figure.effect:hover figcaption::before {  
+	transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,100%,0);
+}
+.grid figure {
+    position: relative;
+    float: left;
+    overflow: hidden;
+    height: auto;
+    background: #000;
+    margin-bottom: 10px;
+}
+.grid figure img {
+    position: relative;
+    display: block;
+    max-width: 100%;
+    margin: auto;
+}
+.grid figure figcaption, .grid figure figcaption > a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.grid figure figcaption {
+    padding: 0;
+    backface-visibility: hidden;
+}
+@media screen and (max-width: 991px) {
+    .tam-nhin .text{
+        font-size: 20px; 
+        color: white;
+        font-weight: bold; 
+    }  
+}
+@media screen and (min-width: 992px) {
+    .tam-nhin .text{
+        font-size: 26px; 
+        color: white;
+        font-weight: bold; 
+    } 
+}
+.tam-nhin .line{
+    margin: auto;
+    height: 3px;
+    border: 1px double #e2bf34;
+}
+.my-check{
+    list-style-type: none;
+    padding-left: 10px !important;
+  }
+.my-check li i{
+   color: green;
+  }
+.head-title{
+    margin-top: 100px;
+    margin-bottom: 20px;
+    font-size: 30px;
+  }
+.gia-tri img{
+    width:100%;
+    height: 100%;
+}
+.gia-tri-content .gia-tri-text .gia-tri-text-title{
+    font-size:2.5vw;
+    color: #ee4d2d;
+}
+.gia-tri-content .gia-tri-text ul{
+    list-style-image: url('http://localhost:3000/images/about/icon-check.png'); 
+    list-style-position: inside;
+    
+}
+.gia-tri-content .gia-tri-text ul li{
+    margin-top: 10px;
+    font-size: 2vw;
+}
+@media screen and (max-width: 992px)
+{
+    
+    .gia-tri-content .gia-tri-text .gia-tri-text-title{
+        font-size:18px;
+    }
+    .gia-tri-content .gia-tri-text ul li{
+        margin-top: 10px;
+        font-size: 16px;
+    }
+}
+@media screen and (min-width: 993px)
+{
+    
+    .gia-tri-content .gia-tri-text .gia-tri-text-title{
+        font-size:22px;
+    }
+    .gia-tri-content .gia-tri-text ul li{
+        margin-top: 10px;
+        font-size: 20px;
+    }
+}
+.content-cau-noi{
+    width: 100%;
+  }
+  
+  .content-cau-noi .our-team{
+    text-align: center;
+    font-size: 36px;
+    margin-top: 50px;
+  }
+  
+  .content-cau-noi .dev{
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    margin-bottom: 50px;
+    background-color: black;
+    height: 2px;
+  }
+  
+  .content-cau-noi .img-sec{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .content-cau-noi .img-sec a{  
+    width: 200px;
+    height: 200px;
+    margin: auto 50px;
+    border-radius: 50%;
+    overflow: hidden !important;
+    position: relative;
+  }
+  
+  .content-cau-noi .img-sec a img{
+    width: 100%;
+    height: 100%;
+    filter: grayscale(100%);
+    transition: all 0.4s ease;
+  }
+  
+  .content-cau-noi .img-sec a:hover img{  
+    filter: none; 
+  }
+  
+  .content-cau-noi .img-sec a::before{
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;  
+    border: 1px solid transparent;
+    border-radius: 50%;
+    z-index: 11;
+    transition: all 0.4s ease;
+  }
+  
+  .content-cau-noi .img-sec a:hover::before{  
+    width: 200px;
+    height: 200px; 
+    border-color: rgb(10, 5, 92);
+  }
+  
+  .content-cau-noi .img-sec a::after{
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(243, 235, 235, 0.137);   
+    border-radius: 50%;
+    z-index: 11;
+    transition: all 0.4s ease;
+  }
+  
+  .content-cau-noi .img-sec a:hover::after{  
+    width: 200px;
+    height: 200px; 
+  }
+  
+  .content-cau-noi .text-sec{
+    width: 800px;
+    height: 0px;
+    margin: auto;
+    overflow: hidden;
+    transition: all 0.4s ease;
+  }
+  
+  .cau-noi-active{
+    min-height: 300px !important;
+  }
+  
+  .content-cau-noi .text-sec .ceo-nane{
+    text-align: center;
+    font-size: 26px;
+  }
+  
+  .content-cau-noi .text-sec p{
+    text-align: justify;
+    font-family: "Arial" !important;
+    font-size: 24px;
+    font-weight: 300;
+  }
+  .my-city .content-city .ten-city{
+    font-weight: bold;
+    font-size:16px;
+transition: 0.4s all;
+color: gray;
+}
+.my-city .content-city:hover .ten-city{
+    font-weight: bold;
+    color:#ee4d2d;
+    font-size:16px;
+}
+.my-city .content-city img{
+    transition: 0.4s all;
+    width:100%;
+}
+.my-city .content-city:hover img{
+    transform: scale(1.1);
+}
+.a{
+    text-decoration: none !important;
+}

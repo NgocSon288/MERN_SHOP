@@ -1,18 +1,6 @@
 import React, { useEffect, useContext,useState} from "react";
 import './Product.css'
-import {
-  Row,
-  Card,
-  CardImg,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardText,
-  Button,
-} from "reactstrap";
-import ReactStars from "react-rating-stars-component";
 import { ProductContext } from "../../../contexts/client/ProductContext";
-import ReadMoreReact from 'read-more-react';
 import {FaStar,FaRegStar} from "react-icons/fa"
 import $ from 'jquery'
 
@@ -70,7 +58,7 @@ export default function ProductDetail() {
                   <div className="col-lg-5 col-md-8 p-0 mt-2">
                   <div className="show-sp row w-100 m-0 img-dien-thoai-show" >
 						<div className="slide-show">  
-							<div className="slides">  
+							<div className="slides"> 
 								<input type="radio" name="" id="r1"/>
 								<input type="radio" name="" id="r2"/>
 								<input type="radio" name="" id="r3"/>

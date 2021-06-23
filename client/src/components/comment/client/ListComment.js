@@ -40,7 +40,9 @@ export default function ListComment() {
 	   {
 		   var s=s+comments[i].starNumber;
 	   }
-	  var tb=s/comments.length;
+	  var tb=Math.round(s/comments.length*10)/10;
+	  if(tb===NaN)
+	    tb=0
 	  return tb;
   }
   const thongKe=(star)=>{
@@ -55,9 +57,6 @@ export default function ListComment() {
   }
   return (
 <div>
-<h2 id="danh-gia-kh" className="head-title">
-    KHÁCH HÀNG ĐÁNH GIÁ
-</h2>
 	<div class="danh-gia-sao w-100" style={{padding: "20px"}}>
 	<h3 class="my-danh-gia">Đánh giá</h3>
 						<div class="row">
@@ -148,6 +147,7 @@ export default function ListComment() {
 								</div> 
 							</div>
 						</div>
+						<hr style={{height: "0px"}}></hr>
 	
   <h3 className="my-binh-luan text-left" style={{fontSize:"26px", marginTop: "50px"}}>
   Bình luận
@@ -158,10 +158,10 @@ export default function ListComment() {
    <div className="binh-luan mt-5">
 							<div className="binh-luan-header d-flex">
 								<div className="icon-kh mr-3 d-flex align-items-center">
-									<img src={item.user.image && `http://localhost:3000/images/user/${item.user.image}`} alt=""/>
+									<img src={item.user && item.user.image && `http://localhost:3000/images/user/${item.user.image}`} alt=""/>
 								</div>
 								<div className="thong-tin-kh" style={{width: "250px"}}>
-									<p style={{color: "black"}}>{item.user.name}</p>
+									<p style={{color: "black"}}>{item.user && item.user.name}</p>
 									<p>Nhận xét vào {item.createdAt.slice(0,10)}</p>
 								</div>
 							</div>
@@ -191,9 +191,9 @@ export default function ListComment() {
 							   {item.reason}
 							</span>
 							<p style={{paddingTop:"5px"}}>{item.description}</p>
-                           { comments.image && comments.image.split('|').map((item)=>item&&(
+                           { item.image && item.image.split('|').map((image)=>image&&(
 							<div className="cocntainer-img d-flex justify-content-star align-items-center">
-								<img src={data.image && `http://localhost:3000/images/product/${item}`} alt="" className="w-25 mr-3" style={{maxHeight: "268px"}}/>
+								<img src={`http://localhost:3000/images/product/${image}`} alt="" className="w-25 mr-3" style={{maxHeight: "268px"}}/>
 							</div>))
                   } 
 							<div style={{marginTop:"20px"}}>
@@ -207,6 +207,7 @@ export default function ListComment() {
 									<button className="btn btn-primary px-2" >GỬI</button>
 								</div>
 							</div>
+							<hr style={{height: "0px"}}></hr>
 						</div>
 						 ))}
 				</div>

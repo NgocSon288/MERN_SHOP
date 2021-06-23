@@ -319,13 +319,62 @@ input[type='radio']{
   margin-left: 20px;
   background-color: rgb(200, 200, 200) !important;
 }
-.my-line div div{
+.my-line>div>div{
   background-color: 
   rgb(120, 120, 120) !important;
 }
 .danh-gia ul li{
   padding: 0px;
 }
-.image-kh
-{
+.san-pham{
+  overflow: hidden; 
+  position: relative;
+} 
+.san-pham:hover .wrap{
+  opacity: 0.3;
+}
+
+.san-pham img{
+  transition: 0.2s; 
+}
+
+.san-pham:hover img{
+  transform: scale3d(1.05,1.05,1);
+}
+.grid figure {
+  position: relative;
+  float: left;
+  overflow: hidden;
+  height: auto;
+  background: #000;
+  margin-bottom: 10px;
+}
+.grid figure img {
+  position: relative;
+  display: block;
+  max-width: 100%;
+  margin: auto;
+}
+.vnd{
+  vertical-align: top;  
+  margin-left:5px;
+  background-color: red; 
+}
+.a {
+  text-decoration: none !important;
+}
+.sp-dien-thoai h6 .xem-them{
+  text-decoration: none;
+  color: #0097e6;
+  background-color: #ffffff;
+  border: 1px solid #0097e6;
+  padding: 5px 10px;
+  border-radius: 10px;
+  transition: 0.2s all;
+  font-size: 16px !important;
+}
+
+.sp-dien-thoai h6 .xem-them:hover{
+  color: #ffffff;
+  background-color: #0097e6;
 }
