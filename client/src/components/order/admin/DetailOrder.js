@@ -53,11 +53,30 @@ export default function DetailOrder() {
         payload: { _id: _id },
       })
     }
+  }  
+  
+  const convertMoney = (char, money) => {
+    money = money.toString()
+    let arr = []
+    let n = money.length
+    let i = 1
+    let j = 3
+
+    while (i < n) {
+      if (++i % 3 === 0) {
+        j = i
+        arr.unshift(money.slice(n - i, n - i + 3))
+      }
+    }
+
+    arr.unshift(money.slice(0, n - j))
+
+    return arr.join(char)
   }
 
   return (
     <div>
-      <Form style={{width: '40%'}}>
+      <Form style={{ width: '40%' }}>
         <FormGroup className='mt-4'>
           <Label for='name' className='bold'>
             Tên khách hàng
@@ -104,6 +123,7 @@ export default function DetailOrder() {
             <th>#</th>
             <th>Tên sản phẩm</th>
             <th>Hình ảnh</th>
+            <th>Số lượng</th>
             <th>Giá</th>
             <th>Giảm giá</th>
             <th>Modified</th>
@@ -124,8 +144,9 @@ export default function DetailOrder() {
                   height='111'
                 />
               </td>
-              <td>{item.product.price}</td>
-              <td>{item.product.promotion}</td>
+              <td>{item.count}</td>
+              <td>{`${convertMoney(',', item.product.price)} đ`}</td>
+              <td>{`${convertMoney(',', item.product.promotion)} đ`}</td> 
               <td>
                 <button
                   className='btn btn-danger ml-2'

@@ -29,7 +29,7 @@ export default function AdminHeader() {
         <div className='header-left'>
           <div className='logo-name'>
             <a href='index.html'>
-              <h1>Shoppy</h1>
+              <h1>Electronic</h1>
               {/* <img id="logo" src="./../../../../" alt="Logo"/> */}
             </a>
           </div>

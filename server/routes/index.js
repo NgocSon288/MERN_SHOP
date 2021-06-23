@@ -14,7 +14,7 @@ const router = express.Router();
 
 // Test routes
 router.get("/api/test", (req, res) => {
-  res.send("hello world");
+  return res.send("hello world");
 });
 
 // Product Route API

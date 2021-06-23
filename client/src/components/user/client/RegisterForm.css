@@ -9,7 +9,7 @@
   background-image: url('./../../../assets/admin//images/login-img.jpg');
   background-size: cover;
   background-attachment: fixed;
-  height: 100vh;
+  height: 110vh;
   position: relative;
   top: -64px;
 }
@@ -27,6 +27,10 @@
   display: block;
   background: #fff;
   border-radius: 2px;
+}
+
+.my-registers-form{
+    transform: translateY(-50px)
 }
 
 .btn-register {

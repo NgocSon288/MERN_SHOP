@@ -6,7 +6,7 @@ module.exports = {
     try {
       const orders = await Order.find().populate('user', ['name', 'image'])
 
-      res.json({ success: true, data: orders })
+      return res.json({ success: true, data: orders })
     } catch (error) {
       res.status(500).json({ success: false, message: error })
     }
@@ -23,7 +23,7 @@ module.exports = {
         res.status(400).json({ success: false, message: 'Order not found' })
       }
 
-      res.json({ success: true, data: order })
+      return res.json({ success: true, data: order })
     } catch (error) {
       res.status(500).json({ success: false, message: error })
     }
@@ -52,7 +52,11 @@ module.exports = {
         user: userId,
       })
       await order.save()
-      res.json({ success: true, message: 'Create successfully', data: order })
+      return res.json({
+        success: true,
+        message: 'Create successfully',
+        data: order,
+      })
     } catch (error) {
       res.status(500).json({ success: false, message: error.message })
     }
@@ -67,9 +71,9 @@ module.exports = {
       }
 
       //   order.isDeleted = true
-      res.json({ success: true, message: 'Delete successfully' })
+      return res.json({ success: true, message: 'Delete successfully' })
     } catch (error) {
-      res.status(500).json({ success: false, message: error.message })
+      return res.status(500).json({ success: false, message: error.message })
     }
   },
 }

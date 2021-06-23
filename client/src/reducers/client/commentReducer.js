@@ -13,8 +13,7 @@ export const commentReducer = async (state, action) => {
     }
     case TYPE.GET_ID_PRODUCT: {
       const { _id } = payload 
-        const res = await commentService.getByIdProduct(_id)
-        console.log(res,"test")
+        const res = await commentService.getByIdProduct(_id) 
         if (!res.success) {
           console.log(res.message)
           return state

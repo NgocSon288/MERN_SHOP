@@ -19,7 +19,7 @@ export default function AccountContextProvider({ children }) {
     //   type: AUTH_TYPE.SET_AUTH,
     //   payload: null,
     // })
-  }, [])
+  },[])
 
   const authContextData = {
     authState,

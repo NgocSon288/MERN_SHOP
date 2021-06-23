@@ -21,7 +21,7 @@ export default function ListBrand() {
       let index = (activePage - 1) * itemsCountPerPage
       setBrandsActivePage([...brands.slice(index, index + itemsCountPerPage)])
     }
-  }, [brands])
+  }, [activePage, brands, itemsCountPerPage])
 
   const removeItem = async (_id) => {
     const check = window.confirm('Are you sure you want to remove')
@@ -64,6 +64,8 @@ export default function ListBrand() {
                   <img
                     src={`http://localhost:3000/images/brand/${item.logo}`}
                     alt={item.logo}
+                    width='220'
+                    height='48'
                   />
                 </td>
                 <td>{item.description}</td>

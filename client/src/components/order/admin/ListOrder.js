@@ -40,6 +40,15 @@ export default function ListOrder() {
     setActivePage(pageNumber)
   }
 
+  const convertDatetime = (date) => {
+    date = new Date(date)
+    let da = date.getDate()
+    let mo = date.getMonth() + 1
+    let ye = date.getFullYear()
+
+    return `${da}/${mo}/${ye}`
+  }
+
   return (
     <div>
       <Table>
@@ -63,7 +72,7 @@ export default function ListOrder() {
                 <td>{item.user.name}</td>
                 <td>{item.phone}</td>
                 <td>{item.address}</td>
-                <td>{item.createdAt}</td>
+                <td>{convertDatetime(item.createdAt)}</td>
                 <td>
                   <button className='btn btn-info'>
                     <Link to={'/admin/order/' + item._id}>Chi tiết</Link>

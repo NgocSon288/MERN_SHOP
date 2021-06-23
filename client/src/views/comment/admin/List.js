@@ -13,9 +13,9 @@ export default function List({ title }) {
     <div>
       <div>
         <h2 className='mb-4'>Danh sách các đánh giá</h2>
-        <Button color='primary' className='mb-4 btn' outline>
+        {/* <Button color='primary' className='mb-4 btn' outline>
           <Link to='/admin/comment/create'>Thêm đánh giá (chỉ dùng để test admin)</Link>
-        </Button>
+        </Button> */}
         <ListComment />
       </div>
     </div>

@@ -43,6 +43,14 @@ export default function ListComment() {
     setCommentsActivePage([...comments.slice(index, index + itemsCountPerPage)])
     setActivePage(pageNumber)
   }
+  const convertDatetime = (date) => {
+    date = new Date(date)
+    let da = date.getDate()
+    let mo = date.getMonth() + 1
+    let ye = date.getFullYear()
+
+    return `${da}/${mo}/${ye}`
+  }
 
   return (
     <div>
@@ -53,7 +61,7 @@ export default function ListComment() {
             <th>Lý do</th>
             <th>Mô tả</th>
             <th>Số sao</th>
-            <th>Tác giả</th>
+            {/* <th>Tác giả</th> */}
             <th>Sản phẩm</th>
             <th>Ngày tạo</th>
             <th>Modified</th>
@@ -69,9 +77,9 @@ export default function ListComment() {
                 <td>{item.reason}</td>
                 <td>{item.description}</td>
                 <td>{item.starNumber}</td>
-                <td>{item.user.name}</td>
+                {/* <td>{item.user.name}</td> */}
                 <td>{item.product.name}</td>
-                <td>{item.createdAt}</td>
+                <td>{convertDatetime(item.createdAt)}</td>
                 <td>
                   <button className='btn btn-info'>
                     <Link to={'/admin/comment/' + item._id}>Chi tiết</Link>

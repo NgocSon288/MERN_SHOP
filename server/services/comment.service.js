@@ -23,7 +23,7 @@ module.exports = {
       const comments = await Comment.find()
         .populate('user', ['name', 'image'])
         .populate('product', ['name', 'image'])
-      res.json({ success: true, data: comments })
+      return res.json({ success: true, data: comments })
     } catch (error) {
       res.status(500).json({ success: false, message: error })
     }
@@ -38,7 +38,7 @@ module.exports = {
         res.status(400).json({ success: false, message: 'Comment not found' })
       }
 
-      res.json({ success: true, data: product })
+      return res.json({ success: true, data: product })
     } catch (error) {
       res.status(500).json({ success: false, message: error })
     }
@@ -53,7 +53,7 @@ module.exports = {
         res.status(400).json({ success: false, message: 'Comment not found' })
       }
 
-      res.json({ success: true, data: comment })
+      return res.json({ success: true, data: comment })
     } catch (error) {
       res.status(500).json({ success: false, message: error })
     }

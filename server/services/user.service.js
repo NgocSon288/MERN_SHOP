@@ -15,33 +15,33 @@ module.exports = {
         .populate('categoryUser', ['name', 'displayName', 'description'])
         .select('-password')
 
-      res.json({ success: true, data: Users })
+      return res.json({ success: true, data: Users })
     } catch (error) {
       res.status(500).json({ success: false, message: error })
     }
   },
-  login: async function (req, res, next) {
+  login: async function (req, res, next) { 
     try {
       const { username, password } = req.body
-
-      if (!username || !password) {
+  
+      if (!username || !password) { 
         return res.status(400).json({
           success: false,
           message: 'Username or Password is not valid',
         })
-      }
+      } 
 
       const user = await User.findOne({ username })
-
-      if (!user) {
+ 
+      if (!user) { 
         return res
           .status(400)
           .json({ success: false, message: 'Incorrect Username or Password' })
       }
-
+ 
       const passwordValid = await argon2.verify(user.password, password)
-
-      if (!passwordValid) {
+ 
+      if (!passwordValid) { 
         return res
           .status(400)
           .json({ success: false, message: 'Incorrect Username or Password' })
@@ -96,7 +96,7 @@ module.exports = {
         res.status(400).json({ success: false, message: 'User not found' })
       }
 
-      res.json({ success: true, data: user })
+      return res.json({ success: true, data: user })
     } catch (error) {
       res.status(500).json({ success: false, message: error })
     }
@@ -225,7 +225,7 @@ module.exports = {
       const user = await User.findById(userId)
       if (!user) {
         res.status(400).json({ success: false, message: 'User not found' })
-      } 
+      }
 
       const passwordValid = await argon2.verify(user.password, password)
 
@@ -241,7 +241,7 @@ module.exports = {
 
       await user.save()
 
-      res.json({ success: true, message: 'Update successfully' })
+      return res.json({ success: true, message: 'Update successfully' })
     } catch (error) {
       return res.status(500).json({ success: false, message: error.message })
     }
