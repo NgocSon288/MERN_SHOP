@@ -255,9 +255,9 @@ export default function ClientHeader() {
             <Link to="/">TRANG CHỦ</Link>
           </li>
           <li className="my-parent-2">
-            <Link to="/Product/">
-              SẢN PHẨM <span></span>
-            </Link>
+            <a href="/Product">
+              <span>SẢN PHẨM </span>
+            </a>
             <div className="my-dropdow">
               <List>
                 {categories.map((item) => {
