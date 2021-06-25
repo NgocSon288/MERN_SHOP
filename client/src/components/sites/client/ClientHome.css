@@ -1,3 +1,627 @@
-.carousel .slide {
-    background-color: none;
+.bg-dang-ky {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover; 
+	background-attachment: fixed; 
+  padding: 100px 0; 
 }
+
+.bg-dang-ky *{
+  text-align: center;
+}
+
+.bg-dang-ky h3 {
+	font-size: 2.2vw;
+	margin-bottom: 20px;
+	color: white;
+	font-weight: bold;
+}
+
+.bg-dang-ky p {
+	font-size: 1.5vw;
+	color: white;
+	margin-bottom: 50px;
+} 
+
+.bg-dang-ky>div{
+    margin-right: auto;
+    margin-left: auto
+}
+
+.btn-dang-ky{
+    border: 2px solid #007bff !important;
+    font-weight: bold;
+    font-size: 1.5vw; 
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .btn-dang-ky:hover{
+    background-color: #007bff !important;
+    color: white !important;
+    border: none;
+  }
+
+.bg-dang-ky .modal-dialog{
+    width: 400px !important
+}
+
+.bg-dang-ky .modal-footer>button{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title-dien-thoai{
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  color: #000000;
+}
+
+.title-dien-thoai:after {
+ content: "";
+ display: table;
+ clear: both;
+ width: 100%;
+ height: 20px;
+ margin-bottom: 20px;
+ background-repeat: no-repeat; 
+ background-position-x: center;
+ background-position-y: bottom;
+ padding-top: 0;
+}
+
+/*-- Latest-Arrivals-(Home Page) --*/
+
+.sp-smart-watch {
+	padding: 50px 0;
+	background-color: #F5F5F5;
+}
+
+.sp-smart-watch-grid {
+	padding: 10px;
+}
+
+.sp-smart-watch-grid h4 {
+	font-size: 16px;
+	color: #555;
+}
+
+.sp-smart-watch-grid h5 {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	margin: 10px 0;
+}
+
+.sp-smart-watch-grid h6 a {
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	text-decoration: underline;
+	color: #000;
+}
+
+.sp-smart-watch-grid h6 a:hover {
+	color: #c41228;
+}
+
+.grid figure {
+	position: relative;
+	float: left;
+	overflow: hidden;
+	height: auto;
+	background: #000;
+	margin-bottom: 10px;
+}
+
+.grid figure img {
+	position: relative;
+	display: block;
+	max-width: 100%;
+	margin: auto;
+}
+
+.grid figure figcaption {
+	padding: 0; 
+	backface-visibility: hidden;
+}
+
+.grid figure figcaption::before, .grid figure figcaption::after {
+	pointer-events: none;
+}
+
+.grid figure figcaption, .grid figure figcaption > a {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+figure.effect {
+	background: #F5F5F5;
+}
+
+figure.effect img {
+	opacity: 0.95; 
+	transition: opacity 0.35s, transform 0.35s; 
+	transform: scale3d(1.05,1.05,1);
+}
+
+figure.effect figcaption::before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(255,255,255,0.5);
+	content: ''; 
+	transition: transform 0.6s; 
+	transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,-100%,0);
+}
+
+figure.effect:hover img {
+	opacity: 0.6; 
+	transform: scale3d(1,1,1);
+}
+
+figure.effect:hover figcaption::before {  
+	transform: scale3d(1.9,1.4,1) rotate3d(0,0,1,45deg) translate3d(0,100%,0);
+} 
+
+.show-san-pham a, .show-san-pham h5, .show-san-pham h6, .show-san-pham h4{
+  text-align: center !important;
+}
+
+/*-- //Latest-Arrivals-(Home Page) --*/
+
+/****************************************************8
+ 
+  /* end dien thoai */
+  .my-res-a{
+    color:  white !important;
+    font-weight: bold;
+  }
+
+/* Latest-Arrivals  */
+.sp-dien-thoai{
+  padding-top: 50px;
+}
+.sp-dien-thoai .ten{
+  font-size: 24px !important;
+  transition: 0.2s all; 
+}
+
+.sp-dien-thoai .ten:hover{
+  text-shadow: 1px 1px 1px  rgb(107, 92, 134);
+}
+
+.sp-dien-thoai a{
+  text-decoration: none !important;
+}
+
+.sp-dien-thoai h5{
+  color: #bf081f;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.sp-dien-thoai h5 > span{
+  font-size: 8px !important;
+  background-color: #bf081f;
+  color: #ffffff;
+  vertical-align: top;
+  margin-left: 2px;
+}
+
+.sp-dien-thoai h6 .xem-them{
+  text-decoration: none;
+  color: #0097e6;
+  background-color: #ffffff;
+  border: 1px solid #0097e6;
+  padding: 5px 10px;
+  border-radius: 10px;
+  transition: 0.2s all;
+  font-size: 16px !important;
+}
+
+.sp-dien-thoai h6 .xem-them:hover{
+  color: #ffffff;
+  background-color: #0097e6;
+}
+
+
+/* end Latest-Arrivals */
+/* Denim colection */
+
+.tablet-card{
+  position: relative; 
+  overflow: hidden;
+}
+
+.tablet-card img{
+  transition: all 0.4s ease;
+}
+
+.tablet-card:hover img{
+  transform: rotate(5deg) scale(1.05);
+}
+
+.my-content-denim{
+  position: absolute; 
+  height: 100%;
+  width: 0%; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.1);
+  transition: all 0.4s;
+}
+
+.my-content-denim{ 
+  top: 0px;
+  left: 0px;
+}
+
+.my-content-denim2{
+  width: 100%;
+  height: 0%;
+  top: 0;
+  left: 0;
+}
+
+.my-content-denim3{ 
+  top: 0;
+  right: 0;
+  width: 0%;
+  height: 0%; 
+}
+
+.tablet-card:hover .my-content-denim{
+  background-color: rgba(0,0,0,0.6);
+  width: 100%;
+}
+
+.tablet-card:hover .my-content-denim2{
+  background-color: rgba(0,0,0,0.6);
+  height: 100%;
+}
+
+.tablet-card:hover .my-content-denim3{
+  background-color: rgba(0,0,0,0.6);
+  width: 100%;
+  height: 100%;
+}
+
+.my-content-denim:hover .ten, .my-content-denim:hover .noi-dung, .my-content-denim:hover h5, .my-content-denim:hover h5 span, .my-content-denim:hover .xem-them{
+  opacity: 1; 
+}
+
+.my-content-denim .ten{
+  font-size: 24px;
+  color: #ffffff;
+  opacity: 0;
+  transition: 0.4s all;
+  margin-bottom: 4%; 
+  text-align: center !important;
+  line-height: 36px;
+}
+
+.my-content-denim .noi-dung{
+  font-size: 1.2vw; 
+  color: #ffffff;
+  opacity: 0;
+  width: 80%;
+  transition: 0.4s all;
+  margin-bottom: 3%;
+}
+
+.my-content-denim h5{
+  font-size: 20px; 
+  color: #ff0000;
+  opacity: 0;
+  transition: 0.4s all;
+  font-weight: bold;
+  position: relative;
+}
+
+.my-content-denim h5 span{
+  font-size: 0.7vw;
+  position: absolute; 
+  color: #ffffff;
+  background-color: red;
+  opacity: 0;
+  transition: 0.4s all;
+  font-weight: bold;
+}
+.my-content-denim .xem-them{ 
+  color: #ffffff;
+  font-size: 2.2vw;
+  opacity: 0;
+  transition: 0.4s all;
+}
+
+.my-content-denim .xem-them{ 
+  display: inline-block;  
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 22px; 
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.my-content-denim .xem-them span { 
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.my-content-denim .xem-them span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.my-content-denim .xem-them:hover span {
+  padding-right: 25px; 
+  color: #ff009d;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
+.my-content-denim .xem-them:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.div-parent-sp{ 
+	overflow: hidden;
+}
+
+.div-parent-sp > div{ 
+  overflow: hidden;
+  /* position: relative; */
+}
+ 
+.div-parent-sp div:hover img{  
+  transform: scale3d(1.1,1.1,1.1); 
+}
+
+/* end Denim colection */
+.new-sp .ten{
+  font-size: 5vw;
+  font-weight: bold;
+  color: white !important; 
+  text-align: center;
+}
+.new-sp .cap1{
+  font-size: 1.8vw;
+  font-weight: bold;
+  color: white !important; 
+  text-align: center;
+}
+.new-sp .cap2{
+  font-size: 1.3vw;
+  color: white !important; 
+  text-align: center;
+}
+
+.new-sp button{
+  padding: 5px 30px 20px 30px;
+  color: #ffffff;
+  font-size: 1.2vw;
+  font-weight: bold;
+  border-radius: 5px;
+  position: relative;
+  border: none;
+  margin: auto 10px;
+  text-align: center;
+}
+.new-sp button span{
+  font-size: 0.8vw;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+}
+
+.new-sp button:nth-child(1){
+  background-color: #4f0074;
+  border: 2px solid #4f0074;
+  transition: 0.4s all;
+}
+.new-sp button:nth-child(1):hover{
+  
+  box-shadow: 1px 1px 2px rgb(0, 0, 0), 0 0 5px rgb(31, 27, 243), 0 0 5px rgb(0, 103, 187);
+}
+.new-sp button:nth-child(2){
+  border: 2px solid #27ca06;
+  background-color: transparent;
+  color: #27ca06;
+  transition: 0.4s all;
+}
+
+.new-sp button:nth-child(2):hover{
+  background-color: #27ca06;
+  color: white;
+}
+.new-sp {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover; 
+	background-attachment: fixed;
+	text-align: center;
+}
+
+.new-sp-text {
+	width: 50%;
+	padding: 120px 0;
+	background-color: rgba(0, 0, 0, 0.35);
+}
+
+.new-sp-text h2 {
+	font-size: 50px;
+	color: #fff;
+	text-shadow: 2px 2px #32323b;
+	margin-bottom: 20px;
+}
+
+.new-sp-text h4 {
+	color: #FFF;
+	font-size: 30px;
+	text-shadow: 2px 2px #32323b;
+	margin-bottom: 20px;
+}
+
+.new-sp-text h5 {
+	font-size: 75px;
+	color: #FFF;
+	text-shadow: 3px 3px #c41228;
+}
+
+.new-sp-text h5 small {
+	font-size: 30px;
+	color: #EEE;
+	text-shadow: 2px 2px #001c44;
+}
+
+		/* style 1 */
+    .slideanim {
+      visibility: hidden;
+    }
+    
+    .slide {
+      animation-name: slide;
+      animation-duration: 1s;
+      visibility: visible;
+    }
+    
+    @keyframes slide {
+      0% {
+        opacity: 0;
+        transform: translateY(70%);
+      }
+    
+      100% {
+        opacity: 1;
+        transform: translateY(0%);
+      }
+    }
+    
+    
+    /* style 2 : bottom right*/
+    .slideanim1 {
+      visibility: hidden;
+    }
+    
+    .slide1 {
+      animation-name: slide1;
+      animation-duration: 1s;
+      visibility: visible;
+    }
+    
+    @keyframes slide1 {
+      0% {
+        opacity: 0;
+        transform: translate(70%, 70%);
+      }
+    
+      100% {
+        opacity: 1;
+        transform: translate(0%, 0%);
+      }
+    }
+    
+    /* style 2 : bottom left*/
+    .slideanim2 {
+      visibility: hidden;
+    }
+    
+    .slide2 {
+      animation-name: slide2;
+      animation-duration: 1s;
+      visibility: visible;
+    }
+    
+    @keyframes slide2 {
+      0% {
+        opacity: 0;
+        transform: translate(-70%, 70%);
+      }
+    
+      100% {
+        opacity: 1;
+        transform: translate(0%, 0%);
+      }
+    }
+    
+    /* style 3 : left */
+    .slideanim3 {
+      visibility: hidden;
+    }
+    
+    .slide3 {
+      animation-name: slide3;
+      animation-duration: 1s;
+      visibility: visible;
+    }
+    
+    @keyframes slide3 {
+      0% {
+        opacity: 0;
+        transform: translateX(-70%);
+      }
+    
+      100% {
+        opacity: 1;
+        transform: translateX(0%);
+      }
+    }
+    
+    /* style 4 : right */
+    .slideanim4 {
+      visibility: hidden;
+    }
+    
+    .slide4 {
+      animation-name: slide4;
+      animation-duration: 1s;
+      visibility: visible;
+    }
+    
+    @keyframes slide4 {
+      0% {
+        opacity: 0;
+        transform: translateX(70%);
+      }
+    
+      100% {
+        opacity: 1;
+        transform: translateX(0%);
+      }
+    } 
+    
+    .social-icons{
+      list-style-type: none;
+    }
+    
+    .social-icons a{
+      font-size: 30px;
+      color: black;
+      margin-left: 10px;
+    }
+
+    .laptop-noibat{
+      padding: 1px 0!important; 
+      background-color :#F5F5F5;
+      margin-top: 70px;
+      padding-bottom: 50px !important;
+    }

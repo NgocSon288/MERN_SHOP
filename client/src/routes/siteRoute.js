@@ -12,11 +12,11 @@ import AdminLayout from './../layouts/AdminLayout'
 import ClientLayout from './../layouts/ClientLayout'
 import About from '../views/sites/client/About'
 
+import ClientProductContextProvider from "../contexts/client/ProductContext";
 // ContextProvider  
 
 const route = [
   // Admin Sites route
-   
 
   //-----------------------------------------------------------------------------------------
   // Client Sites route
@@ -27,7 +27,9 @@ const route = [
     icon: 'design_app',
     component: ClientHome,
     layout: ClientLayout,
-    wrapContextProvider: null
+    wrapContextProvider: ({ children }) => (
+      <ClientProductContextProvider>{children}</ClientProductContextProvider>
+    ),
   },
 
   // Client About route
