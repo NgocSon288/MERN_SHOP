@@ -22,29 +22,13 @@ export default function CreateComment() {
   useEffect(() => {}, [data])
   useEffect(() => {
     if (products && products.length > 0) {
+      const f=products.find((p) => p._id === id)
       setData({
         ...data,
-        product: products.find((p) => p._id === id)._id,
+        product: f._id,
       })
     }
   }, [products])
-
-  const onSubmit = async (e) => {
-    try {
-      dispatchComment({
-        type: COMMENT_TYPE.CREATE,
-        payload: { data },
-      })
-      setData({
-        starNumber: 0,
-        reason: '',
-        description: '',
-        product: products.find((p) => p._id === id)._id, // hiện tại thì cho một compobox sản phẩm
-        fileUpload: null,
-      })
-    } catch (error) {
-    }
-  }
 
   const onChangeImage = (e) => {
     const fu = [...e.target.files].map((file) => {
@@ -85,6 +69,25 @@ export default function CreateComment() {
     var date="Ngày "+ time.getDate()+' tháng '+(time.getMonth()+1)+','+time.getFullYear()
     return date
   }
+
+  const onSubmit = async (e) => {
+    try {
+      dispatchComment({
+        type: COMMENT_TYPE.CREATE,
+        payload: { data },
+      })
+      setData({
+        ...data,
+        starNumber: 0,
+        reason: '',
+        description: '',
+        product: products.find((p) => p._id === id)._id, // hiện tại thì cho một compobox sản phẩm
+        fileUpload: null,
+      })
+    } catch (error) {
+    }
+  }
+
   return (
     <div style={{marginTop:"20px",padding: "20px"}}>
         <h2 className="text-left" style={{fontSize: "26px",marginBottom: "20px"}}>Phản hồi của tôi</h2>
@@ -94,7 +97,7 @@ export default function CreateComment() {
         <ReactStars
         size= {27}
         count= {5}
-        value= {0}
+        value= {data.starNumber}
         emptyIcon= {<li><FaRegStar/></li>}
         filledIcon= {<li><FaStar/></li>}
         onChange={newValue => {

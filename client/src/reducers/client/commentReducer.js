@@ -27,7 +27,6 @@ export const commentReducer = async (state, action) => {
         const res = await commentService.create({ ...data })
         const req=await commentService.getByIdProduct(data.product)
         mess = res.message
-        console.log(mess)
         state = req.data
       } catch (error) {
        

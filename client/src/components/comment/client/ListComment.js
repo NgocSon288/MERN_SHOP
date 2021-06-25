@@ -23,11 +23,33 @@ export default function ListComment() {
     for (var i = 0; i < comments.length; i++) $('#my-comment' + i).hide()
 	$(".aqua").mouseenter(function(){
 		$(this).addClass("fas")
+		$(this).removeClass("far")
 	 })
 	 $(".aqua").mouseleave(function(){
 		 $(this).removeClass("fas")
 		 $(this).addClass("far")
 	})
+	$(".likeCountChange").click(function(){
+		var like = $(this).find(".likeNum").text();
+		var count = $(this).find(".likeNum").attr("alt")
+		if(count == "true"){
+			count = true
+			$(this).find(".aqua").removeClass("far")
+			$(this).find(".aqua").addClass("fas")
+			$(this).find(".aqua").unbind('mouseleave');
+		}
+		if(count == "false"){
+			count = false
+			$(this).find(".aqua").removeClass("fas")
+			$(this).find(".aqua").addClass("far")
+			$(this).find(".aqua").bind('mouseleave', function(){
+				$(this).removeClass("fas")
+				$(this).addClass("far")
+		   });
+		}
+		$(this).find(".likeNum").text(parseInt(like) + (count ? 1:(-1)))
+		$(this).find(".likeNum").attr("alt", !count)
+   })
   }, [comments])
   const showComment = (i) => {
     $('#my-comment' + i).slideToggle(400)
@@ -48,11 +70,6 @@ export default function ListComment() {
     var thongke = (count / comments.length) * 100
     return thongke + '%'
   }
- const cmt=()=>{
-	$(".likeCountChange").click(function(){
-		likeCount=1;
-   })
- }
   return (
 <div>
 	<div class="danh-gia-sao w-100" style={{padding: "20px"}}>
@@ -196,7 +213,7 @@ export default function ListComment() {
                   } 
 							<div style={{marginTop:"20px"}}>
 								<span className="thaoluan" id={"my-binh-luan-coll" + i} onClick={() => showComment(i)}>Thảo luận</span>
-								<a  className="like" ><span style={{fontSize: "14px"}} ><a className="far fa-thumbs-up mr-1 aqua"  onClick={() => cmt()} aria-hidden="true" ></a>Hữu ích <span className="likeCountChange"> ({likeCount})</span></span></a>
+								<span className=" likeCountChange"><span style={{fontSize: "14px",cursor:'pointer'}} ><a className="far fa-thumbs-up mr-1 aqua" aria-hidden="true" ></a>Hữu ích (<span className="likeNum" alt="true">{likeCount}</span>)</span></span>
 							</div>
 							<div id={"my-comment" + i} className="w-100">
 								<textarea className="form-control" rows="5" placeholder="Bình luận của tôi..." style={{fontSize:"15px"}}></textarea>
