@@ -90,10 +90,6 @@ module.exports = {
         .json({ success: false, message: 'Data is not valid' })
     }
   },
-  updateLikeCount: async function(req,res,next){
-      const { id } = req.params
-      const comment = await Comment.findOne({ _id: id })
-  },
   delete: async function (req, res, next) {
     try {
       const { id } = req.params

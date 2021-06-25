@@ -1,3 +1,4 @@
+import $ from 'jquery'
 $(document).ready(() => {
 	$(".opstion button").click(function(){
 		var text = $(this).text().split(" - ");
@@ -10,8 +11,5 @@ $(document).ready(() => {
 		$("#span-gia").text(text[1]);
 		$("#del-gia").text($(this).attr("data-del"));
 
-	})
-	$("#aqua").click(function(){
-		console.log("nsdjanskdj");
 	})
 }) 
