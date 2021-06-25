@@ -53,7 +53,7 @@ export default function RegisterForm() {
     <div className='body-class'>
       <div className='content'>
         <div className='block block-register text'>
-          <div className='registers-form'>
+          <div className='registers-form my-registers-form'>
             <h1 className='text-center'>Đăng ký</h1>
             <div>
               <form

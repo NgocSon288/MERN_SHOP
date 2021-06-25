@@ -20,7 +20,7 @@ import ClientProductContextProvider from "../contexts/client/ProductContext";
 import ClientCategoryContextProvider from "../contexts/client/CategoryContext";
 import ClientBrandContextProvider from "../contexts/client/BrandContext";
 import Detail from "../views/product/client/ProductDetail";
-import ClientCommentContextProvider from "../contexts/client/commentContext"
+import ClientCommentContextProvider from "../contexts/client/commentContext";
 import ClientProductSessionContextProvider from "../contexts/client/ProductSessionContext";
 
 const productRoute = [
@@ -92,11 +92,11 @@ const productRoute = [
     component: Detail,
     layout: ClientLayout,
     wrapContextProvider: ({ children }) => (
-          <ClientProductContextProvider>
-            <ClientCommentContextProvider>
-            {children}
-            </ClientCommentContextProvider>
-          </ClientProductContextProvider>
+      <ClientProductContextProvider>
+        <ClientProductSessionContextProvider>
+        <ClientCommentContextProvider>{children}</ClientCommentContextProvider>
+        </ClientProductSessionContextProvider>
+      </ClientProductContextProvider>
     ),
   },
   // Client List route

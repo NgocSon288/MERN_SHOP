@@ -1,0 +1,77 @@
+/* GIỎ hàng */
+
+.my-wrap {
+  position: relative;
+}
+
+.group {
+  font-size: 16px;
+}
+.group input[type='text'],
+.group textarea,
+.group select,
+.ma-giam-gia {
+  background-color: rgb(255, 255, 255) !important;
+  border: 1px solid gray;
+  color: black !important;
+  margin-bottom: 0px;
+  padding: 5px;
+  padding-left: 10px;
+  border-radius: 5px;
+  font-size: 16px !important;
+}
+.group input[type='text']::placeholder,
+.group textarea::placeholder,
+.group select::placeholder,
+.ma-giam-gia::placeholder {
+  color: #85898f;
+}
+
+.validate-input {
+  border: 1px solid red !important;
+}
+
+.head-title {
+  margin-top: 100px;
+  margin-bottom: 20px;
+  font-size: 36px;
+  text-align: center;
+  font-weight: bold;
+}
+.wrapper-item-gio-hang {
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.wrapper-item-gio-hang .dat-hang span {
+  font-weight: bold;
+}
+
+.btn-mua-hang {
+  font-size: 20px;
+  background-color: rgb(11, 124, 196) !important  ;
+  font-size: 22px !important;
+  font-weight: 500 !important;
+}
+
+.btn-dat-hang {
+  font-size: 20px;
+  background: #fd6e1d !important;
+  font-size: 22px !important;
+  font-weight: 500 !important;
+}
+
+.my-empty-cart{
+    width: 70%;
+    margin: auto;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.my-empty-text{
+    font-size: 20px;
+    font-weight: 300;
+}
+
+/* End giỏ hàng */

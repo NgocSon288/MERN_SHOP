@@ -5,7 +5,7 @@ module.exports = {
     try {
       const categories = await CategoryUser.find()
 
-      res.json({ success: true, data: categories })
+      return res.json({ success: true, data: categories })
     } catch (error) {
       res.status(500).json({ success: false, message: error })
     }
@@ -19,7 +19,7 @@ module.exports = {
         res.status(400).json({ success: false, message: 'CategoryUser not found' })
       }
 
-      res.json({ success: true, data: category })
+      return res.json({ success: true, data: category })
     } catch (error) {
       res.status(500).json({ success: false, message: error })
     }
@@ -29,7 +29,7 @@ module.exports = {
       const { name, displayName, description } = req.body
       const category = new CategoryUser({ name: name, displayName: displayName, description: description })
       await category.save()
-      res.json({ success: true, message: 'Create successfully' })
+      return res.json({ success: true, message: 'Create successfully' })
     } catch (error) {
       res.status(500).json({ success: false, message: error.message })
     }
@@ -42,7 +42,7 @@ module.exports = {
         res.status(400).json({ success: false, message: 'CategoryUser not found' })
       }
 
-      res.json({ success: true, message: 'Delete successfully' })
+      return res.json({ success: true, message: 'Delete successfully' })
     } catch (error) {
       res.status(500).json({ success: false, message: error.message })
     }
@@ -67,7 +67,7 @@ module.exports = {
         res.status(400).json({ success: false, message: 'CategoryUser not found' })
       }
 
-      res.json({ success: true, message: 'Update successfully' })
+      return res.json({ success: true, message: 'Update successfully' })
     } catch (error) {
       res.status(500).json({ success: false, message: error.message })
     }

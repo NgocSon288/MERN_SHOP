@@ -29,7 +29,6 @@ export default function ListAdvertisement() {
           <th>Tên slide</th>
           <th>Hình ảnh</th>
           <th>Mô tả</th>
-          <th>URL</th>
           <th>Modified</th>
         </tr>
       </thead>
@@ -46,8 +45,7 @@ export default function ListAdvertisement() {
                   width='200'
                 />
               </td>
-              <td>{item.description}</td>
-              <td>{item.url}</td>
+              <td>{item.description}</td>   
               <td>
                 <button className='btn btn-info'>
                   <Link to={'/admin/advertisement/edit/' + item._id}>Cập nhật</Link>

@@ -1,0 +1,114 @@
+.wrapper-item-gio-hang {
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.card-san-pham {
+  transition: 0.2s all;
+}
+.card-san-pham:hover {
+  /* box-shadow: 0px 2px 5px gray, -2px 0px 5px gray, 0px -2px gray, 2px 0px 5px gray; */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.card-san-pham.card {
+  border: 1px solid rgb(171, 171, 171) !important;
+}
+.card-san-pham .status {
+  font-size: 16px;
+  min-height: 70px;
+}
+.card-san-pham .so-luong {
+  font-size: 16px;
+}
+.card-san-pham .so-luong .so-luong-number {
+  background-color: white !important;
+  color: black !important;
+  padding: 1px 0px;
+  margin: 0px;
+  text-align: center;
+  width: 70px;
+  font-size: 18px;
+  border-left: none;
+  border-right:  none;
+}
+.card-san-pham .so-luong .so-luong-btn {
+  font-size: 20px;
+  border: 1px solid gray;
+  cursor: pointer;
+  padding: 0px 10px;
+  color: white;
+  background-color: rgb(25, 25, 206);
+}
+.card-san-pham .so-luong .tru {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.card-san-pham .so-luong .cong {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.card-san-pham .so-luong .so-luong-btn:hover {
+  background-color: rgb(1, 4, 89);
+}
+.card-san-pham .so-luong .so-luong-number {
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+.card-san-pham .gia .vnd {
+  color: white;
+  position: absolute;
+  top: 0;
+  background-color: red;
+}
+.card-san-pham .gia {
+  position: relative;
+  color: red;
+  font-size: 16px;
+}
+.card-san-pham .nha-cung-cap {
+  text-align: left;
+  font-weight: bold;
+  margin-top: 15px;
+  font-size: 18px;
+  color: rgb(27, 0, 206);
+}
+.card-san-pham .ten {
+  font-size: 25px;
+  font-weight: bold;
+  text-align: left;
+}
+.card-san-pham {
+  position: relative;
+  margin-top: 25px;
+}
+.card-san-pham .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 25px;
+  color: black;
+  background-color: rgb(223, 53, 50);
+  border-radius: 5px;
+}
+.card-san-pham .close span {
+  padding: 0px 7px;
+}
+.thong-tin input[type='text'] {
+  background-color: white !important;
+}
+
+.my-cart-item-content{
+    top:0;
+}
+
+.my-image-link{
+    display: block;
+    height: 100%;
+}
+
+.my-del-price{
+    margin-left: 40px;
+}
+
+.my-lbl-amount{
+    margin-right: 10px;
+}

@@ -8,10 +8,8 @@ const productSessionService = {
 
     return res.data;
   },
-  add: async (id) => {
-    console.log("vao ham add service client");
-    const res = await axios.get(`${urlStr}/productSessions/${id}`);
-    console.log(res);
+  add: async (id) => { 
+    const res = await axios.get(`${urlStr}/productSessions/${id}`); 
 
     return res.data;
   },

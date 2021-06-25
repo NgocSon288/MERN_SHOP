@@ -10,7 +10,7 @@ module.exports = {
         'product'
       )
 
-      res.json({ success: true, data: orderDetails })
+      return res.json({ success: true, data: orderDetails })
     } catch (error) {
       res.status(500).json({ success: false, message: error })
     }
@@ -68,7 +68,7 @@ module.exports = {
       }
 
       order.isDeleted = true
-      res.json({ success: true, message: 'Delete successfully' })
+      return res.json({ success: true, message: 'Delete successfully' })
     } catch (error) {
       res.status(500).json({ success: false, message: error.message })
     }

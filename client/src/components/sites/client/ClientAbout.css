@@ -427,3 +427,6 @@ color: gray;
 .a{
     text-decoration: none !important;
 }
+.a:hover{
+    cursor: pointer;
+}

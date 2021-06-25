@@ -8,12 +8,12 @@ module.exports = {
     try {
       const advertisements = [...(await Advertisement.find())].sort(function (
         a,
-        b
+        b,
       ) {
         return a.displayOrder - b.displayOrder
       })
 
-      res.json({ success: true, data: advertisements })
+      return res.json({ success: true, data: advertisements })
     } catch (error) {
       res.status(500).json({ success: false, message: error })
     }
@@ -29,7 +29,7 @@ module.exports = {
           .json({ success: false, message: 'advertisement not found' })
       }
 
-      res.json({ success: true, data: advertisement })
+      return res.json({ success: true, data: advertisement })
     } catch (error) {
       res.status(500).json({ success: false, message: error })
     }
@@ -120,7 +120,7 @@ module.exports = {
             item._id !== id
           ) {
             item.displayOrder++
-            await item.save() 
+            await item.save()
           }
         })
       } else if (displayOrderOld < displayOrder) {
@@ -131,7 +131,7 @@ module.exports = {
             item._id !== id
           ) {
             item.displayOrder--
-            await item.save() 
+            await item.save()
           }
         })
       }

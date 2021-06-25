@@ -1,60 +1,59 @@
-import React, { useEffect, useContext,useState } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import { Table, Input } from 'reactstrap'
 import { Link } from 'react-router-dom'
-import {FaStar,FaRegStar} from "react-icons/fa"
+import { FaStar, FaRegStar } from 'react-icons/fa'
 import './ListComment.css'
 import $ from 'jquery'
+import '../../../assets/admin/js/mouseover.js'
 import { CommentContext } from './../../../contexts/client/commentContext'
-import { ProductContext } from "../../../contexts/client/ProductContext";
+import { ProductContext } from '../../../contexts/client/ProductContext'
 import * as COMMENT_TYPE from './../../../reducers/client/commentType'
 export default function ListComment() {
-  const [data, setData] = useState({
-		starNumber: 0,
-		reason: '',
-		description: '',
-		product: '', // hiện tại thì cho một compobox sản phẩm
-		fileUpload: null,
-	})
   let { comments, dispatch } = useContext(CommentContext)
-  const { products } = useContext(ProductContext)
   var location = window.location.href
   const index = location.lastIndexOf('/') + 1
   const id = location.substring(index)
+  var likeCount=0;
   useEffect(() => {
-	dispatch({
-		type: COMMENT_TYPE.GET_ID_PRODUCT,
-		payload: {_id: id},
-	  })
+    dispatch({
+      type: COMMENT_TYPE.GET_ID_PRODUCT,
+      payload: { _id: id },
+    })
   }, [])
   useEffect(() => {
-	for(var i=0;i<comments.length;i++)
-		$('#my-comment'+i).hide();
-	
+    for (var i = 0; i < comments.length; i++) $('#my-comment' + i).hide()
+	$(".aqua").mouseenter(function(){
+		$(this).addClass("fas")
+	 })
+	 $(".aqua").mouseleave(function(){
+		 $(this).removeClass("fas")
+		 $(this).addClass("far")
+	})
   }, [comments])
   const showComment = (i) => {
-	$('#my-comment' + i).slideToggle(400);
+    $('#my-comment' + i).slideToggle(400)
+}
+  const tBComment = () => {
+    var s = 0
+    for (var i = 0; i < comments.length; i++) {
+      var s = s + comments[i].starNumber
+    }
+    var tb = Math.round((s / comments.length*10)) / 10
+    return tb
   }
-  const tBComment= ()=> {
-	  var s=0
-	  for(var i=0;i<comments.length;i++)
-	   {
-		   var s=s+comments[i].starNumber;
-	   }
-	  var tb=Math.round(s/comments.length*10)/10;
-	  if(tb===NaN)
-	    tb=0
-	  return tb;
+  const thongKe = (star) => {
+    var count = 0
+    for (var i = 0; i < comments.length; i++) {
+      if (comments[i].starNumber == star) count++
+    }
+    var thongke = (count / comments.length) * 100
+    return thongke + '%'
   }
-  const thongKe=(star)=>{
-	  var count=0
-	  for(var i=0;i<comments.length;i++)
-	  {
-		  if(comments[i].starNumber==star)
-		  count++
-	  }
-	  var thongke=(count/comments.length)*100
-	  return thongke+"%"
-  }
+ const cmt=()=>{
+	$(".likeCountChange").click(function(){
+		likeCount=1;
+   })
+ }
   return (
 <div>
 	<div class="danh-gia-sao w-100" style={{padding: "20px"}}>
@@ -198,12 +197,12 @@ export default function ListComment() {
                   } 
 							<div style={{marginTop:"20px"}}>
 								<span className="thaoluan" id={"my-binh-luan-coll" + i} onClick={() => showComment(i)}>Thảo luận</span>
-								<a href=""><span style={{fontSize: "14px"}}><i className="fa fa-thumbs-up mr-1" aria-hidden="true"></i>Hữu ích (13)</span></a>
+								<a  className="like" ><span style={{fontSize: "14px"}} ><a className="far fa-thumbs-up mr-1 aqua"  onClick={() => cmt()} aria-hidden="true" ></a>Hữu ích <span className="likeCountChange"> ({likeCount})</span></span></a>
 							</div>
 							<div id={"my-comment" + i} className="w-100">
 								<textarea className="form-control" rows="5" placeholder="Bình luận của tôi..." style={{fontSize:"15px"}}></textarea>
 								<div className="foot w-100 d-flex justify-content-between px-3 py-1" style={{backgroundColor: "white"}}>
-									<div className="text-primary" style={{fontSize:"16px"}}><a href="#"><i className="fa fa-camera text-primary mr-2" aria-hidden="true"></i>Gửi ảnh</a></div> 
+									<div className="text-primary" style={{fontSize:"16px"}}><a href="#"><i className="fa fa-camera text-primary mr-2" aria-hidden="true" style={{fontSize: "100px"}}></i>Gửi ảnh</a></div> 
 									<button className="btn btn-primary px-2" >GỬI</button>
 								</div>
 							</div>

@@ -1,6 +1,11 @@
 import React, {useEffect} from 'react'
 import "./ClientAbout.css"
-export default function ClientAbout( ) {
+import $ from 'jquery'
+export default function ClientAbout() {
+  const datafor=(secFor)=>{
+	$(".text-sec").removeClass("cau-noi-active");
+	$("#" + secFor).addClass("cau-noi-active");
+  }
 
   return (
     <div>
@@ -164,9 +169,9 @@ export default function ClientAbout( ) {
 				<span className="dev"></span>
 				
 				<div className="img-sec">
-					<a href="javascript:void(0)" className="team-click" data-for="sec1"><img src={`http://localhost:3000/images/about/ceo-shoppe.jpg`} className="" alt="CHRIS FENG"/></a>
-					<a href="javascript:void(0)" className="team-click" data-for="sec2"><img src={`http://localhost:3000/images/about/ceo-tiki.jpg`} className="" alt="CHRIS FENG"/></a>
-					<a href="javascript:void(0)" className="team-click" data-for="sec3"><img src={`http://localhost:3000/images/about/ceo-lazada.png`} className="" alt="CHRIS FENG"/></a>
+					<a  style={{cursor: "pointer"}} className="team-click" data-for="sec1" onClick={()=>datafor("sec1")}><img src={`http://localhost:3000/images/about/ceo-shoppe.jpg`} className="" alt="CHRIS FENG" /></a>
+					<a  style={{cursor: "pointer"}} className="team-click" data-for="sec2" onClick={()=>datafor("sec2")}><img src={`http://localhost:3000/images/about/ceo-tiki.jpg`} className="" alt="CHRIS FENG" /></a>
+					<a  style={{cursor: "pointer"}} className="team-click" data-for="sec3" onClick={()=>datafor("sec3")}><img src={`http://localhost:3000/images/about/ceo-lazada.png`} className="" alt="CHRIS FENG"/></a>
 				</div>
 				 
 				

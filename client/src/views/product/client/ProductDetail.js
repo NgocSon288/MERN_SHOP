@@ -24,7 +24,7 @@ export default function Detail({ title }) {
     <ListCommentClient/>
     <CreateCommentClient/>
       </div>
-      <h2 id="danh-gia-kh" class="head-title">
+      <h2 id="danh-gia-kh" class="head-title-product">
 				CÁC SẢN PHẨM NỔI BẬT KHÁC
 			</h2>
     <SameProductClient/>

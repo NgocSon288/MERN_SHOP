@@ -29,9 +29,7 @@ const commentService = {
         fd.append(name, value)
       }
     }
-
     const res = await axios.post(`${urlStr}/comments`, fd)
-    console.log(res.data)
     return res.data
   },
   delete: async (id) => { 

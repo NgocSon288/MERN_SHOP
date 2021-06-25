@@ -29,8 +29,7 @@ const productService = {
       }
     }
 
-    const res = await axios.post(`${urlStr}/products`, fd)
-    console.log('ress', res);
+    const res = await axios.post(`${urlStr}/products`, fd) 
     return res.data
   },
   update: async (product) => {

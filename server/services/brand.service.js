@@ -8,7 +8,7 @@ module.exports = {
     try {
       const brands = await Brand.find()
 
-      res.json({ success: true, data: brands })
+      return res.json({ success: true, data: brands })
     } catch (error) {
       res.status(500).json({ success: false, message: error })
     }
@@ -22,7 +22,7 @@ module.exports = {
         res.status(400).json({ success: false, message: 'brand not found' })
       }
 
-      res.json({ success: true, data: brand })
+      return res.json({ success: true, data: brand })
     } catch (error) {
       res.status(500).json({ success: false, message: error })
     }

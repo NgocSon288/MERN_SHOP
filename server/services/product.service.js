@@ -44,7 +44,7 @@ const updatePrivate = async function (req, res, next) {
     res.status(400).json({ success: false, message: 'Product not found' })
   }
 
-  res.json({ success: true, message: 'Update successfully' })
+  return res.json({ success: true, message: 'Update successfully' })
 }
 
 module.exports = {
@@ -54,7 +54,7 @@ module.exports = {
         .populate('category', ['name', 'description'])
         .populate('brand', ['name', 'logo'])
 
-      res.json({ success: true, data: products })
+      return res.json({ success: true, data: products })
     } catch (error) {
       res.status(500).json({ success: false, message: error })
     }
@@ -69,7 +69,7 @@ module.exports = {
         res.status(400).json({ success: false, message: 'Product not found' })
       }
 
-      res.json({ success: true, data: product })
+      return res.json({ success: true, data: product })
     } catch (error) {
       res.status(500).json({ success: false, message: error })
     }

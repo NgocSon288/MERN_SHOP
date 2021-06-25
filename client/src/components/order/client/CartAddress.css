@@ -1,0 +1,25 @@
+ol.dia-chi{
+  list-style-type: none;
+}
+
+a{
+  text-decoration: none !important;
+}
+
+ol.dia-chi{
+    margin-top:30px;
+}
+
+ol.dia-chi li{
+  margin-left: -24px; 
+  margin-right: 20px;
+  display: inline-block;
+  font-weight: 500;
+  font-size: 25px;
+}
+
+ol.dia-chi li:not(:last-child)::after{
+  content: "/";
+  margin: 0px 10px;
+  color: #007bff;
+}

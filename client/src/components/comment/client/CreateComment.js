@@ -43,7 +43,6 @@ export default function CreateComment() {
         fileUpload: null,
       })
     } catch (error) {
-      alert(error.message)
     }
   }
 
@@ -89,11 +88,11 @@ export default function CreateComment() {
   return (
     <div style={{marginTop:"20px",padding: "20px"}}>
         <h2 className="text-left" style={{fontSize: "26px",marginBottom: "20px"}}>Phản hồi của tôi</h2>
-        <div className="my-line mb-4" style={{justifyContent: "start"}}>
+        <div className="my-line" style={{justifyContent: "start"}}>
         <ul className="list-unstyled list-inline mb-0 my-comment-start ml-0"> 
         <FormGroup>
         <ReactStars
-        size= {25}
+        size= {27}
         count= {5}
         value= {0}
         emptyIcon= {<li><FaRegStar/></li>}
@@ -104,7 +103,7 @@ export default function CreateComment() {
        />
         </FormGroup>
         </ul>
-           <span id="date-time" style={{color: "#777", fontSize: "14px", marginLeft:"15px", lineHeight: "14px", marginTop: "10px"}}>{setTime()}</span>
+           <span id="date-time" style={{color: "#777", fontSize: "14px", marginLeft:"15px", lineHeight: "14px", marginTop: "18px"}}>{setTime()}</span>
         </div>
     <Form>
       <FormGroup>

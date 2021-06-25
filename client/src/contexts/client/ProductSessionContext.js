@@ -6,14 +6,14 @@ import * as PRODUCT_SESSION_TYPE from "./../../reducers/client/productSessionTyp
 
 export const ProductSessionContext = createContext();
 
-export default function ProductContextProvider({ children }) {
+export default function ProductSessionContextProvider({ children }) {
   const [productSessions, dispatch] = useAsyncReducer(
     productSessionReducer,
     []
   );
 
   useEffect(() => {
-    console.log("into");
+    //console.log("into");
     dispatch({
       type: PRODUCT_SESSION_TYPE.SET_PRODUCT_SESSIONS,
       payload: null,
