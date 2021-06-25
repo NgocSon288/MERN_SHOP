@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import ClientAbout from './../../../components/sites/client/ClientAbout'
+import ClientAbout from "../../../components/sites/client/ClientAbout"
 
 export default function About({ title }) {
   useEffect(() => {
@@ -8,8 +8,6 @@ export default function About({ title }) {
   })
 
   return (
-    <div>
-      <ClientAbout />
-    </div>
+    <ClientAbout></ClientAbout>
   )
 }

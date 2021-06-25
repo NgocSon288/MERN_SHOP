@@ -1,22 +1,19 @@
 import React, { useEffect, useContext,useState} from "react";
 import './Product.css'
-import {
-  Row,
-  Card,
-  CardImg,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardText,
-  Button,
-} from "reactstrap";
-import ReactStars from "react-rating-stars-component";
 import { ProductContext } from "../../../contexts/client/ProductContext";
-import ReadMoreReact from 'read-more-react';
 import {FaStar,FaRegStar} from "react-icons/fa"
 import $ from 'jquery'
-
+import { CommentContext } from './../../../contexts/client/commentContext'
+import { ProductSessionContext } from "../../../contexts/client/ProductSessionContext";
+import * as COMMENT_TYPE from './../../../reducers/client/commentType'
+import * as PRODUCT_SESSION_TYPE from "./../../../reducers/client/productSessionType";
+import { Link } from "react-router-dom";
+import '../../../assets/admin/js/hidecomment.js'
 export default function ProductDetail() {
+ let { comments, dispatchComment } = useContext(CommentContext)
+ var location = window.location.href
+ const index = location.lastIndexOf('/') + 1
+ const id = location.substring(index)
  const [data, setData] = useState({
     name: '',
     description: '',
@@ -29,12 +26,18 @@ export default function ProductDetail() {
 	rating:'',
   })
   const { products, dispatch } = useContext(ProductContext)
-	
+  const { productSessions, dispatch: dispatchProductSession } = useContext(
+    ProductSessionContext
+  );
   useEffect(() => {
-	$('#my-coll').hide();
-    var location = window.location.href
-    const index = location.lastIndexOf('/') + 1
-    const id = location.substring(index)
+    dispatch({
+      type: COMMENT_TYPE.GET_ID_PRODUCT,
+      payload: { _id: id },
+    })
+  }, [])
+  useEffect(() => {}, [comments]);
+  useEffect(() => {}, [productSessions]);
+  useEffect(() => {
 
     if (products && products.length > 0) {
       const product = products.find((p) => p._id === id)
@@ -52,13 +55,51 @@ export default function ProductDetail() {
       })
     }
   }, [products])
+  const onAddToCart = async (product) => {
+    try {
+      dispatchProductSession({
+        type: PRODUCT_SESSION_TYPE.ADD_TO_CART,
+        payload: { product: product },
+      });
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+  const tBComment = () => {
+    var s = 0
+    for (var i = 0; i < comments.length; i++) {
+      var s = s + comments[i].starNumber
+    }
+    var tb = Math.round((s / comments.length*10)) / 10
+    return tb
+  }
+  const convertMoney = (char, money) => {
+    money = money.toString()
+    let arr = []
+    let n = money.length
+    let i = 1
+    let j = 3
+
+    while (i < n) {
+      if (++i % 3 === 0) {
+        j = i
+        arr.unshift(money.slice(n - i, n - i + 3))
+      }
+    }
+
+    arr.unshift(money.slice(0, n - j))
+
+    return arr.join(char)
+  }
   const showDetail = () => {
-	$('#my-coll').slideToggle(400);
 	let text = $('#btnXemThem').text(); 
 	if(text=="Xem thêm"){ 
+	    $(".coll").removeClass("hidecmt");
+		$("#my-coll").slideDown(400);
 		$('#btnXemThem').text("Thu gọn"); 
 	}
-	else{ 
+	else{
+		$(".coll").addClass("hidecmt");
 		$('#btnXemThem').text('Xem thêm');  
 	}
   }
@@ -70,7 +111,7 @@ export default function ProductDetail() {
                   <div className="col-lg-5 col-md-8 p-0 mt-2">
                   <div className="show-sp row w-100 m-0 img-dien-thoai-show" >
 						<div className="slide-show">  
-							<div className="slides">  
+							<div className="slides"> 
 								<input type="radio" name="" id="r1"/>
 								<input type="radio" name="" id="r2"/>
 								<input type="radio" name="" id="r3"/>
@@ -80,7 +121,7 @@ export default function ProductDetail() {
 								<div><img src={data.image && `http://localhost:3000/images/product/${data.image.split("|")[2]}`} alt=""/></div> 
 							</div>	 
 						</div>
-						<div className="row w-100 mt-1 ml-0">
+						<div className="row w-100 mt-1 ml-0" style={{paddingInline: "0px"}}>
 							<label className="col-4 px-0 wrap-img label-img" for="r1">
 								<a href="javascript:void(0)"><img src={data.image && `http://localhost:3000/images/product/${data.image.split("|")[0]}`} data-src="Resources/myImages/si1.jpg" className="image-show-sm" alt="ASDASD"/></a> 
 							</label>
@@ -102,7 +143,7 @@ export default function ProductDetail() {
 		                        {[...Array(5)].map((star,i)=>{
 			                      const rating=i+1
 								  return(
-									data.rating >= rating ?
+									tBComment() >= rating ?
 								(<li>
 									<FaStar size={25}
 									color={"#ffc107"}
@@ -118,11 +159,11 @@ export default function ProductDetail() {
 								);
 		                        })}
 								</ul>
-									<a href="#danh-gia-kh" style={{fontSize:"20px", color: "rgb(0, 127, 240)", marginLeft: "10px"}} >(Xem 80 đánh giá)</a>	
+									<a href="#danh-gia-kh" style={{fontSize:"20px", color: "rgb(0, 127, 240)", marginLeft: "10px"}} >(Xem {comments.length} đánh giá)</a>	
 								</div>
 							</div>
-							<del className="mx-2 font-weight-light" id="del-gia">{data.price}</del>
-							<span className="item_price mx-3 text-danger" id="span-gia">{data.promotion}<span className="badge badge-danger"
+							<del className="mx-2 font-weight-light" id="del-gia">{`${convertMoney('.', data.price)}đ`}</del>
+							<span className="item_price mx-3 text-danger" id="span-gia">{`${convertMoney('.', data.promotion)}`}<span className="badge badge-danger"
 									style={{fontSize: "10px",verticalAlign: 'top',marginTop: "5px" }} >đ</span></span>
 						
 							<span className="label-tra-gop">Trả góp 0%</span> 
@@ -159,8 +200,10 @@ export default function ProductDetail() {
 					 </div>
 					<br/>
 					<br></br>
-					 <button className="w-100 btn btn-primary mua-ngay" style={{backgroundColor: "#ff823b", border: "none"}}  >
+					 <button className="w-100 btn btn-primary mua-ngay" style={{backgroundColor: "#ff823b", border: "none"}} onClick={() => onAddToCart(data)}  >
+						 <Link to={`/order`}>
 						 <p className="display-text text-center text-white"><strong>MUA NGAY</strong></p>
+						 </Link>
 						 <span>Giao tận nơi hoặc nhận tại siêu thị</span>
 					 </button>
 					 <br/>
@@ -184,7 +227,7 @@ export default function ProductDetail() {
 
 				</div>
               </div>
-			  <h3 className="head-title">
+			  <h3 className="head-title-product">
 				Thông số kỹ thuật
 			  </h3>			  
 			{data.parameter &&
@@ -199,14 +242,38 @@ export default function ProductDetail() {
 				
 			</ul> 
 			))}
-              <h3 className="head-title">
+              <h3 className="head-title-product">
 				Đặc điểm nổi bật của {data.name}
 			</h3>
-			<div dangerouslySetInnerHTML={{__html:data.content}} class="coll" id="my-coll">
+			<div dangerouslySetInnerHTML={{__html:data.content}} className="coll hidecmt" id="my-coll"  >
 			</div>
-			<button id="btnXemThem" onClick={() => showDetail()} class="btn btn-primary mt-5" style={{borderRadius: "5px",fontSize:"16px", marginLeft:"50%"}}>
+			<button id="btnXemThem" onClick={() => showDetail()} className="btn btn-primary mt-5" style={{borderRadius: "5px",fontSize:"16px", marginLeft:"50%"}}>
 						Xem thêm
 			</button> 
+			<div class="face">
+					<button class="btn btn-primary" style={{borderRadius: "5px"}}>
+						<i class="fa fa-thumbs-up" aria-hidden="true" style={{fontSize: "16px"}}></i>
+						<strong style={{fontSize: "16px"}}>Like</strong>
+						<span style={{fontSize:"14px"}}>100</span>
+					</button>
+					<button class="btn btn-primary ml-3" style={{borderRadius: "5px"}}>
+						<i class="fa fa-share-alt" aria-hidden="true" style={{fontSize: "16px"}}></i>
+						<strong style={{fontSize: "16px"}}>Share</strong> 
+					</button>
+			</div>
+			<div class="nhan-xet mt-5">
+					<div className="nhan-xet-content w-60 d-flex justify-content-between align-items-center py-5 pl-3" style={{backgroundColor:"#eee",width:"60%"}}>
+						<p className="lead my-pi" style={{fontSize:"18px",marginBottom:"0px",color: "black",width: "61%"}}>Bài viết này có hữu ích cho Bạn không?</p>
+						<div className="smile text-center a-nhan-xet text-center px-3 w-25"> 
+							<i className="far fa-smile-wink" style={{fontSize: "36px", color: "blue"}}></i> 
+							<a href="javascript:void(0)" ><p  style={{color: "black", fontWeight: "bold", fontSize: "16px"}} class="mb-0 my-hi text-center">Hữu ích</p></a>
+						</div>
+						<div className="smile text-center a-nhan-xet text-center px-3 w-25">  
+							<i className="far fa-angry" style={{fontSize: "36px", color: "rgb(116, 9, 50)"}}></i>
+							<a href="javascript:void(0)" ><p  class="mb-0 last my-hi text-center" style={{color: "black", fontWeight: "bold", fontSize: "16px"}}>Không hữu ích</p></a>
+						</div>
+					</div>
+				</div>
            </div>
         </div> 
     </div>

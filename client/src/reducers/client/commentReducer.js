@@ -15,7 +15,6 @@ export const commentReducer = async (state, action) => {
       const { _id } = payload 
         const res = await commentService.getByIdProduct(_id) 
         if (!res.success) {
-          console.log(res.message)
           return state
         }
         state=res.data
@@ -26,11 +25,12 @@ export const commentReducer = async (state, action) => {
       let mess = ''
       try {
         const res = await commentService.create({ ...data })
-
+        const req=await commentService.getByIdProduct(data.product)
         mess = res.message
-        state = [...state, { ...data }]
+        console.log(mess)
+        state = req.data
       } catch (error) {
-        mess = error.response.data.message 
+       
       }
 
       return state

@@ -10,6 +10,7 @@ import ClientContact from '../views/sites/client/Contact'
 //  Layouts
 import AdminLayout from './../layouts/AdminLayout'
 import ClientLayout from './../layouts/ClientLayout'
+import About from '../views/sites/client/About'
 
 // ContextProvider  
 
@@ -34,7 +35,7 @@ const route = [
     path: '/about',
     title: 'Trang giới thiệu',
     icon: 'design_app',
-    component: ClientAbout,
+    component: About,
     layout: ClientLayout,
     wrapContextProvider: null,
   },

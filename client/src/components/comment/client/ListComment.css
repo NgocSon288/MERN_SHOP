@@ -13,4 +13,16 @@
     padding: 15px;
     border-radius:50%;
     background-color:aquamarine;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+  }
+  .like{
+      color: black;
+  }
+  .like:hover{
+    color: red;
+  }
+
+  .form-group{
+      margin-bottom: 2px !important;
   }

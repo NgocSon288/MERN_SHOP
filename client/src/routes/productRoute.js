@@ -93,7 +93,9 @@ const productRoute = [
     layout: ClientLayout,
     wrapContextProvider: ({ children }) => (
       <ClientProductContextProvider>
+        <ClientProductSessionContextProvider>
         <ClientCommentContextProvider>{children}</ClientCommentContextProvider>
+        </ClientProductSessionContextProvider>
       </ClientProductContextProvider>
     ),
   },

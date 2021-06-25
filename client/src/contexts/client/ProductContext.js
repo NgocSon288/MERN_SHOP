@@ -1,6 +1,6 @@
 import React, { createContext, useEffect } from 'react'
 
-import { productReducer } from '../../reducers//client/productReducer'
+import { productReducer } from '../../reducers/client/productReducer'
 import useAsyncReducer from '../../reducers/useAsyncReducer' //  dùng để gọi async function
 import * as PRODUCT_TYPE from './../../reducers/client/productType'
 

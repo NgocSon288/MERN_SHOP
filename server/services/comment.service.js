@@ -76,12 +76,13 @@ module.exports = {
         user: userId,
         product: product,
       })
-
+      
       await comment.save()
-
       await updateRating(product)
-
-      return res.json({ success: true, message: 'Create successfully' })
+      const id=comment._id
+      const commentfind = await Comment.findOne({ _id: id })
+      .populate('user', ['name', 'image'])
+      return res.json({ success: true, message: 'Create successfully', data: commentfind })
     } catch (error) {
       console.log(error.message)
       return res
