@@ -81,17 +81,13 @@ export default function ProductCatalogue({ products }) {
                       alt=""
                     />
                     <div class="xem-chi-tiet">
-                      <Link to={`/Product-Detail/${item._id}`}>
-                        <a href="#">Xem chi tiết</a>
-                      </Link>
+                      <a href={`/Product-Detail/${item._id}`}>Xem chi tiết</a>
                     </div>
                     <span class="product-new-top">Trả góp 0%</span>
                   </div>
                   <div class="text-center mt-2 text-container">
                     <h4 class="pt-1 ten-san-pham">
-                      <Link to={`/Product-Detail/${item._id}`}>
-                        <a href="#">{item.name}</a>
-                      </Link>
+                      <a href={`/Product-Detail/${item._id}`}>{item.name}</a>
                     </h4>
                     <div class="mt-2 text-center mb-0">
                       <p class="text-center mx-auto text-danger mb-0">

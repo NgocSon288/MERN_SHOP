@@ -1,0 +1,186 @@
+.lien-he-slides {
+  height: 80vh;
+  background-image: url("http://localhost:3000/images/contact/lien-he-bg1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: slide-infi 12s infinite;
+}
+
+@keyframes slide-infi {
+  0% {
+    background-image: url("http://localhost:3000/images/contact/lien-he-bg1.jpg");
+  }
+  10.33% {
+    background-image: url("http://localhost:3000/images/contact/lien-he-bg2.jpg");
+  }
+  33.33% {
+    background-image: url("http://localhost:3000/images/contact/lien-he-bg2.jpg");
+  }
+  43.66% {
+    background-image: url("http://localhost:3000/images/contact/lien-he-bg3.jpg");
+  }
+  66.66% {
+    background-image: url("http://localhost:3000/images/contact/lien-he-bg3.jpg");
+  }
+  76% {
+    background-image: url("http://localhost:3000/images/contact/lien-he-bg1.jpg");
+  }
+}
+
+.mapouter {
+  position: relative;
+  text-align: right;
+  height: 600px;
+  width: 600px;
+}
+.gmap_canvas {
+  overflow: hidden;
+  background: none !important;
+  height: 600px;
+  width: 600px;
+}
+
+.info .lead span.foo {
+  color: black;
+  font-weight: bold;
+}
+.info p {
+  margin-bottom: 0;
+}
+.info h3 {
+  font-size: 22px;
+  font-weight: bold;
+  text-align: left;
+}
+.info .title {
+  font-size: 36px;
+  font-weight: bold;
+  text-align: left;
+}
+.info .title span {
+  color: #ff7315;
+}
+.info p.lead {
+  font-size: 18px;
+}
+.info .phone-number span,
+.info .email span {
+  font-size: 16px;
+  color: #ff7315;
+}
+.info a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+.info a:hover {
+  text-decoration: none;
+  color: #1d0c68;
+  text-decoration: underline;
+}
+
+.title-foot {
+  color: white;
+  font-size: 36px;
+  text-align: center;
+  font-weight: bold;
+  margin: 40px auto 30px auto;
+}
+
+@media screen and (min-width: 993px) {
+  .form .my-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .form .my-row input {
+    width: 32%;
+    color: black;
+    background-color: rgb(255, 255, 255) !important;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 10px;
+    font-size: 18px;
+    margin-bottom: 0px;
+  }
+  .form .my-row input::placeholder {
+    color: #85898f;
+  }
+  .form textarea {
+    width: 96%;
+    color: black;
+    background-color: rgb(255, 255, 255) !important;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 10px;
+    font-size: 18px;
+    margin: 10px auto;
+  }
+
+  .form textarea::placeholder {
+    color: #85898f;
+  }
+}
+@media screen and (max-width: 992px) {
+  .form .my-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .form .my-row input {
+    width: 100%;
+    color: black;
+    background-color: rgb(172, 172, 172) !important;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 10px;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .form textarea {
+    width: 96%;
+    color: black;
+    background-color: rgb(172, 172, 172) !important;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 10px;
+    font-size: 18px;
+    margin: 0px auto;
+  }
+  .map {
+    margin-top: 80px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .form .my-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .form .my-row input {
+    width: 100%;
+    color: black;
+    background-color: rgb(172, 172, 172) !important;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 10px;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .form textarea {
+    width: 94%;
+    color: black;
+    background-color: rgb(172, 172, 172) !important;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 10px;
+    font-size: 18px;
+    margin: 0px auto;
+  }
+}
+
+.banner {
+  background-image: url("http://localhost:3000/images/contact/banner-contact.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+}
