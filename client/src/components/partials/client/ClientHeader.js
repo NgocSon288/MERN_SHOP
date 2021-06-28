@@ -115,7 +115,10 @@ export default function ClientHeader() {
           </Link>
         </NavbarBrand>
         <NavItem className="mr-auto" navbar>
-          <form action="" className="d-inline-block my-form">
+          <form
+            action={"/Product?keyword=" + keyword}
+            className="d-inline-block my-form"
+          >
             <div className="search row my-row">
               <input
                 id="search"
