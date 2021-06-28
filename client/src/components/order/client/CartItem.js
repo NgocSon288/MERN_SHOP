@@ -69,14 +69,16 @@ export default function CartItem({ item, onDeleteProduct, onChangeAmount: onChan
         <div className='content w-100 d-flex p-3 pr-5 row my-cart-item-content'>
           <div className='col-md-3 text-center'>
             <a href='chitietsanpham.html' className='my-image-link'>
-              <img
-                src={`http://localhost:3000/images/product/${
-                  item.image.split('|')[0]
-                }`}
-                alt={item.image.split('|')[0]}
-                width='100%'
-                height='100%'
-              />
+              {item && item.image && (
+                <img
+                  src={`http://localhost:3000/images/product/${
+                    item.image.split('|')[0]
+                  }`}
+                  alt={item.image.split('|')[0]}
+                  width='100%'
+                  height='100%'
+                />
+              )}
             </a>
           </div>
 
@@ -86,7 +88,7 @@ export default function CartItem({ item, onDeleteProduct, onChangeAmount: onChan
             </Link>
 
             <h4 className='nha-cung-cap mt-3'>
-              Cung cấp bởi {item.brand.name}
+              Cung cấp bởi {item && item.brand && item.brand.name}
             </h4>
             <p className='status lead my-3'>{item.description}</p>
             <span
