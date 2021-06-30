@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
+import { navigate } from "@reach/router";
 import {
   Collapse,
   Navbar,
@@ -69,6 +70,13 @@ export default function ClientHeader() {
     setKeyword(key);
   };
 
+  //Enter event
+  const handleKeyPress = async (target) => {
+    if (target.charCode == 13) {
+      navigate(`/Product?keyword=${keyword}`);
+    }
+  };
+
   function removeVietnameseTones(str) {
     str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
     str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
@@ -126,11 +134,13 @@ export default function ClientHeader() {
                 placeholder="Bạn tìm gì..."
                 className="my-search-text col-10"
                 onChange={(e) => onChange(e)}
+                onKeyPress={(e) => handleKeyPress(e)}
               />
 
               <a
                 className="btn btn-outline-primary col-2 my-search-button"
                 style={{ height: "40px" }}
+                href={"/Product?keyword=" + keyword}
               >
                 <a href={"/Product?keyword=" + keyword}>
                   <i className="fa fa-search" />
