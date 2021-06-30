@@ -625,3 +625,11 @@ figure.effect:hover figcaption::before {
       margin-top: 70px;
       padding-bottom: 50px !important;
     }
+
+    .effect{
+      cursor: pointer;
+    }
+
+    .tablet-card{
+      cursor: pointer;
+    }

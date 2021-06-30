@@ -152,15 +152,15 @@ export default function ClientHeader() {
           )}
           {authState.isAuthenticated && (
             <NavItem id="nameOfUser">
-              <div>
+              <div className="ml-5">
                 <a
-                  href="#"
-                  className="ml-5 my-header-right-item my-header-right-item2 my-active header-user-name"
+                  href="/user/Profile"
+                  className="my-header-right-item my-header-right-item2 my-active header-user-name"
                 >
-                  <strong>{user && "Xin chào " + user.name} </strong>
+                  <strong>{user && user.name} </strong>
                 </a>
                 <a
-                  href="#"
+                  href="/user/Profile"
                   className="ml-1 mt-5 my-header-right-item my-header-right-item2 my-user-responsive"
                 >
                   <img
