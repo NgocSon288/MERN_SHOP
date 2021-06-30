@@ -73,7 +73,7 @@ export default function ClientHeader() {
   //Enter event
   const handleKeyPress = async (target) => {
     if (target.charCode == 13) {
-      navigate(`/Product?keyword=${keyword}`);
+      window.location.href = `/Product?keyword=${keyword}`;
     }
   };
 
@@ -123,10 +123,7 @@ export default function ClientHeader() {
           </Link>
         </NavbarBrand>
         <NavItem className="mr-auto" navbar>
-          <form
-            action={"/Product?keyword=" + keyword}
-            className="d-inline-block my-form"
-          >
+          <div className="d-inline-block my-form">
             <div className="search row my-row">
               <input
                 id="search"
@@ -147,7 +144,7 @@ export default function ClientHeader() {
                 </a>
               </a>
             </div>
-          </form>
+          </div>
         </NavItem>
         <Nav className="my-header-right d-flex justify-content-center align-items-center">
           {!authState.isAuthenticated && (
