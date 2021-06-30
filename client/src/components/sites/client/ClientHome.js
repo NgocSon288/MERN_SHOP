@@ -88,7 +88,6 @@ export default function ClientHome() {
   const { products } = useContext(ProductContext)
   const [ phone, setPhone ] = useState()
   const [ tablet, setTablet ] = useState()
-  const [ laptop, setLaptop ] = useState()
   const [ smartwatch, setSmartwatch ] = useState()
 
   useEffect(() => {
@@ -100,11 +99,6 @@ export default function ClientHome() {
     const tabletProduct = products.filter((p) => p.category.name === "Tablet")
     if(tabletProduct){
       setTablet(tabletProduct)
-    }
-    const laptopProduct = products.filter((p) => p.category.name === "Laptop")
-    console.log(laptopProduct)
-    if(laptopProduct){
-      setLaptop(laptopProduct)
     }
     const smartwatchProduct = products.filter((p) => p.category.name === "Smart Watch")
     if(smartwatchProduct){
@@ -241,14 +235,18 @@ export default function ClientHome() {
           <p className="cap1">Selfie Lấy Nét Tự Động Theo Mắt 44MP</p>
           <p className="cap2">Kính Mờ Siêu Mỏng | Chụp Đêm 64MP</p>
           <div className="d-flex justify-content-center align-items-center">
-            <button >
-              ĐẶT TRƯỚC <br/>
-              <span>Cọc 500.000<sup>đ</sup> </span>
-            </button>
-            <button>
-              TRẢ GÓP <br/>
-              <span>Cọc 500.000<sup>đ</sup> </span>
-            </button>
+            <a href={`http://localhost:3001/Product-Detail/60d6ebc51c52352148f819f0`}>
+              <button >
+                ĐẶT TRƯỚC <br/>
+                <span>Cọc 500.000<sup>đ</sup> </span>
+              </button>
+            </a> 
+            <a href={`http://localhost:3001/Product-Detail/60d6ebc51c52352148f819f0`}>
+              <button>
+                TRẢ GÓP <br/>
+                <span>Cọc 500.000<sup>đ</sup> </span>
+              </button>
+            </a>
           </div>
         </div>
       </div>
