@@ -1,3 +1,4 @@
+import $ from 'jquery'
 $(document).ready(()=>{
     $('.btn-submit').click(()=>{
         $('.my-modal').slideDown(400);
