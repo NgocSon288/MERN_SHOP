@@ -130,15 +130,17 @@ export default function ProductCatalogue({ products }) {
             ))}
         </Row>
       </div>
-      <div className="my-pagination">
-        <Pagination
-          activePage={activePage}
-          itemsCountPerPage={itemsCountPerPage}
-          totalItemsCount={totalItemsCount}
-          pageRangeDisplayed={3}
-          onChange={handlePageChange}
-        />
-      </div>
+      {productsActivePage && productsActivePage.length >= 8 && (
+        <div className="my-pagination">
+          <Pagination
+            activePage={activePage}
+            itemsCountPerPage={itemsCountPerPage}
+            totalItemsCount={totalItemsCount}
+            pageRangeDisplayed={3}
+            onChange={handlePageChange}
+          />
+        </div>
+      )}
     </div>
   );
 }
