@@ -66,9 +66,9 @@ export default function ProductCatalogue({ products }) {
       <div class="wrapper">
         <Row xs="1" sm="2" md="4">
           {(!productsActivePage || productsActivePage.length <= 0) && (
-            <div>
+            <div class="my-empty-cart">
               <img
-                src="http://localhost:3000/images/admin/product/no-product.png"
+                src="http://localhost:3000/images/product/no-product.png"
                 alt="no-product"
               ></img>
             </div>
