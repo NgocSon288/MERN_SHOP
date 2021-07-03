@@ -195,9 +195,9 @@ export default function ProductDetail() {
 							<div className="opstion w-100">
 								<p>Bạn đang xem phiên bản: <span id="ops-text">512GB</span></p>
 								<div>
-									<button data-del="32.990.000đ">64GB - 30.990.000đ</button>
-									<button data-del="36.990.000đ">256GB - 34.990.000đ</button>
-									<button data-del="40.990.000đ">512GB - 38.990.000đ</button>
+									<button data-del={`${convertMoney('.', data.price+1000000)}đ`}>64GB - {`${convertMoney('.', data.promotion+500000)}đ`}</button>
+									<button data-del={`${convertMoney('.', data.price+3000000)}đ`}>256GB - {`${convertMoney('.', data.promotion+1500000)}đ`}</button>
+									<button data-del={`${convertMoney('.', data.price+5000000)}đ`}>512GB - {`${convertMoney('.', data.promotion+3000000)}đ`}</button>
 								</div>
 							</div>
 

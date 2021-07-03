@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
+import { navigate } from "@reach/router";
 import {
   Collapse,
   Navbar,
@@ -69,6 +70,13 @@ export default function ClientHeader() {
     setKeyword(key);
   };
 
+  //Enter event
+  const handleKeyPress = async (target) => {
+    if (target.charCode == 13) {
+      window.location.href = `/Product?keyword=${keyword}`;
+    }
+  };
+
   function removeVietnameseTones(str) {
     str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
     str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
@@ -115,10 +123,7 @@ export default function ClientHeader() {
           </Link>
         </NavbarBrand>
         <NavItem className="mr-auto" navbar>
-          <form
-            action={"/Product?keyword=" + keyword}
-            className="d-inline-block my-form"
-          >
+          <div className="d-inline-block my-form">
             <div className="search row my-row">
               <input
                 id="search"
@@ -126,18 +131,20 @@ export default function ClientHeader() {
                 placeholder="Bạn tìm gì..."
                 className="my-search-text col-10"
                 onChange={(e) => onChange(e)}
+                onKeyPress={(e) => handleKeyPress(e)}
               />
 
               <a
                 className="btn btn-outline-primary col-2 my-search-button"
                 style={{ height: "40px" }}
+                href={"/Product?keyword=" + keyword}
               >
                 <a href={"/Product?keyword=" + keyword}>
                   <i className="fa fa-search" />
                 </a>
               </a>
             </div>
-          </form>
+          </div>
         </NavItem>
         <Nav className="my-header-right d-flex justify-content-center align-items-center">
           {!authState.isAuthenticated && (
@@ -152,14 +159,15 @@ export default function ClientHeader() {
           )}
           {authState.isAuthenticated && (
             <NavItem id="nameOfUser">
-              <div>
-                <Link  to={`/user/Profile`}
-                  className="ml-5 my-header-right-item my-header-right-item2 my-active header-user-name"
+              <div className="ml-5">
+                <Link
+                  to="/user/Profile"
+                  className="my-header-right-item my-header-right-item2 my-active header-user-name"
                 >
-                  <strong>{user && "Xin chào " + user.name} </strong>
+                  <strong>{user && user.name} </strong>
                 </Link>
                 <a
-                  href="#"
+                  href="/user/Profile"
                   className="ml-1 mt-5 my-header-right-item my-header-right-item2 my-user-responsive"
                 >
                   <img
