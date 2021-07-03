@@ -65,6 +65,14 @@ export default function ProductCatalogue({ products }) {
     <div>
       <div class="wrapper">
         <Row xs="1" sm="2" md="4">
+          {(!productsActivePage || productsActivePage.length <= 0) && (
+            <div>
+              <img
+                src="http://localhost:3000/images/admin/product/no-product.png"
+                alt="no-product"
+              ></img>
+            </div>
+          )}
           {productsActivePage &&
             productsActivePage.map((item) => (
               <div class="div-img-hover">
