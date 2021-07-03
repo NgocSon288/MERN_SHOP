@@ -21,7 +21,6 @@ export default function SameProduct() {
              products.splice(i,1)
        }
        const sameproduct=products.slice(0,4)
-       console.log(sameproduct)
        setData({
            data: sameproduct
        })

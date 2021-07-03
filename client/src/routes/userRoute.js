@@ -6,16 +6,38 @@ import EditAccount from './../views/user/admin/EditAccount'
 // Client
 import Login from '../views/user/client/Login'
 import Register from '../views/user/client/Register'
-
+import ProfileClient from './../views/user/client/Profile'
 //  Layouts
 import AdminLayout from './../layouts/AdminLayout'
 
 // ContextProvider
 import AuthContextProvider from './../contexts/client/AuthContext'
 import UserContextProvider from './../contexts/admin/UserContext'
-
+import UserContextProviderClient from './../contexts/client/UserContext'
+import ClientLayout from './../layouts/ClientLayout'
+import OrderContextProvider from '../contexts/admin/OrderContext'
+import OrderDetailContextProvider from '../contexts/admin/OrderDetailContext'
+import SeenProductContextProvider  from '../contexts/client/SeenProductsContext'
 const userRoute = [
   // Client User route
+  {
+    path: '/user/Profile',
+    title: 'Thông tin khách hàng',
+    icon: 'design_app',
+    component: ProfileClient,
+    layout: ClientLayout,
+    wrapContextProvider: ({ children }) => (
+      <UserContextProviderClient>
+        <OrderContextProvider>
+          <OrderDetailContextProvider>
+            <SeenProductContextProvider>
+             {children}
+            </SeenProductContextProvider>
+          </OrderDetailContextProvider>
+        </OrderContextProvider>
+      </UserContextProviderClient>
+    ),
+  },
   // Client Login route
   {
     path: '/account/login',

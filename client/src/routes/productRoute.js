@@ -22,7 +22,7 @@ import ClientBrandContextProvider from "../contexts/client/BrandContext";
 import Detail from "../views/product/client/ProductDetail";
 import ClientCommentContextProvider from "../contexts/client/commentContext";
 import ClientProductSessionContextProvider from "../contexts/client/ProductSessionContext";
-
+import SeenProductContextProvider  from '../contexts/client/SeenProductsContext'
 const productRoute = [
   // Admin Product route
   // Admin List route
@@ -94,7 +94,9 @@ const productRoute = [
     wrapContextProvider: ({ children }) => (
       <ClientProductContextProvider>
         <ClientProductSessionContextProvider>
-        <ClientCommentContextProvider>{children}</ClientCommentContextProvider>
+        <ClientCommentContextProvider>
+        <SeenProductContextProvider>{children}</SeenProductContextProvider>
+          </ClientCommentContextProvider>
         </ClientProductSessionContextProvider>
       </ClientProductContextProvider>
     ),

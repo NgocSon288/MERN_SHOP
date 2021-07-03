@@ -4,7 +4,6 @@ import { urlStr } from '../common/constants'
 const productService = {
   getAll: async () => {
     const res = await axios.get(`${urlStr}/products`)
-
     return res.data
   },
   getById: async (id) => {

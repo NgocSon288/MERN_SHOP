@@ -7,6 +7,8 @@ import { CommentContext } from './../../../contexts/client/commentContext'
 import { ProductSessionContext } from "../../../contexts/client/ProductSessionContext";
 import * as COMMENT_TYPE from './../../../reducers/client/commentType'
 import * as PRODUCT_SESSION_TYPE from "./../../../reducers/client/productSessionType";
+import { SeenProductContext } from "../../../contexts/client/SeenProductsContext";
+import * as SEEN_PRODUCTS_TYPE from '../../../reducers/client/seenProductType'
 import { Link } from "react-router-dom";
 import '../../../assets/admin/js/hidecomment.js'
 export default function ProductDetail() {
@@ -14,6 +16,7 @@ export default function ProductDetail() {
  var location = window.location.href
  const index = location.lastIndexOf('/') + 1
  const id = location.substring(index)
+ const {dispatch:seenproductsdispatch}=useContext(SeenProductContext)
  const [data, setData] = useState({
     name: '',
     description: '',
@@ -30,17 +33,28 @@ export default function ProductDetail() {
     ProductSessionContext
   );
   useEffect(() => {
+	if(id){
     dispatch({
       type: COMMENT_TYPE.GET_ID_PRODUCT,
       payload: { _id: id },
     })
+    }
   }, [])
+  useEffect(()=>{
+	if(id){
+	seenproductsdispatch({
+		type:SEEN_PRODUCTS_TYPE.ADD_TO_SEEN_PRODUCT,
+		payload:{_id:id},
+	})
+     }
+  },[])
   useEffect(() => {}, [comments]);
   useEffect(() => {}, [productSessions]);
   useEffect(() => {
 
     if (products && products.length > 0) {
       const product = products.find((p) => p._id === id)
+	  if(product){
     	setData({
         ...data,
         name: product.name,
@@ -53,6 +67,7 @@ export default function ProductDetail() {
 		parameter: product.parameter,
 		rating: product.rating,
       })
+	}
     }
   }, [products])
   const onAddToCart = async (product) => {
@@ -104,7 +119,16 @@ export default function ProductDetail() {
 	}
   }
   return (
-    <div>
+    <div className="container mb-5 my-wrap">
+		<div className="container">
+        <ol className="dia-chi">
+          <li>
+            <Link to='/'>Trang chủ</Link>
+          </li>
+		  <li><Link to='/Product'>Sản phẩm</Link></li>
+          <li className='active'>Chi tiết sản phẩm</li> 
+        </ol>
+       </div>
         <div className="py-0 chi-tiet-san-pham">
            <div className="container py-xl-4 py-lg-2">
               <div className="row thong-tin-nhanh-img" style={{paddingTop: "15px", marginTop: "30px"}}>

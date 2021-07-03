@@ -8,7 +8,6 @@ export const orderReducer = async (state, action) => {
     case TYPE.SET_ORDERS: {
       const res = await orderService.getAll()
       state = res.data
-
       return state
     }
 

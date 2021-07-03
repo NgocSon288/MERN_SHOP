@@ -8,7 +8,6 @@ import * as ORDER_TYPE from '../../../reducers/admin/orderType.js'
 
 export default function ListOrder() {
   let { orders, dispatch } = useContext(OrderContext)
-
   // Params pagination
   let [activePage, setActivePage] = useState(1)
   let [totalItemsCount, setTotalItemsCount] = useState(1)

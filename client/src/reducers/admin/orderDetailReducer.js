@@ -12,7 +12,11 @@ export const orderDetailReducer = async (state, action) => {
 
       return state
     }
-    
+    case TYPE.GET_ORDER_DETAILS_BY_USER_ID: {
+      const res = await orderDetailService.getAllByUserId()
+      state = res.data
+      return state
+    }
     case TYPE.CREATE: {
       const { data } = payload
       const res = await orderDetailService.create(data)

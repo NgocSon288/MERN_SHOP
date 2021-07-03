@@ -4,18 +4,14 @@ GET http://localhost:3000/api/orders/
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGEzZjJkOGZkODQ2MDNlODM2NGI4YTYiLCJpYXQiOjE2MjE2MTA2NTl9.Hc8zdUaW5pk286zlUrKMdXzXl_uUT4FL9DjYYE28_RY
 
-
-
 ###
 # Get order by id
-GET http://localhost:3000/api/orders/60a7d395e23aed1df3a2ef97
+GET http://localhost:3000/api/orders/60a879104fbf2f3cfcb7dbfd
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGEzZjJkOGZkODQ2MDNlODM2NGI4YTYiLCJpYXQiOjE2MjE2MTA2NTl9.Hc8zdUaW5pk286zlUrKMdXzXl_uUT4FL9DjYYE28_RY
 
-  
-  
 ###
 # Delete Order
-DELETE  http://localhost:3000/api/orders/60a7da29b2ed7523b26d3490 
+DELETE  http://localhost:3000/api/orders/60db32d2ce689b406c7c4e56 
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGEzZjJkOGZkODQ2MDNlODM2NGI4YTYiLCJpYXQiOjE2MjE2MTA2NTl9.Hc8zdUaW5pk286zlUrKMdXzXl_uUT4FL9DjYYE28_RY

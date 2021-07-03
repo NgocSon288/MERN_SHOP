@@ -404,3 +404,25 @@ input[type='radio']{
 .nhan-xet-content{ 
   padding: 10px !important;
 }
+ol.dia-chi{
+  list-style-type: none;
+}
+
+ol.dia-chi{
+    margin-top:30px;
+    margin-bottom: 0px;
+}
+
+ol.dia-chi li{
+  margin-left: -24px; 
+  margin-right: 20px;
+  display: inline-block;
+  font-weight: 500;
+  font-size: 25px;
+}
+
+ol.dia-chi li:not(:last-child)::after{
+  content: "/";
+  margin: 0px 10px;
+  color: #007bff;
+}

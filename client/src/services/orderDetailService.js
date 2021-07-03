@@ -6,6 +6,10 @@ const orderDetailService = {
     const res = await axios.get(`${urlStr}/orderdetails/${orderId}`)
 
     return res.data
+  }, 
+  getAllByUserId: async () => {
+    const res = await axios.get(`${urlStr}/orderdetails/`)
+    return res.data
   },
   create: async (data) => {
     const res = await axios.post(`${urlStr}/orderdetails/`, data)

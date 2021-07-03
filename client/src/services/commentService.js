@@ -4,7 +4,6 @@ import { urlStr } from '../common/constants'
 const commentService = {
   getAll: async () => {
     const res = await axios.get(`${urlStr}/comments`)
-
     return res.data
   },
   getById: async (id) => {

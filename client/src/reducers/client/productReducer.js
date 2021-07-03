@@ -8,7 +8,6 @@ export const productReducer = async (state, action) => {
     case TYPE.SET_PRODUCTS: {
       const res = await productService.getAll();
       state = res.data;
-
       return state;
     }
 

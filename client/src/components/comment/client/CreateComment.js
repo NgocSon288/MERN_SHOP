@@ -16,17 +16,19 @@ export default function CreateComment() {
   })
   const { products, dispatch } = useContext(ProductContext)
   const { dispatch: dispatchComment } = useContext(CommentContext)
-  var location = window.location.href
-  const index = location.lastIndexOf('/') + 1
-  const id = location.substring(index)
   useEffect(() => {}, [data])
   useEffect(() => {
     if (products && products.length > 0) {
+      var location = window.location.href
+      const index = location.lastIndexOf('/') + 1
+      const id = location.substring(index)
       const f=products.find((p) => p._id === id)
+      if(f){
       setData({
         ...data,
         product: f._id,
       })
+    }
     }
   }, [products])
 
@@ -78,13 +80,13 @@ export default function CreateComment() {
       })
       setData({
         ...data,
-        starNumber: 0,
+        starNumber: parseInt(0),
         reason: '',
-        description: '',
-        product: products.find((p) => p._id === id)._id, // hiện tại thì cho một compobox sản phẩm
+        description: '', // hiện tại thì cho một compobox sản phẩm
         fileUpload: null,
       })
     } catch (error) {
+      alert(error)
     }
   }
 
@@ -97,7 +99,8 @@ export default function CreateComment() {
         <ReactStars
         size= {27}
         count= {5}
-        value= {data.starNumber}
+        key = {data.starNumber}
+        value = {data.starNumber}
         emptyIcon= {<li><FaRegStar/></li>}
         filledIcon= {<li><FaStar/></li>}
         onChange={newValue => {

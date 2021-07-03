@@ -29,8 +29,13 @@ export const commentReducer = async (state, action) => {
         mess = res.message
         state = req.data
       } catch (error) {
-       
+        mess = error.response.data.message 
       }
+      
+      setTimeout(() => {
+        alert(mess)
+      }, 200)
+
 
       return state
     }

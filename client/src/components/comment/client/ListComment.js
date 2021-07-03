@@ -60,6 +60,7 @@ export default function ListComment() {
       var s = s + comments[i].starNumber
     }
     var tb = Math.round((s / comments.length*10)) / 10
+	if(isNaN(tb)){tb=0}
     return tb
   }
   const thongKe = (star) => {
@@ -70,8 +71,8 @@ export default function ListComment() {
     var thongke = (count / comments.length) * 100
     return thongke + '%'
   }
-  return (
-<div>
+   return (
+  <div>
 	<div class="danh-gia-sao w-100" style={{padding: "20px"}}>
 	<h3 class="my-danh-gia">Đánh giá</h3>
 						<div class="row">
@@ -167,7 +168,15 @@ export default function ListComment() {
   <h3 className="my-binh-luan text-left" style={{fontSize:"26px", marginTop: "50px"}}>
   Bình luận
    </h3>
-   <script src="../../../assets/admin/js/hidecomment.js"></script>
+   {(!comments || comments.length <= 0) && (
+          <div className='my-empty-cart'>
+            <img width="200px"
+              src='http://localhost:3000/images/product/NoComment.png'
+              alt='empty-cart'
+            ></img>
+			<p  className='my-empty-text'>Chưa có đánh giá</p>
+          </div>
+        )}
    {comments &&
           comments.map((item, i) => (
    <div className="binh-luan mt-5">
@@ -227,5 +236,6 @@ export default function ListComment() {
 						 ))}
 				</div>
    </div>
-  )
+	  )
+  
 }

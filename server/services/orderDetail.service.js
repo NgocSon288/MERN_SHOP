@@ -15,6 +15,23 @@ module.exports = {
       res.status(500).json({ success: false, message: error })
     }
   },
+  getAllByUserId: async function (req, res, next) {
+    try {
+      const { userId } = req
+      const orders = await Order.find({user: userId})
+      let orderDetails=[]
+      for(var i=0;i<orders.length;i++){
+        let ods=await OrderDetail.find({ order: orders[i]._id }).populate(
+          'product'
+        )
+        orderDetails.push(...ods)
+      }
+      console.log(orderDetails.length)
+      return res.json({ success: true, data: orderDetails })
+    } catch (error) {
+      res.status(500).json({ success: false, message: error })
+    }
+  },
   create: async function (req, res, next) { 
     try {
       const { userId } = req

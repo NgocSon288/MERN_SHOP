@@ -7,7 +7,7 @@ Authorization: Bearer 1kbsdkhabskbdkjab
 
 ###
 # Get user by id
-GET http://localhost:3000/api/users/60a28d3f7ceccf23132019d9
+GET http://localhost:3000/api/users/60a3f2d8fd84603e8364b8a6
 
 
 ###

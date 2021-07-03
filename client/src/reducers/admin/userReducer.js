@@ -8,7 +8,6 @@ export const userReducer = async (state, action) => {
     case TYPE.SET_USERS: {
       const res = await userService.getAll()
       state = [...res.data]
-
       return state
     }
     case TYPE.EDIT_PERMISSION_BY_ID: {
