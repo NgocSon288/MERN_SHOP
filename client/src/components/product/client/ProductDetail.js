@@ -1,4 +1,4 @@
-import React, { useEffect, useContext,useState} from "react";
+import React, { useEffect, useContext,useState,useLayoutEffect} from "react";
 import './Product.css'
 import { ProductContext } from "../../../contexts/client/ProductContext";
 import {FaStar,FaRegStar} from "react-icons/fa"
@@ -17,6 +17,9 @@ export default function ProductDetail() {
  const index = location.lastIndexOf('/') + 1
  const id = location.substring(index)
  const {dispatch:seenproductsdispatch}=useContext(SeenProductContext)
+ useLayoutEffect(() => {
+    window.scrollTo(0, 0)
+});
  const [data, setData] = useState({
     name: '',
     description: '',
@@ -118,6 +121,18 @@ export default function ProductDetail() {
 		$('#btnXemThem').text('Xem thêm');  
 	}
   }
+
+  const chooseOption=(e)=>{
+	var text = e.currentTarget.textContent.split(" - ");
+	$(".opstion button").each(function(){ 
+		$(this).removeClass("btnClick"); 
+	}) 
+	e.target.classList.add("btnClick");
+	
+	$("#ops-text").text(text[0]);
+	$("#span-gia").text(text[1]);
+	$("#del-gia").text($(this).attr("data-del"));
+  }
   return (
     <div className="container mb-5 my-wrap">
 		<div className="container">
@@ -131,7 +146,7 @@ export default function ProductDetail() {
        </div>
         <div className="py-0 chi-tiet-san-pham">
            <div className="container py-xl-4 py-lg-2">
-              <div className="row thong-tin-nhanh-img" style={{paddingTop: "15px", marginTop: "30px"}}>
+              <div className="row thong-tin-nhanh-img" style={{paddingTop: "5px"}}>
                   <div className="col-lg-5 col-md-8 p-0 mt-2">
                   <div className="show-sp row w-100 m-0 img-dien-thoai-show" >
 						<div className="slide-show">  
@@ -193,11 +208,11 @@ export default function ProductDetail() {
 							<span className="label-tra-gop">Trả góp 0%</span> 
 
 							<div className="opstion w-100">
-								<p>Bạn đang xem phiên bản: <span id="ops-text">512GB</span></p>
+								<p>Bạn đang xem phiên bản: <span id="ops-text">64GB</span></p>
 								<div>
-									<button data-del={`${convertMoney('.', data.price+1000000)}đ`}>64GB - {`${convertMoney('.', data.promotion+500000)}đ`}</button>
-									<button data-del={`${convertMoney('.', data.price+3000000)}đ`}>256GB - {`${convertMoney('.', data.promotion+1500000)}đ`}</button>
-									<button data-del={`${convertMoney('.', data.price+5000000)}đ`}>512GB - {`${convertMoney('.', data.promotion+3000000)}đ`}</button>
+									<button onClick={(e) => chooseOption(e)} data-del={`${convertMoney('.', data.price+1000000)}đ`}>64GB - {`${convertMoney('.', data.promotion+500000)}đ`}</button>
+									<button onClick={(e) => chooseOption(e)} data-del={`${convertMoney('.', data.price+3000000)}đ`}>256GB - {`${convertMoney('.', data.promotion+1500000)}đ`}</button>
+									<button onClick={(e) => chooseOption(e)} data-del={`${convertMoney('.', data.price+5000000)}đ`}>512GB - {`${convertMoney('.', data.promotion+3000000)}đ`}</button>
 								</div>
 							</div>
 

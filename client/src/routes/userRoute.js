@@ -18,6 +18,7 @@ import ClientLayout from './../layouts/ClientLayout'
 import OrderContextProvider from '../contexts/admin/OrderContext'
 import OrderDetailContextProvider from '../contexts/admin/OrderDetailContext'
 import SeenProductContextProvider  from '../contexts/client/SeenProductsContext'
+import ClientProductSessionContextProvider from "../contexts/client/ProductSessionContext";
 const userRoute = [
   // Client User route
   {
@@ -31,7 +32,9 @@ const userRoute = [
         <OrderContextProvider>
           <OrderDetailContextProvider>
             <SeenProductContextProvider>
-             {children}
+              <ClientProductSessionContextProvider>
+                {children}
+              </ClientProductSessionContextProvider>
             </SeenProductContextProvider>
           </OrderDetailContextProvider>
         </OrderContextProvider>

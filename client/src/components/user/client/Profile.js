@@ -4,26 +4,30 @@ import Pagination from "react-js-pagination";
 import './Profile.css'
 import $ from 'jquery'
 import '../../../assets/admin/js/profile.js'
-import { Link } from "react-router-dom";
-import { UserContext } from "../../../contexts/client/UserContext";
-import * as USER_TYPE from './../../../reducers/client/userType'
 import { AuthContext } from './../../../contexts/client/AuthContext'
+import * as AUTH_TYPE from '../../../reducers/client/authType'
 import { OrderContext } from '../../../contexts/admin/OrderContext'
 import * as ORDER_DETAIL_TYPE from '../../../reducers/admin/orderDetailType.js'
 import { OrderDetailContext } from '../../../contexts/admin/OrderDetailContext'
 import { SeenProductContext } from "../../../contexts/client/SeenProductsContext";
+import { ProductSessionContext } from "../../../contexts/client/ProductSessionContext";
+import * as PRODUCT_SESSION_TYPE from "./../../../reducers/client/productSessionType";
 import Anoumane from "./Anoumane";
 import ListProduct from "./ListProduct";
 export default function ProfileClient() {
 const [order,setOrder]=useState({})
-const { authState } = useContext(AuthContext)
+const { authState,dispatch:dispatchAuth } = useContext(AuthContext)
 const {seenProducts}=useContext(SeenProductContext)
 const [user, setUser] = useState({})
 const [date,setDate] = useState('')
 const [myFavourite,setFavouri]=useState()
 const [mySeen, setSeen] = useState()
+const [name,setName]=useState()
 let { orderDetails, dispatch } = useContext(OrderDetailContext)
 const { orders} = useContext(OrderContext)
+const {  dispatch: dispatchProductSession } = useContext(
+    ProductSessionContext
+  );
 let [activePage, setActivePage] = useState(1);
 let [totalItemsCount, setTotalItemsCount] = useState(1);
 let [productsActivePage, setProductsActivePage] = useState([]);
@@ -37,7 +41,6 @@ useEffect(() => {
         )
     }
   }, [orders])
-
 useEffect(()=>{
     const setdate='2020-07-17'
     dispatch({
@@ -50,7 +53,9 @@ useEffect(()=>{},[date])
 useEffect(()=>{
     if (authState && authState.isAuthenticated) {
         setUser({ ...authState.user._doc })
+        setName(authState.user._doc.name)
       }
+      
     $(".them-dia-chi-card").slideUp();
 },[authState])
 useEffect(()=>{
@@ -88,6 +93,17 @@ const onChange = async (e) => {
 const onChangeDate=async (e)=>{
     setDate(e.target.value)
 }
+const onAddToCart = async (product) => {
+    try {
+      dispatchProductSession({
+        type: PRODUCT_SESSION_TYPE.ADD_TO_CART,
+        payload: { product: product },
+      });
+      alert("Add to Cart successfully!");
+    } catch (error) {
+      alert(error.message);
+    }
+  };
   const convertMoney = (char, money) => {
     money = money.toString()
     let arr = []
@@ -147,7 +163,6 @@ const onChangeDate=async (e)=>{
         {
            trangThai="thanh-cong"
         }
-        console.log(h)
     }
     return trangThai
   } 
@@ -182,9 +197,20 @@ const onChangeDate=async (e)=>{
     return trangThai
   } 
   const onSubmit = async (e) => {
-    try {console.log(date)
+    if (!user.name || !user.address || !user.email || !user.phone) {
+      alert('Data is not valid')
+      return
+    } console.log(user)
+    try {
+        dispatchAuth ({
+        type: AUTH_TYPE.EDIT,
+        payload: {
+          user: { ...user },
+        },
+      })
+      setName(user.name)
     } catch (error) {
-      alert(error)
+      alert(error.message)
     }
   }
   const [myModal, setMyModal] = useState(false)
@@ -200,7 +226,12 @@ const onChangeDate=async (e)=>{
   }
     return(
         <div data-spy="scroll" data-target="#myScrollspy" data-offset="100" style={{position:'relative'}}>
+            
         <div className="container">
+        <ol class="dia-chi" style={{backgroundColor: "white", fontSize: "20px"}}>
+            <li><a href="index.html">Trang chủ</a></li> 
+            <li class="active">Thông tin cá nhân</li>  
+        </ol>   <br></br>
            <div className="row mt-0" style={{marginTop: "20px"}}>
                     <div class="col-4" id="myScrollspy"  style={{minWidth: "18px", marginBottom: "68px"}}>
                         <ul class=" nav-pills nav-stacked my-scroll menu-items" style={{boxShadow: "0px 0px 15px 0px #D6D6D6", padding: "10px"}}>
@@ -208,7 +239,7 @@ const onChangeDate=async (e)=>{
                                 <a href="#s1" className="my-section">
                                         <div className="my-secsion-item"> 
                                             <img src={`http://localhost:3000/images/user/${user.image}`} alt="" className="user-img"/>
-                                            <p className="user-name-pro my-active">{user.name}</p> 
+                                            <p className="user-name-pro my-active">{name}</p> 
                                         </div>
                                 </a>
                             </li>
@@ -418,11 +449,11 @@ const onChangeDate=async (e)=>{
                 </div>
                 <div id="s5" class="p-5 pekora">
                    <h1 class="title">Sản phẩm đã xem <span class="my-so-luong">({seenProducts.length})</span></h1>
-                       <ListProduct products={mySeen}></ListProduct>
+                       <ListProduct onAddToCart={onAddToCart} products={mySeen}></ListProduct>
                 </div>
                 <div id="s6" class="p-5 pekora">
                     <h1 class="title">Sản phẩm yêu thích <span class="my-so-luong">({myFavourite && myFavourite.flat().length})</span></h1>
-                    <ListProduct products={myFavourite}></ListProduct>
+                    <ListProduct onAddToCart={onAddToCart} products={myFavourite}></ListProduct>
                 </div>
             </div>
            </div>

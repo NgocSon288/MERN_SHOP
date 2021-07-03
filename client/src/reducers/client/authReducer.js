@@ -72,6 +72,7 @@ export const authReducer = async (state, action) => {
 
     case TYPE.EDIT: {
       const { user } = payload
+      console.log(user)
       try {
         const res = await userService.update(user) 
         setTimeout(() => {
