@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from "react";
 
-import ClientContact from './../../../components/sites/client/ClientContact'
+import ClientContact from "./../../../components/sites/client/ClientContact";
 
 export default function Contact({ title }) {
   useEffect(() => {
-    document.title = title
-  })
+    document.title = title;
+  });
 
   return (
     <div>
       <ClientContact />
     </div>
-  )
+  );
 }

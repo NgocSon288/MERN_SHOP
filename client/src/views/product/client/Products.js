@@ -94,7 +94,17 @@ export default function Catalogue({ title }) {
   //console.log("product: ", productABC);
 
   return (
-    <div style={{ marginLeft: "10%", marginRight: "10%", paddingTop: "22px" }}>
+    <div style={{ marginLeft: "10%", marginRight: "10%", paddingTop: "5px" }}>
+      <ol
+        class="dia-chi"
+        style={{ backgroundColor: "white", fontSize: "20px" }}
+      >
+        <li>
+          <a href="/">Trang chủ</a>
+        </li>
+        <li class="active">Sản phẩm</li>
+      </ol>{" "}
+      <br></br>
       <Row>
         <Col lg="3">
           <FilterMenu filter={filter} products={productAfterQuery} />
