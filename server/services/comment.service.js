@@ -10,7 +10,7 @@ const updateRating = async (product) => {
     const cmts = await Comment.find({ product: product })
     const pro = await Product.findOne({ _id: product })
     let rating = 0
-    cmts.forEach((c) => (rating = c.starNumber))
+    cmts.forEach((c) => (rating += c.starNumber))
     pro.rating = rating / cmts.length
 
     await pro.save()
@@ -46,7 +46,7 @@ module.exports = {
   getByIdProduct: async function (req, res, next) {
     try {
       const { productid } = req.params
-      const comment = await Comment.find({product: { _id: productid }})
+      const comment = await Comment.find({ product: { _id: productid } })
         .populate('user', ['name', 'image'])
         .populate('product', ['name', 'image'])
       if (!comment) {
@@ -76,13 +76,19 @@ module.exports = {
         user: userId,
         product: product,
       })
-      
+
       await comment.save()
       await updateRating(product)
-      const id=comment._id
-      const commentfind = await Comment.findOne({ _id: id })
-      .populate('user', ['name', 'image'])
-      return res.json({ success: true, message: 'Create successfully', data: commentfind })
+      const id = comment._id
+      const commentfind = await Comment.findOne({ _id: id }).populate('user', [
+        'name',
+        'image',
+      ])
+      return res.json({
+        success: true,
+        message: 'Create successfully',
+        data: commentfind,
+      })
     } catch (error) {
       console.log(error.message)
       return res

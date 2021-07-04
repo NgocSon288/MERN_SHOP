@@ -1,6 +1,7 @@
 const fs = require('fs')
 
 const Product = require('./../models/Product')
+const Comment = require('./../models/Comment')
 const fileHelper = require('./../common/fileuploadHelper')
 
 const updatePrivate = async function (req, res, next) {
@@ -150,6 +151,40 @@ module.exports = {
     } catch (error) {
       console.log(error.message)
       return res.status(500).json({ success: false, message: error.message })
+    }
+  },
+  updateRating: async function (req, res, next) {
+    try {
+      const products = await Product.find()
+        .populate('category', ['name', 'description'])
+        .populate('brand', ['name', 'logo'])
+
+      const cmts = []
+      const comments = await Comment.find()
+      for(let i=0;i< products.length;i++) {
+
+      
+        const cs = comments.filter((c) => {
+          return c.product + '' == products[i]._id + ''
+        })
+
+        if (cs && cs.length > 0) {
+          let sum = 0
+
+          sum = cs.reduce((sum, { starNumber }) => sum + starNumber, 0)
+          products[i].rating = Number(sum) / Number(cs.length)
+          await products[i].save()
+        }
+      }
+
+      const a = products.map((p) => {
+        return { name: p.name, rating: p.rating }
+      })
+
+      return res.json({ success: true, data: comments })
+    } catch (error) {
+      console.log(error.message)
+      res.status(500).json({ success: false, message: error })
     }
   },
 }

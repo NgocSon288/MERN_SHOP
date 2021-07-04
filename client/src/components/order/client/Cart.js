@@ -127,6 +127,26 @@ export default function Card() {
     })
   }
 
+
+  const convertMoney = (char, money) => {
+    money = money.toString()
+    let arr = []
+    let n = money.length
+    let i = 1
+    let j = 3
+
+    while (i < n) {
+      if (++i % 3 === 0) {
+        j = i
+        arr.unshift(money.slice(n - i, n - i + 3))
+      }
+    }
+
+    arr.unshift(money.slice(0, n - j))
+
+    return arr.join(char)
+  }
+
   return (
     <>
       <div className='container mb-5 my-wrap'>
@@ -254,12 +274,12 @@ export default function Card() {
 
             <div className='d-flex justify-content-between foot'>
               <span>Tổng tiền:</span>
-              <span id='total'>{totalAll.total} đ</span>
+              <span id='total'>{convertMoney(",", totalAll.total)} đ</span>
             </div>
             <div className='d-flex justify-content-between foot'>
               <span>Giảm giá:</span>
               <del>
-                <span id='total-del'>{totalAll.totalDel} đ</span>
+                <span id='total-del'>{convertMoney(",", totalAll.totalDel)} đ</span>
               </del>
             </div>
             <div className='d-flex justify-content-between foot'>
@@ -268,7 +288,7 @@ export default function Card() {
               </span>
               <span>
                 <strong id='total-sub' className='text-danger'>
-                  {totalAll.totalSub} đ
+                  {convertMoney(",", totalAll.totalSub)} đ
                 </strong>
               </span>
             </div>

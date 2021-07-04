@@ -44,7 +44,7 @@ export default function ListUser() {
  
   const onUpdatePermission = (e) => {
     if (e.target.dataset.id === userCurrent._id) {
-      alert('Can not update permissions for your own account')
+      alert('Bạn không thể cập nhật quyền cho tài khoản này!')
       return
     }
 

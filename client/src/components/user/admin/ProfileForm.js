@@ -32,7 +32,7 @@ export default function ProfileForm() {
 
   const onSubmit = async (e) => {
     if (!user.name || !user.address || !user.email || !user.phone) {
-      alert('Data is not valid')
+      alert('Dữ liệu không hợp lệ!')
       return
     } 
     try {
