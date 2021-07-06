@@ -48,6 +48,7 @@ export default function CartItem({ item, onDeleteProduct, onChangeAmount: onChan
       payload: { product: { ...item }, newAmount: newAmount },
     })
     setAmount(item.amount)
+    onChangeAmountParent()
   }
 
   const deleteAmount = () => {

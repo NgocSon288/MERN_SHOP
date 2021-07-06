@@ -138,12 +138,18 @@ export default function Card() {
     while (i < n) {
       if (++i % 3 === 0) {
         j = i
-        arr.unshift(money.slice(n - i, n - i + 3))
+
+        if(money.slice(n - i, n - i + 3)){
+            arr.unshift(money.slice(n - i, n - i + 3))
+        }
       }
     }
 
-    arr.unshift(money.slice(0, n - j))
-
+    if(money.slice(0, n - j))
+    {
+        arr.unshift(money.slice(0, n - j)) 
+    }
+    console.log(arr);
     return arr.join(char)
   }
 
