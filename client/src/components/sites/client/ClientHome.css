@@ -179,9 +179,15 @@ figure.effect:hover figcaption::before {
   /* end dien thoai */
   .my-res-a{
     color:  white !important;
-    font-weight: bold;
   }
 
+  .ten-san-pham {
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+  }
 /* Latest-Arrivals  */
 .sp-dien-thoai{
   padding-top: 50px;
@@ -624,12 +630,4 @@ figure.effect:hover figcaption::before {
       background-color :#F5F5F5;
       margin-top: 70px;
       padding-bottom: 50px !important;
-    }
-
-    .effect{
-      cursor: pointer;
-    }
-
-    .tablet-card{
-      cursor: pointer;
     }

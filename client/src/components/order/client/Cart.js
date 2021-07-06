@@ -9,7 +9,7 @@ import * as PRODUCT_SESSION_TYPE from './../../../reducers/client/productSession
 import { AuthContext } from './../../../contexts/client/AuthContext'
 import { OrderContext } from './../../../contexts/client/OrderContext'
 import * as ORDER_TYPE from './../../../reducers/client/orderType'
-
+import $ from 'jquery'
 import './Cart.css'
 
 export default function Card() {
@@ -58,9 +58,11 @@ export default function Card() {
     let total = 0
     let totalDel = 0
     let totalSub = 0
+    let amountOrder = 0
     if (items) {
       items.forEach((item) => {
         total += item.price * item.amount
+        amountOrder += item.amount
       })
 
       totalDel = total * 0.1
@@ -71,6 +73,8 @@ export default function Card() {
         totalDel: totalDel,
         totalSub: totalSub,
       })
+
+      $("#amountOrder").text(amountOrder)
     }
   }
 

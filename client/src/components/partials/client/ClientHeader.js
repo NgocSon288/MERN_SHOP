@@ -20,14 +20,20 @@ import $ from "jquery";
 import { AuthContext } from "./../../../contexts/client/AuthContext";
 import * as AUTH_TYPE from "./../../../reducers/client/authType";
 import { CategoryContext } from "./../../../contexts/client/CategoryContext";
+import { ProductSessionContext } from "./../../../contexts/client/ProductSessionContext";
 
 export default function ClientHeader() {
   const { authState, dispatch } = useContext(AuthContext);
   const [user, setUser] = useState({});
   const { categories } = useContext(CategoryContext);
-
+  const { productSessions } = useContext(ProductSessionContext)
+  const [totalOrder, setTotalOrder] = useState(0);
   useEffect(() => {}, [categories]);
-
+  useEffect(() => {
+    var total = 0;
+    productSessions.map(item => total = total + item.amount)
+    setTotalOrder(total)
+  }, [productSessions]);
   useEffect(() => {
     dispatch({
       type: AUTH_TYPE.SET_AUTH,
@@ -236,7 +242,7 @@ export default function ClientHeader() {
                 style={{ marginRight: "7px" }}
               ></i>
               Giỏ hàng
-              <span className="badge badge-danger my-no">4</span>
+              <span className="badge badge-danger my-no" id="amountOrder">{productSessions && totalOrder}</span>
             </Link>
             <Link
               to="/order"
@@ -248,7 +254,7 @@ export default function ClientHeader() {
                 aria-hidden="true"
                 style={{ marginRight: "4px" }}
               ></i>
-              <span className="badge badge-danger my-no">4</span>
+              <span className="badge badge-danger my-no" id="amountOrder">{productSessions && totalOrder}</span>
             </Link>
           </NavItem>
         </Nav>

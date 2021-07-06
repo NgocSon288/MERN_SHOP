@@ -8,10 +8,10 @@ import ClientHome from '../views/sites/client/Home'
 import ClientContact from '../views/sites/client/Contact' 
 
 //  Layouts
-import AdminLayout from './../layouts/AdminLayout'
 import ClientLayout from './../layouts/ClientLayout'
 import About from '../views/sites/client/About'
 
+import ClientAdvertisementContextProvider from '../contexts/client/AdvertisementContext'
 import ClientProductContextProvider from "../contexts/client/ProductContext";
 // ContextProvider  
 
@@ -28,7 +28,11 @@ const route = [
     component: ClientHome,
     layout: ClientLayout,
     wrapContextProvider: ({ children }) => (
-      <ClientProductContextProvider>{children}</ClientProductContextProvider>
+      <ClientAdvertisementContextProvider>
+        <ClientProductContextProvider>
+          {children}
+        </ClientProductContextProvider>
+      </ClientAdvertisementContextProvider>
     ),
   },
 
