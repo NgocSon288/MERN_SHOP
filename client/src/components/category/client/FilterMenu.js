@@ -77,14 +77,14 @@ export default function FilterMenu({ filter, products }) {
     if (rating.length > 0) {
       if (isFilter == 0) {
         for (var i = 0; i < rating.length; i++) {
-          var item = products.filter((e) => e.rating == rating[i]);
+          var item = products.filter((e) => Math.floor(e.rating) == rating[i]);
           filterProductList = filterProductList.concat(item);
         }
       } else {
         var item = [];
         for (var i = 0; i < rating.length; i++) {
           item = item.concat(
-            filterProductList.filter((e) => e.rating == rating[i])
+            filterProductList.filter((e) => Math.floor(e.rating) == rating[i])
           );
         }
         filterProductList = item;

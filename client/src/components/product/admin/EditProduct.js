@@ -53,7 +53,16 @@ export default function EditProduct() {
 
   const onSubmit = async (e) => {
     convertParameter()
-
+    if (
+      !data.name ||
+      !data.price ||
+      !data.content ||
+      !data.promotion ||
+      !data.description
+    ) {
+      alert('Dữ liệu không hợp lệ!')
+      return
+    }
     try {
       dispatch({
         type: PRODUCT_TYPE.EDIT_BY_ID,

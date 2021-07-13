@@ -6,7 +6,7 @@ import Pagination from "react-js-pagination";
 import { ProductContext } from "../../../contexts/client/ProductContext";
 import { ProductSessionContext } from "../../../contexts/client/ProductSessionContext";
 import * as PRODUCT_SESSION_TYPE from "./../../../reducers/client/productSessionType";
-
+import $ from 'jquery'
 import "./ProductCatalogue.css";
 
 export default function ProductCatalogue({ products }) {
@@ -30,7 +30,9 @@ export default function ProductCatalogue({ products }) {
         type: PRODUCT_SESSION_TYPE.ADD_TO_CART,
         payload: { product: product },
       });
-      alert("Add to Cart successfully!");
+      alert("Đã thêm vào giỏ hàng!");
+      const amount = $("#amountOrder").text();
+      $("#amountOrder").text(parseInt(amount) + 1)
     } catch (error) {
       alert(error.message);
     }
@@ -65,6 +67,14 @@ export default function ProductCatalogue({ products }) {
     <div>
       <div class="wrapper">
         <Row xs="1" sm="2" md="4">
+          {(!productsActivePage || productsActivePage.length <= 0) && (
+            <div class="my-empty-cart">
+              <img
+                src="http://localhost:3000/images/product/no-product.png"
+                alt="no-product"
+              ></img>
+            </div>
+          )}
           {productsActivePage &&
             productsActivePage.map((item) => (
               <div class="div-img-hover">
@@ -122,15 +132,17 @@ export default function ProductCatalogue({ products }) {
             ))}
         </Row>
       </div>
-      <div className="my-pagination">
-        <Pagination
-          activePage={activePage}
-          itemsCountPerPage={itemsCountPerPage}
-          totalItemsCount={totalItemsCount}
-          pageRangeDisplayed={3}
-          onChange={handlePageChange}
-        />
-      </div>
+      {productsActivePage && productsActivePage.length >= 8 && (
+        <div className="my-pagination">
+          <Pagination
+            activePage={activePage}
+            itemsCountPerPage={itemsCountPerPage}
+            totalItemsCount={totalItemsCount}
+            pageRangeDisplayed={3}
+            onChange={handlePageChange}
+          />
+        </div>
+      )}
     </div>
   );
 }

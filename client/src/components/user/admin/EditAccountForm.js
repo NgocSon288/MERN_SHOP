@@ -46,12 +46,12 @@ export default function EditAccountForm() {
       !account.newPassword ||
       !account.confirmNewPassword
     ) {
-      alert('Data is not valid')
+      alert('Dữ liệu không hợp lệ!')
       return
     }
 
     if (account.newPassword !== account.confirmNewPassword) {
-      alert('Confirm password is not valid')
+      alert('Nhập lại mật khẩu không chính xác!')
       return
     }
 

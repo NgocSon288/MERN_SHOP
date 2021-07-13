@@ -77,12 +77,12 @@ html{
 
 @media screen and (max-width: 1200px) { 
   .my-header{
-    max-width: 750px !important
+    max-width: 800px !important
   }
 
   .header-user-name{
     word-break: break-word;
-    max-width: 160px;
+    max-width: 170px;
     white-space:pre-wrap;
   }
 
@@ -187,7 +187,6 @@ html{
 }
 
 .my-logout-header:hover{
-  text-decoration: underline;
   color:#0056b3;
 }
 

@@ -24,8 +24,8 @@ export default function CreateBrand() {
   }
 
   const onSubmit = async (e) => { 
-    if (!data.name || !data.description) {
-      alert('Data is not valid')
+    if (!data.name || !data.description  || !data.fileUpload) {
+      alert('Dữ liệu không hợp lệ!')
       return
     }
 

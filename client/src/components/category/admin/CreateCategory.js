@@ -26,7 +26,7 @@ export default function CreateCategory() {
     e.preventDefault()
     try {
       if (!data.name || !data.description) {
-        alert('Data can not empty')
+        alert('Dữ liệu không hợp lệ!')
         return
       }
 

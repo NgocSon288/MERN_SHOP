@@ -45,8 +45,8 @@ export default function EditAdvertisement() {
   }
 
   const onSubmit = async (e) => {
-    if (!data.name || !data.description || !data.url) {
-      alert('Data is not valid')
+    if (!data.name || !data.description) {
+      alert('Dữ liệu không hợp lệ!')
       return
     } 
     try {
@@ -68,7 +68,7 @@ export default function EditAdvertisement() {
   }
 
   return (
-    <Form style={{width: '40%'}}>
+    <Form style={{ width: '40%' }}>
       <FormGroup>
         <Label for='name'>Tên slide</Label>
         <Input
@@ -103,7 +103,7 @@ export default function EditAdvertisement() {
         />
       </FormGroup>
       <FormGroup>
-        <Label for='url'>URL</Label>
+        <Label for='displayOrder'>Thứ tự</Label>
         <Input
           type='select'
           name='displayOrder'

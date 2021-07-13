@@ -4,6 +4,11 @@ const verifyToken = require('./../middleware/auth')
 
 const route = express.Router()
 
+// @route GET /api/products/updaterating
+// @desc Update rating
+// @access Public
+route.get('/updateRating', productService.updateRating) 
+
 // @route GET /api/products
 // @desc Get all products
 // @access Public

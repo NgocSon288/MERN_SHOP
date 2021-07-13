@@ -42,6 +42,20 @@ export default function CreateProduct() {
   useEffect(() => {}, [data])
 
   const onSubmit = async (e) => {
+    if (
+      !data.name ||
+      !data.price ||
+      !data.content ||
+      !data.promotion ||
+      !data.description ||
+      !data.parameter ||
+      data.parameter.length <= 0 ||
+      !data.fileUpload ||
+      data.fileUpload.length < 3
+    ) {
+      alert('Dữ liệu không hợp lệ!')
+      return
+    }
     try {
       dispatch({
         type: PRODUCT_TYPE.CREATE,
@@ -73,8 +87,10 @@ export default function CreateProduct() {
         _id: '',
         fileUpload: null,
       })
+
+      document.getElementById('my-image').value = null
     } catch (error) {
-      alert(error.message + 'sasd')
+      alert(error.message)
     }
   }
 
@@ -162,7 +178,7 @@ export default function CreateProduct() {
       parameter: [...newParam],
     })
   }
-  
+
   return (
     <Form>
       <FormGroup style={{ width: '40%' }}>
@@ -334,7 +350,7 @@ export default function CreateProduct() {
         <Input
           type='file'
           name='image'
-          id='image'
+          id='my-image'
           onChange={(e) => onChangeImage(e)}
           multiple
         />

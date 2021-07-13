@@ -48,6 +48,7 @@ export default function CartItem({ item, onDeleteProduct, onChangeAmount: onChan
       payload: { product: { ...item }, newAmount: newAmount },
     })
     setAmount(item.amount)
+    onChangeAmountParent()
   }
 
   const deleteAmount = () => {
@@ -57,6 +58,25 @@ export default function CartItem({ item, onDeleteProduct, onChangeAmount: onChan
     if (check) {
       onDeleteProduct(item)
     }
+  }
+
+  const convertMoney = (char, money) => {
+    money = money.toString()
+    let arr = []
+    let n = money.length
+    let i = 1
+    let j = 3
+
+    while (i < n) {
+      if (++i % 3 === 0) {
+        j = i
+        arr.unshift(money.slice(n - i, n - i + 3))
+      }
+    }
+
+    arr.unshift(money.slice(0, n - j))
+
+    return arr.join(char)
   }
 
   if (amount <= 0) {
@@ -96,11 +116,12 @@ export default function CartItem({ item, onDeleteProduct, onChangeAmount: onChan
               data-gia='38990000'
               data-for='input1'
             >
-              {item.price} <span className='badge vnd'>đ</span>
+              {convertMoney(",",item.price)} <span className='badge vnd'>đ</span>
             </span>
             <del className='my-del-price'>
               <span className='gia'>
-                {item.promotion} <span className='badge vnd'>đ</span>
+                {convertMoney(",", item.promotion)}{' '}
+                <span className='badge vnd'>đ</span>
               </span>
             </del>
             <div className='d-flex row mt-1'>

@@ -44,8 +44,7 @@ export default function Createproduct() {
         description: '',
         product: products[0]._id, // hiện tại thì cho một compobox sản phẩm
         fileUpload: null,
-      })
-      console.log("dm reactjs")
+      })  
     } catch (error) {
       alert(error.message)
     }

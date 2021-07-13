@@ -39,7 +39,7 @@ export default function RegisterForm() {
       !user.fileUpload ||
       !user.phone
     ) {
-      alert('Data is not valid') 
+      alert('Vui lòng nhập đầy đủ thông tin!') 
       return
     }
 

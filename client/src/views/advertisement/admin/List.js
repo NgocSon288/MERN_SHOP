@@ -10,7 +10,7 @@ export default function List() {
       <div>
         <h2 className='mb-4'>Danh sách các slide quảng cáo</h2>
         <Button color='primary' className='mb-4 btn' outline>
-          <Link to='/admin/advertisement/create'>Thêm nhãn hiệu</Link>
+          <Link to='/admin/advertisement/create'>Thêm quảng cáo</Link>
         </Button>
         <ListAdvertisement />
       </div>

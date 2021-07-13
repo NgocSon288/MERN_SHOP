@@ -9,7 +9,7 @@ import * as PRODUCT_SESSION_TYPE from './../../../reducers/client/productSession
 import { AuthContext } from './../../../contexts/client/AuthContext'
 import { OrderContext } from './../../../contexts/client/OrderContext'
 import * as ORDER_TYPE from './../../../reducers/client/orderType'
-
+import $ from 'jquery'
 import './Cart.css'
 
 export default function Card() {
@@ -58,9 +58,11 @@ export default function Card() {
     let total = 0
     let totalDel = 0
     let totalSub = 0
+    let amountOrder = 0
     if (items) {
       items.forEach((item) => {
         total += item.price * item.amount
+        amountOrder += item.amount
       })
 
       totalDel = total * 0.1
@@ -71,6 +73,8 @@ export default function Card() {
         totalDel: totalDel,
         totalSub: totalSub,
       })
+
+      $("#amountOrder").text(amountOrder)
     }
   }
 
@@ -125,6 +129,32 @@ export default function Card() {
       message: '',
       paymentMethod: 'Tiền mặt khi nhận hàng',
     })
+  }
+
+
+  const convertMoney = (char, money) => {
+    money = money.toString()
+    let arr = []
+    let n = money.length
+    let i = 1
+    let j = 3
+
+    while (i < n) {
+      if (++i % 3 === 0) {
+        j = i
+
+        if(money.slice(n - i, n - i + 3)){
+            arr.unshift(money.slice(n - i, n - i + 3))
+        }
+      }
+    }
+
+    if(money.slice(0, n - j))
+    {
+        arr.unshift(money.slice(0, n - j)) 
+    }
+    console.log(arr);
+    return arr.join(char)
   }
 
   return (
@@ -254,12 +284,12 @@ export default function Card() {
 
             <div className='d-flex justify-content-between foot'>
               <span>Tổng tiền:</span>
-              <span id='total'>{totalAll.total} đ</span>
+              <span id='total'>{convertMoney(",", totalAll.total)} đ</span>
             </div>
             <div className='d-flex justify-content-between foot'>
               <span>Giảm giá:</span>
               <del>
-                <span id='total-del'>{totalAll.totalDel} đ</span>
+                <span id='total-del'>{convertMoney(",", totalAll.totalDel)} đ</span>
               </del>
             </div>
             <div className='d-flex justify-content-between foot'>
@@ -268,7 +298,7 @@ export default function Card() {
               </span>
               <span>
                 <strong id='total-sub' className='text-danger'>
-                  {totalAll.totalSub} đ
+                  {convertMoney(",", totalAll.totalSub)} đ
                 </strong>
               </span>
             </div>

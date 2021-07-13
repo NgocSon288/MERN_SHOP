@@ -42,7 +42,7 @@ export default function EditBrand() {
 
   const onSubmit = async (e) => {
     if (!data.name || !data.description) {
-      alert('Data is not valid')
+      alert('Dữ liệu không hợp lệ!')
       return
     }
 

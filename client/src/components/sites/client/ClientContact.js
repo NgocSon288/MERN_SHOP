@@ -2,6 +2,22 @@ import React, { useEffect } from "react";
 
 import "./ClientContact.css";
 
+const alertMessage = () => {
+  var hoTen = document.getElementById("hoTen").value;
+  var email = document.getElementById("email").value;
+  if (hoTen == "" || email == "") {
+    alert("Họ tên và email không được bỏ trống!");
+  } else {
+    const re =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (email.length > 0 && re.test(String(email))) {
+      alert("Bạn đã đăng ký nhận thông báo thành công!");
+    } else {
+      alert("Vui lòng nhập địa chỉ email hợp lệ!");
+    }
+  }
+};
+
 export default function ClientContact() {
   return (
     <div>
@@ -76,9 +92,9 @@ export default function ClientContact() {
           <div class="title-foot">ĐĂNG KÝ ĐỂ NHẬN THÔNG BÁO</div>
           <div class="form">
             <div class="my-row w-100" style={{ height: "auto" }}>
-              <input type="text" placeholder="Họ và tên" />
+              <input type="text" placeholder="Họ và tên" id="hoTen" />
               <input type="text" placeholder="Số điện thoại" />
-              <input type="email" placeholder="Email" />
+              <input type="email" placeholder="Email" id="email" />
             </div>
             <div class="row">
               <textarea name="" id="" rows="3" placeholder="Địa chỉ"></textarea>
@@ -91,7 +107,7 @@ export default function ClientContact() {
                   marginBottom: "30px",
                   marginTop: "10px",
                 }}
-                onClick="alert('Bạn đã đăng ký thành công!')"
+                onClick={alertMessage}
               >
                 GỬI ĐI
               </button>

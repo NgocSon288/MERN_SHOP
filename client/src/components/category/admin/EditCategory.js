@@ -38,7 +38,7 @@ export default function EditCategory() {
   const onSubmit = async (e) => {
     e.preventDefault() 
     if (!data.name || !data.description) {
-      alert('Data is not empty')
+      alert('Dữ liệu không hợp lệ!')
       return
     }
 
