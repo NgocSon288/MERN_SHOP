@@ -6,7 +6,7 @@ import Pagination from "react-js-pagination";
 import { ProductContext } from "../../../contexts/client/ProductContext";
 import { ProductSessionContext } from "../../../contexts/client/ProductSessionContext";
 import * as PRODUCT_SESSION_TYPE from "./../../../reducers/client/productSessionType";
-import $ from 'jquery'
+import $ from "jquery";
 import "./ProductCatalogue.css";
 
 export default function ProductCatalogue({ products }) {
@@ -32,7 +32,7 @@ export default function ProductCatalogue({ products }) {
       });
       alert("Đã thêm vào giỏ hàng!");
       const amount = $("#amountOrder").text();
-      $("#amountOrder").text(parseInt(amount) + 1)
+      $("#amountOrder").text(parseInt(amount) + 1);
     } catch (error) {
       alert(error.message);
     }
@@ -132,7 +132,7 @@ export default function ProductCatalogue({ products }) {
             ))}
         </Row>
       </div>
-      {productsActivePage && productsActivePage.length >= 8 && (
+      {productsActivePage && totalItemsCount >= 8 && (
         <div className="my-pagination">
           <Pagination
             activePage={activePage}
