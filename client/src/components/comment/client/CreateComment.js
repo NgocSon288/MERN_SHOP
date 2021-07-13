@@ -74,10 +74,22 @@ export default function CreateComment() {
 
   const onSubmit = async (e) => {
     try {
-      dispatchComment({
-        type: COMMENT_TYPE.CREATE,
-        payload: { data },
-      })
+      if(data.starNumber!=0&&data.reason!=''&&data.description!='')
+      {
+        dispatchComment({
+          type: COMMENT_TYPE.CREATE,
+          payload: { data },
+        })
+      }
+      else
+      {
+        if(data.starNumber==0)
+          alert("Bạn phải nhập số sao")
+        if(data.reason=='')
+          alert("Bạn phải điền vào lý do đánh giá")
+        if(data.description=='')
+          alert("Bạn phải điền vào mô tả đánh giá")
+      }
       setData({
         ...data,
         starNumber: parseInt(0),

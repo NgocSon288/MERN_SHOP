@@ -419,3 +419,6 @@ ul.menu-items{
   background-color:  #a18e54;
   color: #473600;
 }
+input[type='radio']{
+  display: inline-block;
+}

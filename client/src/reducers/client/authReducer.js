@@ -76,7 +76,7 @@ export const authReducer = async (state, action) => {
       try {
         const res = await userService.update(user) 
         setTimeout(() => {
-          alert(res.message)
+          alert("Cập nhật thành công")
         }, 200)
 
         return await loadState(state)

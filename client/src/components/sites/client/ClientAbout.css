@@ -10,6 +10,7 @@
 	background: none !important;
 	max-height: 680px;
 	max-width: 1080px;
+  width: 1080px !important;
 }
 h3.tittle-top {
     color: #000;

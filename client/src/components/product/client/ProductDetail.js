@@ -19,7 +19,7 @@ export default function ProductDetail() {
  const {dispatch:seenproductsdispatch}=useContext(SeenProductContext)
  useLayoutEffect(() => {
     window.scrollTo(0, 0)
-});
+},[]);
  const [data, setData] = useState({
     name: '',
     description: '',
@@ -301,7 +301,7 @@ export default function ProductDetail() {
 					</button>
 			</div>
 			<div class="nhan-xet mt-5">
-					<div className="nhan-xet-content w-60 d-flex justify-content-between align-items-center py-5 pl-3" style={{backgroundColor:"#eee",width:"60%"}}>
+					<div className="nhan-xet-content w-60 d-flex justify-content-between align-items-center py-5 pl-3" style={{backgroundColor:"#eee",width:"62%"}}>
 						<p className="lead my-pi" style={{fontSize:"18px",marginBottom:"0px",color: "black",width: "61%"}}>Bài viết này có hữu ích cho Bạn không?</p>
 						<div className="smile text-center a-nhan-xet text-center px-3 w-25"> 
 							<i className="far fa-smile-wink" style={{fontSize: "36px", color: "blue"}}></i> 

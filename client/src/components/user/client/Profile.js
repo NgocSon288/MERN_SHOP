@@ -1,8 +1,9 @@
 import React, { useEffect, useContext,useState} from "react";
 import { Button, Form, FormGroup, Label, Input} from 'reactstrap'
+import { Link } from "react-router-dom";
 import Pagination from "react-js-pagination";
 import './Profile.css'
-import $ from 'jquery'
+import $, { data } from 'jquery'
 import '../../../assets/admin/js/profile.js'
 import { AuthContext } from './../../../contexts/client/AuthContext'
 import * as AUTH_TYPE from '../../../reducers/client/authType'
@@ -20,9 +21,11 @@ const { authState,dispatch:dispatchAuth } = useContext(AuthContext)
 const {seenProducts}=useContext(SeenProductContext)
 const [user, setUser] = useState({})
 const [date,setDate] = useState('')
+const [sex, setSex] = useState('nam')
 const [myFavourite,setFavouri]=useState()
 const [mySeen, setSeen] = useState()
 const [name,setName]=useState()
+const [listAddress, setListAddress] = useState()
 let { orderDetails, dispatch } = useContext(OrderDetailContext)
 const { orders} = useContext(OrderContext)
 const {  dispatch: dispatchProductSession } = useContext(
@@ -35,7 +38,8 @@ let itemsCountPerPage = 5;
 useEffect(() => {
     if(orders && orders.length>0 &&user!=null )
     {
-        const oF=orders.filter((o)=>o.user._id===user._id)
+        console.log(orders)
+        const oF=orders.filter((o)=> o.user != null && o.user._id===user._id)
         setOrder(
             oF.reverse()
         )
@@ -48,16 +52,39 @@ useEffect(()=>{
         payload:null,
     })
     setDate(setdate)
+    $('#' + sex).attr('checked', true) 
 },[])
 useEffect(()=>{},[date])
 useEffect(()=>{
     if (authState && authState.isAuthenticated) {
         setUser({ ...authState.user._doc })
         setName(authState.user._doc.name)
+        console.log({ ...authState.user._doc });
+        const toila = [{name:authState.user._doc.name,address : authState.user._doc.address,phone:authState.user._doc.phone}]
+        setListAddress(toila)
       }
-      
     $(".them-dia-chi-card").slideUp();
 },[authState])
+
+const addListAddress =()=>{
+    const nName = $('#newName').val()
+    const nAddress = $('#newAddress').val()
+    const nPhone = $('#newPhone').val()
+    if(nName.length>0 && nAddress.length>0 && nPhone.length>0){
+        var toila = listAddress
+        toila.push({name:nName,address : nAddress,phone:nPhone})
+        $('#newName').val('')
+        $('#newAddress').val('')
+        $('#newPhone').val('')
+        $(".them-dia-chi-card").slideUp(500);
+        setMyModal(!myModal)
+        setListAddress(toila)
+    }
+    
+}
+
+useEffect(()=>{},[listAddress])
+
 useEffect(()=>{
     if (orderDetails && order && orderDetails.length>0) {
             const favourArrayId = orderDetails.map(o => o.product._id )
@@ -82,13 +109,18 @@ useEffect(()=>{
     }
 },[orderDetails])
 useEffect(()=>{
-    const eachRow = [...Array(Math.ceil(seenProducts.length/3))]
-    const myRows = eachRow.map((eR,i) => seenProducts.slice(i*3,i*3 +3))
+    const cleanNull = seenProducts.map((sP) => (
+        sP && sP
+    ))
+    const eachRow = [...Array(Math.ceil(cleanNull.length/3))]
+    const myRows = eachRow.map((eR,i) => cleanNull.slice(i*3,i*3 +3))
     setSeen(myRows);
-},[seenProducts,orderDetails])
+},[seenProducts])
 const onChange = async (e) => {
     const newData = { ...user, [e.target.name]: e.target.value }
     setUser(newData)
+    setSex(e.target.id)
+    $('#' + sex).attr('checked', true) 
   }
 const onChangeDate=async (e)=>{
     setDate(e.target.value)
@@ -167,6 +199,7 @@ const onAddToCart = async (product) => {
     return trangThai
   } 
   const detailOrder2=(date)=>{
+      if(order){
     date = new Date(date)
     var time=new Date()
     var hnow=time.getHours()
@@ -194,13 +227,13 @@ const onAddToCart = async (product) => {
            trangThai="Thành công"
         }
     }
-    return trangThai
+    return trangThai}
   } 
   const onSubmit = async (e) => {
     if (!user.name || !user.address || !user.email || !user.phone) {
       alert('Data is not valid')
       return
-    } console.log(user)
+    } 
     try {
         dispatchAuth ({
         type: AUTH_TYPE.EDIT,
@@ -218,10 +251,12 @@ const onAddToCart = async (product) => {
     if(!myModal){
         $(".them-dia-chi-card").slideDown(500);
         setMyModal(!myModal)
+        console.log(listAddress)
     }
     else{
         $(".them-dia-chi-card").slideUp();
         setMyModal(!myModal)
+        
     }
   }
     return(
@@ -238,7 +273,7 @@ const onAddToCart = async (product) => {
                             <li data-scroll="s1" class="ngoc-active"> 
                                 <a href="#s1" className="my-section">
                                         <div className="my-secsion-item"> 
-                                            <img src={`http://localhost:3000/images/user/${user.image}`} alt="" className="user-img"/>
+                                            <img src={user&&user.image&&`http://localhost:3000/images/user/${user.image}`} alt="" className="user-img"/>
                                             <p className="user-name-pro my-active">{name}</p> 
                                         </div>
                                 </a>
@@ -319,9 +354,9 @@ const onAddToCart = async (product) => {
 
                         <div class="my-group">
                             <label for="address" class="col-lg-3 label-text">Giới tính:</label>
-                            <div class="col-lg-9 my-radio">
-                                <label for="nam" style={{marginRight: "50px"}}><input id="nam" type="radio" name="gt" class="mr-2 d-inline-block" checked/>Nam</label>
-                                <label for="nu"><input id="nu" type="radio" name="gt" class="mr-2 d-inline-block"/>Nữ</label>
+                            <div class="col-lg-9 my-radio" style={{marginLeft: "20px"}}>
+                                <label for="nam" style={{marginRight: "50px"}}><Input id="nam" type="radio" name="gt" class="mr-2 "  onChange={(e)=>onChange(e)}/>Nam</label>
+                                <label for="nu"><Input id="nu" type="radio" name="gt" class="mr-2" onChange={(e)=>onChange(e)} />Nữ</label>
                             </div>
                         </div> 
 
@@ -348,7 +383,7 @@ const onAddToCart = async (product) => {
                     <Anoumane></Anoumane>
                 </div>
                 <div id="s3" class="p-5 pekora ">
-                    <h1 class="title">Đơn hàng của tôi <span className="my-so-luong">({orderDetails.length})</span></h1>
+                    <h1 class="title">Đơn hàng của tôi <span className="my-so-luong">({orderDetails&&orderDetails.length})</span></h1>
                     <div className="section-content">
 
                         <table className="don-hangs">                            
@@ -360,11 +395,11 @@ const onAddToCart = async (product) => {
                                 <th>Trạng thái </th>
                             </tr>
                             {productsActivePage &&
-                                productsActivePage.map((item,i) => (
+                                productsActivePage.map((item,i) => (order[i].createdAt &&
                             <tr className={order[i] && order[i].createdAt &&detailOrder(order[i].createdAt)}>
                                 <td>{item._id.slice(14.20)}                 </td>
                                 <td> {order[i] && order[i].createdAt &&convertDatetime(order[i].createdAt)}        </td>
-                                <td><a href="chitietsanpham.html">{item.product.name}</a></td>                                
+                                <td><Link to={`/Product-Detail/${item.product._id}`}>{item.product.name}</Link></td>                                
                                 <td>{item && item.product &&`${convertMoney('.',item.product.price)}đ`}              </td>
                                 <td >{order[i] && order[i].createdAt &&detailOrder2(order[i].createdAt)}</td>
                             </tr>
@@ -384,56 +419,58 @@ const onAddToCart = async (product) => {
                 <div id="s4" class="p-5 pekora">
                     <h1 class="title">Sổ địa chỉ</h1>
                     <div class="thong-baos">
-                        <div class="wrapper-item-gio-hang card-san-pham card-close-7">
-                            <div class="content-pro w-100">
-                                <div class="thong-tin thong-tin-dia-chi"> 
-                                    <div class="thong-bao-head">
-                                        <span class="ten-lead">Huỳnh Ngọc Sơn</span>
-                                        <i class="fa fa-check-circle-o text-success" aria-hidden="true" style={{fontSize: "14px"}}></i> 
-                                        <span class="dia-chi-lead">Địa chỉ mặc định</span>
+                        {listAddress && listAddress.map((item,i)=>(
+                            <div class="wrapper-item-gio-hang card-san-pham card-close-7">
+                                <div class="content-pro w-100">
+                                    <div class="thong-tin thong-tin-dia-chi"> 
+                                        <div class="thong-bao-head">
+                                            <span class="ten-lead">{item && item.name}</span>
+                                            <i class="fa fa-check-circle-o text-success" aria-hidden="true" style={{fontSize: "14px"}}></i> 
+                                            {i==0&&<span class="dia-chi-lead">Địa chỉ mặc định</span>}
+                                        </div>
+                                        <div class="thong-bao-text">
+                                            <p>
+                                                <span class="text-lead">Địa chỉ: </span>
+                                                {item && item.address}
+                                            </p>
+                                            <p>
+                                                <span class="text-lead">Điện thoại: </span>
+                                                {item && item.phone}
+                                            </p>
+                                        </div>
+                                        <div class="text-center"><a href="javascript:void(0)" class="cap-nhat">CẬP NHẬT</a></div>
                                     </div>
-                                    <div class="thong-bao-text">
-                                        <p>
-                                            <span class="text-lead">Địa chỉ:</span>
-                                            ĐH Nông Lân, TP HCM( Nhà trọ sinh viên, đường số 1), Phường Linh Trung, Quận Thủ Đức, Hồ Chí Minh
-                                        </p>
-                                        <p>
-                                            <span class="text-lead">Điện thoại:</span>
-                                            0351 521 032
-                                        </p>
-                                    </div>
-                                    <div class="text-center"><a href="javascript:void(0)" class="cap-nhat">CẬP NHẬT</a></div>
-                                </div>
 
+                                </div>
+                                <button class="close" id="data-close-7">
+                                    <span>X</span>
+                                </button>
                             </div>
-                            <button class="close" id="data-close-7">
-                                <span>X</span>
-                            </button>
-                        </div> 
+                        )) }
                         {(<div class="wrapper-item-gio-hang card-san-pham card-close-9 them-dia-chi-card">
                             <div class="thong-bao-content them-dia-chi-wrap" id="alert-them1">  
                                 <div class="thong-bao-text mt-2">
                                     <div class="row">
                                         <div class="col-lg-4">Họ tên:</div>
                                         <div class="col-lg-8">
-                                            <input type="text" class="form-control" placeholder="Tên người nhận..."/>
+                                            <input type="text" id="newName" class="form-control" placeholder="Tên người nhận..."/>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-4">Địa chỉ:</div>
                                         <div class="col-lg-8">
-                                            <textarea name="" id="" rows="3" class="form-control" placeholder="Địa chỉ người nhận..."></textarea>
+                                            <textarea name="" id="newAddress" rows="3" class="form-control" placeholder="Địa chỉ người nhận..."></textarea>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-4">Số điện thoại:</div>
                                         <div class="col-lg-8">
-                                            <input type="text" class="form-control" placeholder="Số điện thoại người nhận.../"/>
+                                            <input type="text" id="newPhone" class="form-control" placeholder="Số điện thoại người nhận.../"/>
                                         </div>
                                     </div> 
                                 </div>
                                 <div class="w-100">
-                                    <button class="btn btn-primary d-block mx-auto" style={{minWidth: "100px", fontSize:"16px"}}>
+                                    <button class="btn btn-primary d-block mx-auto" style={{minWidth: "100px", fontSize:"16px"}} onClick={addListAddress}>
                                         THÊM
                                     </button>
                                 </div>

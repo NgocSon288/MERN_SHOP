@@ -33,7 +33,6 @@ export const commentReducer = async (state, action) => {
       }
       
       setTimeout(() => {
-        alert(mess)
       }, 200)
 
 

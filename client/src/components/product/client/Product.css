@@ -75,7 +75,7 @@
     margin-left: 0%;             
   }
 } 
-input[type='radio']{
+.slides input[type='radio']{
   display: none;
 } 
 

@@ -44,11 +44,11 @@ export default function ListProduct({ products,onAddToCart }) {
                     <div class="wrapper">
                         <div class="px-sm-4 px-3 py-sm-5 py-3 mt-4 mb-0">
                           <div class="row">
-                              { rows && rows.map((item,i)=>(
+                              { rows && rows.map((item,i)=>( item &&
                                   <div class="col-md-4 col-6 div-img-hover">
                                       <div> 
                                           <div class="text-center wrap-img-sp">
-                                          <img src={item.image && `http://localhost:3000/images/product/${item.image.split("|")[0]}`} class="img-hover" alt=""/>
+                                          <img src={item && item.image && `http://localhost:3000/images/product/${item.image.split("|")[0]}`} class="img-hover" alt=""/>
                                               <div class="xem-chi-tiet"> 
                                                   <Link to={`/Product-Detail/${item._id}`}>Xem chi tiết</Link> 
                                               </div>

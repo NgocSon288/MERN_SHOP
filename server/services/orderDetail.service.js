@@ -17,7 +17,6 @@ module.exports = {
   },
   getAllByUserId: async function (req, res, next) {
     try {
-      console.log("1")
       const { userId } = req
       const orders = await Order.find({user: userId})
       let orderDetails=[]
@@ -27,7 +26,6 @@ module.exports = {
         )
         orderDetails.push(...ods)
       }
-      console.log("2")
       return res.json({ success: true, data: orderDetails })
     } catch (error) {
       res.status(500).json({ success: false, message: error })
