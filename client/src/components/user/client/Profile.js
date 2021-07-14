@@ -1,6 +1,6 @@
 import React, { useEffect, useContext,useState} from "react";
 import { Button, Form, FormGroup, Label, Input} from 'reactstrap'
-import { Link } from "react-router-dom";
+import { Link ,Redirect} from "react-router-dom";
 import Pagination from "react-js-pagination";
 import './Profile.css'
 import $, { data } from 'jquery'
@@ -52,9 +52,15 @@ useEffect(()=>{
         payload:null,
     })
     setDate(setdate)
-    $('#' + sex).attr('checked', true) 
+    
 },[])
 useEffect(()=>{},[date])
+useEffect(() => {
+    dispatchAuth({
+      type: AUTH_TYPE.SET_AUTH,
+      payload: null,
+    })
+  }, [])
 useEffect(()=>{
     if (authState && authState.isAuthenticated) {
         setUser({ ...authState.user._doc })
@@ -64,6 +70,26 @@ useEffect(()=>{
         setListAddress(toila)
       }
     $(".them-dia-chi-card").slideUp();
+    $('#' + sex).attr('checked', true) 
+    $('#data-close-1').click(()=>{
+        $('.card-close-1').slideUp(500);
+    })
+    $('#data-close-2').click(()=>{
+        $('.card-close-2').slideUp(500);
+    })
+    $('#data-close-3').click(()=>{
+        $('.card-close-3').slideUp(500);
+    })
+    $('#data-close-4').click(()=>{
+        $('.card-close-4').slideUp(500);
+    })
+    $('#data-close-5').click(()=>{
+        $('.card-close-5').slideUp(500);
+    })
+    $('#data-close-6').click(()=>{
+        $('.card-close-6').slideUp(500);
+    })
+
 },[authState])
 
 const addListAddress =()=>{
@@ -259,6 +285,15 @@ const onAddToCart = async (product) => {
         
     }
   }
+  if (authState.authLoading) {
+    return (
+      <div className='d-flex justify-content-center align-items-center mt-2 my-loading'>
+      </div>
+    )
+  }
+
+  if (!authState.isAuthenticated) return <Redirect to='/' />
+  if (authState.isAuthenticated) {
     return(
         <div data-spy="scroll" data-target="#myScrollspy" data-offset="100" style={{position:'relative'}}>
             
@@ -497,4 +532,5 @@ const onAddToCart = async (product) => {
         </div>
         </div>
     )
+     }
 }

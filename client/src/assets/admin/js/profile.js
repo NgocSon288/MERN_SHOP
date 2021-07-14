@@ -29,22 +29,4 @@ $(document).ready(()=>{
       }
   });
     })
-    $('#data-close-1').click(()=>{
-        $('.card-close-1').slideUp(500);
-    })
-    $('#data-close-2').click(()=>{
-        $('.card-close-2').slideUp(500);
-    })
-    $('#data-close-3').click(()=>{
-        $('.card-close-3').slideUp(500);
-    })
-    $('#data-close-4').click(()=>{
-        $('.card-close-4').slideUp(500);
-    })
-    $('#data-close-5').click(()=>{
-        $('.card-close-5').slideUp(500);
-    })
-    $('#data-close-6').click(()=>{
-        $('.card-close-6').slideUp(500);
-    })
 }) 
