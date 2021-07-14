@@ -132,7 +132,7 @@ export default function ProductCatalogue({ products }) {
             ))}
         </Row>
       </div>
-      {productsActivePage && totalItemsCount >= 8 && (
+      {productsActivePage && totalItemsCount > 8 && (
         <div className="my-pagination">
           <Pagination
             activePage={activePage}
