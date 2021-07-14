@@ -82,7 +82,7 @@ export default function DetailOrder() {
             Tên khách hàng
           </Label>
           {order && (
-            <Input type='text' name='name' value={order.user.name} readonly />
+            <Input type='text' name='name' value={order.user?order.user.name:'Khách hàng'} readonly />
           )}
         </FormGroup>
         <FormGroup className='mt-4 bold'>
@@ -146,7 +146,7 @@ export default function DetailOrder() {
               </td>
               <td>{item.count}</td>
               <td>{`${convertMoney(',', item.product.price)} đ`}</td>
-              <td>{`${convertMoney(',', item.product.promotion)} đ`}</td> 
+              <td>{`${convertMoney(',', item.product.promotion)} đ`}</td>
               <td>
                 <button
                   className='btn btn-danger ml-2'

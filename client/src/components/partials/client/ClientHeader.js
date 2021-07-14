@@ -159,7 +159,7 @@ export default function ClientHeader() {
                 className="ml-5 my-login-header my-active pr-2"
                 to="/account/login"
               >
-                <strong>Login</strong>
+                <strong>Đăng nhập</strong>
               </Link>
             </NavItem>
           )}

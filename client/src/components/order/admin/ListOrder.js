@@ -68,7 +68,7 @@ export default function ListOrder() {
                 <th scope='row'>
                   {(activePage - 1) * itemsCountPerPage + i + 1}
                 </th>
-                <td>{item.user.name}</td>
+                <td>{item.user != null ? item.user.name : 'Khách hàng'}</td>
                 <td>{item.phone}</td>
                 <td>{item.address}</td>
                 <td>{convertDatetime(item.createdAt)}</td>

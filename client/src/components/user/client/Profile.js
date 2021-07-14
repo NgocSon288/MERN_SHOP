@@ -395,8 +395,8 @@ const onAddToCart = async (product) => {
                                 <th>Trạng thái </th>
                             </tr>
                             {productsActivePage &&
-                                productsActivePage.map((item,i) => (order[i].createdAt &&
-                            <tr className={order[i] && order[i].createdAt &&detailOrder(order[i].createdAt)}>
+                                productsActivePage.map((item,i) => (order[i] && order[i].createdAt &&
+                                <tr className={order[i] && order[i].createdAt && detailOrder(order[i].createdAt)}>
                                 <td>{item._id.slice(14.20)}                 </td>
                                 <td> {order[i] && order[i].createdAt &&convertDatetime(order[i].createdAt)}        </td>
                                 <td><Link to={`/Product-Detail/${item.product._id}`}>{item.product.name}</Link></td>                                
