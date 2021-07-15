@@ -430,13 +430,13 @@ const onAddToCart = async (product) => {
                                 <th>Trạng thái </th>
                             </tr>
                             {productsActivePage &&
-                                productsActivePage.map((item,i) => (order[i] && order[i].createdAt &&
-                                <tr className={order[i] && order[i].createdAt && detailOrder(order[i].createdAt)}>
+                                productsActivePage.map((item,i) => (
+                                <tr className={ order.find(o=>o._id == item.order) && detailOrder(order.find(o=>o._id == item.order).createdAt)}>
                                 <td>{item._id.slice(14.20)}                 </td>
-                                <td> {order[i] && order[i].createdAt &&convertDatetime(order[i].createdAt)}        </td>
+                                <td> {order.find(o=>o._id == item.order) &&convertDatetime(order.find(o=>o._id == item.order).createdAt)}        </td>
                                 <td><Link to={`/Product-Detail/${item.product._id}`}>{item.product.name}</Link></td>                                
                                 <td>{item && item.product &&`${convertMoney('.',item.product.price)}đ`}              </td>
-                                <td >{order[i] && order[i].createdAt &&detailOrder2(order[i].createdAt)}</td>
+                                <td >{order.find(o=>o._id == item.order) &&detailOrder2(order.find(o=>o._id == item.order).createdAt)}</td>
                             </tr>
                             ))}
                         </table>
