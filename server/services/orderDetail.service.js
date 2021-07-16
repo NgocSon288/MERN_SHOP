@@ -64,6 +64,21 @@ module.exports = {
         await od.save()
       })
 
+      const sendmail = require('./../utils/sendmail')()
+
+      sendmail(
+        {
+          from: 'sondeptrai2288@gmail.com',
+          to: '18521694@gm.uit.edu.vn',
+          subject: 'HÓA ĐƠN ĐẶT HÀNG TỪ ELECTRONIC SHOP',
+          html: 'CẢM ƠN',
+        },
+        function (err, reply) {
+          console.log(err && err.stack)
+          console.dir(reply)
+        }
+      )
+
       return res.json({
         success: true,
         message: 'Create successfully',
