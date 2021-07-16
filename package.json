@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "emailjs": "^3.5.0",
+    "nodemailer": "^6.6.3",
     "sendmail": "^1.6.1"
   }
 }
