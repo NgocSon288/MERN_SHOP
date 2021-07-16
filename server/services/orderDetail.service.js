@@ -95,23 +95,7 @@ module.exports = {
 
         await od.save()
       })
-
-      //   let html = await fs.readFileSync('./template/emailTemplate2.html')
-
-      const sendmail = require('sendmail')()
-
-      sendmail(
-        {
-          from: 'sondeptrai2288@gmail.com',
-          to: '18521694@gm.uit.edu.vn',
-          subject: 'ĐƠN HÀNG ĐẾN TỪ ELECTRONIC SHOP',
-          html: 'Hello',
-        },
-        function (err, reply) {
-          console.log(err && err.stack)
-          //   console.dir(reply)
-        }
-      )
+ 
 
       return res.json({
         success: true,
