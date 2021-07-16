@@ -48,7 +48,7 @@ module.exports = {
     var mailOptions = {
       from: 'sondeptrai2288@gmail.com',
       to: '18520459@gm.uit.edu.vn',
-      subject: 'Sending Email using Node.js',
+      subject: 'ĐƠN HÀNG ĐẾN TỪ ELECTRONIC SHOP',
       html: html,
     }
     
