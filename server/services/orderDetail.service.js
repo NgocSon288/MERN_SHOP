@@ -34,8 +34,8 @@ module.exports = {
     }
   },
   create: async function (req, res, next) {
-
-
+    const { userId } = req
+    const user = await User.findOne({ _id: userId })
 
     var transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -49,12 +49,10 @@ module.exports = {
 
     var mailOptions = {
       from: 'sondeptrai2288@gmail.com',
-      to: '18520459@gm.uit.edu.vn',
+      to: user.email,
       subject: 'ĐƠN HÀNG ĐẾN TỪ ELECTRONIC SHOP',
       html: html,
     }
-    
-
 
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
@@ -62,14 +60,11 @@ module.exports = {
       } else {
         console.log('Email sent: ' + info.response)
       }
-    }) 
+    })
 
     try {
-      const { userId } = req
       const { message, paymentMethod, orderDetails } = req.body
 
-      // Địa chỉ số điện thoại lấy từ current user
-      const user = await User.findOne({ _id: userId })
       if (!user) {
         return res.status(403).json({
           success: falce,
@@ -95,7 +90,6 @@ module.exports = {
 
         await od.save()
       })
- 
 
       return res.json({
         success: true,
