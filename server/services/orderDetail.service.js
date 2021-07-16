@@ -35,6 +35,8 @@ module.exports = {
   },
   create: async function (req, res, next) {
 
+
+
     var transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -60,12 +62,7 @@ module.exports = {
       } else {
         console.log('Email sent: ' + info.response)
       }
-    })
-
-    return res.json({
-      success: true,
-      message: 'Create successfully',
-    })
+    }) 
 
     try {
       const { userId } = req
