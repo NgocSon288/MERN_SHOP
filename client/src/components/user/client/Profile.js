@@ -74,7 +74,7 @@ export default function ProfileClient() {
       setListAddress(toila);
     }
     $(".them-dia-chi-card").slideUp();
-    $("#" + sex).attr("checked", true);
+    if ("#" + sex != "#") $("#" + sex).attr("checked", true);
     $("#data-close-1").click(() => {
       $(".card-close-1").slideUp(500);
     });
@@ -527,181 +527,217 @@ export default function ProfileClient() {
                   </div>
                 </div>
                 <div id="s2" class="p-5 pekora">
-                    <h1 class="title">Thông báo của tôi</h1>
-                    <Anoumane></Anoumane>
+                  <h1 class="title">Thông báo của tôi</h1>
+                  <Anoumane></Anoumane>
                 </div>
                 <div id="s3" class="p-5 pekora ">
-                    <h1 class="title">Đơn hàng của tôi <span className="my-so-luong">({orderDetails&&orderDetails.length})</span></h1>
-                    <div className="section-content">
-
-                        <table className="don-hangs">                            
-                            <tr>
-                                <th>ID</th>
-                                <th>Ngày mua   </th>
-                                <th>Sản phẩm   </th>
-                                <th>Tổng tiền  </th>
-                                <th>Trạng thái </th>
-                            </tr>
-                            {productsActivePage &&
-                                productsActivePage.map((item,i) => (
-                                <tr className={ order.find(o=>o._id == item.order) && detailOrder(order.find(o=>o._id == item.order).createdAt)}>
-                                <td>{item._id.slice(14.20)}                 </td>
-                                <td> {order.find(o=>o._id == item.order) &&convertDatetime(order.find(o=>o._id == item.order).createdAt)}        </td>
-                                <td><Link to={`/Product-Detail/${item.product._id}`}>{item.product.name}</Link></td>                                
-                                <td>{item && item.product &&`${convertMoney('.',item.product.price)}đ`}              </td>
-                                <td >{order.find(o=>o._id == item.order) &&detailOrder2(order.find(o=>o._id == item.order).createdAt)}</td>
-                            </tr>
-                          )
-                      )}
-                  </table>
-                  <div className="my-pagination">
-                    <Pagination
-                      activePage={activePage}
-                      itemsCountPerPage={itemsCountPerPage}
-                      totalItemsCount={totalItemsCount}
-                      pageRangeDisplayed={3}
-                      onChange={handlePageChange}
-                    />
+                  <h1 class="title">
+                    Đơn hàng của tôi{" "}
+                    <span className="my-so-luong">
+                      ({orderDetails && orderDetails.length})
+                    </span>
+                  </h1>
+                  <div className="section-content">
+                    <table className="don-hangs">
+                      <tr>
+                        <th>ID</th>
+                        <th>Ngày mua </th>
+                        <th>Sản phẩm </th>
+                        <th>Tổng tiền </th>
+                        <th>Trạng thái </th>
+                      </tr>
+                      {productsActivePage &&
+                        productsActivePage.map((item, i) => (
+                          <tr
+                            className={
+                              order.find((o) => o._id == item.order) &&
+                              detailOrder(
+                                order.find((o) => o._id == item.order).createdAt
+                              )
+                            }
+                          >
+                            <td>{item._id.slice(14.2)} </td>
+                            <td>
+                              {" "}
+                              {order.find((o) => o._id == item.order) &&
+                                convertDatetime(
+                                  order.find((o) => o._id == item.order)
+                                    .createdAt
+                                )}{" "}
+                            </td>
+                            <td>
+                              <Link to={`/Product-Detail/${item.product._id}`}>
+                                {item.product.name}
+                              </Link>
+                            </td>
+                            <td>
+                              {item &&
+                                item.product &&
+                                `${convertMoney(
+                                  ".",
+                                  item.product.price
+                                )}đ`}{" "}
+                            </td>
+                            <td>
+                              {order.find((o) => o._id == item.order) &&
+                                detailOrder2(
+                                  order.find((o) => o._id == item.order)
+                                    .createdAt
+                                )}
+                            </td>
+                          </tr>
+                        ))}
+                    </table>
+                    <div className="my-pagination">
+                      <Pagination
+                        activePage={activePage}
+                        itemsCountPerPage={itemsCountPerPage}
+                        totalItemsCount={totalItemsCount}
+                        pageRangeDisplayed={3}
+                        onChange={handlePageChange}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div id="s4" class="p-5 pekora">
-                <h1 class="title">Sổ địa chỉ</h1>
-                <div class="thong-baos">
-                  {listAddress &&
-                    listAddress.map((item, i) => (
-                      <div class="wrapper-item-gio-hang card-san-pham card-close-7">
-                        <div class="content-pro w-100">
-                          <div class="thong-tin thong-tin-dia-chi">
-                            <div class="thong-bao-head">
-                              <span class="ten-lead">{item && item.name}</span>
-                              <i
-                                class="fa fa-check-circle-o text-success"
-                                aria-hidden="true"
-                                style={{ fontSize: "14px" }}
-                              ></i>
-                              {i == 0 && (
-                                <span class="dia-chi-lead">
-                                  Địa chỉ mặc định
+                <div id="s4" class="p-5 pekora">
+                  <h1 class="title">Sổ địa chỉ</h1>
+                  <div class="thong-baos">
+                    {listAddress &&
+                      listAddress.map((item, i) => (
+                        <div class="wrapper-item-gio-hang card-san-pham card-close-7">
+                          <div class="content-pro w-100">
+                            <div class="thong-tin thong-tin-dia-chi">
+                              <div class="thong-bao-head">
+                                <span class="ten-lead">
+                                  {item && item.name}
                                 </span>
-                              )}
-                            </div>
-                            <div class="thong-bao-text">
-                              <p>
-                                <span class="text-lead">Địa chỉ: </span>
-                                {item && item.address}
-                              </p>
-                              <p>
-                                <span class="text-lead">Điện thoại: </span>
-                                {item && item.phone}
-                              </p>
-                            </div>
-                            <div class="text-center">
-                              <a href="javascript:void(0)" class="cap-nhat">
-                                CẬP NHẬT
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-                        <button class="close" id="data-close-7">
-                          <span>X</span>
-                        </button>
-                      </div>
-                    ))}
-                  {
-                    <div class="wrapper-item-gio-hang card-san-pham card-close-9 them-dia-chi-card">
-                      <div
-                        class="thong-bao-content them-dia-chi-wrap"
-                        id="alert-them1"
-                      >
-                        <div class="thong-bao-text mt-2">
-                          <div class="row">
-                            <div class="col-lg-4">Họ tên:</div>
-                            <div class="col-lg-8">
-                              <input
-                                type="text"
-                                id="newName"
-                                class="form-control"
-                                placeholder="Tên người nhận..."
-                              />
+                                <i
+                                  class="fa fa-check-circle-o text-success"
+                                  aria-hidden="true"
+                                  style={{ fontSize: "14px" }}
+                                ></i>
+                                {i == 0 && (
+                                  <span class="dia-chi-lead">
+                                    Địa chỉ mặc định
+                                  </span>
+                                )}
+                              </div>
+                              <div class="thong-bao-text">
+                                <p>
+                                  <span class="text-lead">Địa chỉ: </span>
+                                  {item && item.address}
+                                </p>
+                                <p>
+                                  <span class="text-lead">Điện thoại: </span>
+                                  {item && item.phone}
+                                </p>
+                              </div>
+                              <div class="text-center">
+                                <a href="javascript:void(0)" class="cap-nhat">
+                                  CẬP NHẬT
+                                </a>
+                              </div>
                             </div>
                           </div>
-                          <div class="row">
-                            <div class="col-lg-4">Địa chỉ:</div>
-                            <div class="col-lg-8">
-                              <textarea
-                                name=""
-                                id="newAddress"
-                                rows="3"
-                                class="form-control"
-                                placeholder="Địa chỉ người nhận..."
-                              ></textarea>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-lg-4">Số điện thoại:</div>
-                            <div class="col-lg-8">
-                              <input
-                                type="text"
-                                id="newPhone"
-                                class="form-control"
-                                placeholder="Số điện thoại người nhận.../"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <div class="w-100">
-                          <button
-                            class="btn btn-primary d-block mx-auto"
-                            style={{ minWidth: "100px", fontSize: "16px" }}
-                            onClick={addListAddress}
-                          >
-                            THÊM
+                          <button class="close" id="data-close-7">
+                            <span>X</span>
                           </button>
                         </div>
+                      ))}
+                    {
+                      <div class="wrapper-item-gio-hang card-san-pham card-close-9 them-dia-chi-card">
+                        <div
+                          class="thong-bao-content them-dia-chi-wrap"
+                          id="alert-them1"
+                        >
+                          <div class="thong-bao-text mt-2">
+                            <div class="row">
+                              <div class="col-lg-4">Họ tên:</div>
+                              <div class="col-lg-8">
+                                <input
+                                  type="text"
+                                  id="newName"
+                                  class="form-control"
+                                  placeholder="Tên người nhận..."
+                                />
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-lg-4">Địa chỉ:</div>
+                              <div class="col-lg-8">
+                                <textarea
+                                  name=""
+                                  id="newAddress"
+                                  rows="3"
+                                  class="form-control"
+                                  placeholder="Địa chỉ người nhận..."
+                                ></textarea>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-lg-4">Số điện thoại:</div>
+                              <div class="col-lg-8">
+                                <input
+                                  type="text"
+                                  id="newPhone"
+                                  class="form-control"
+                                  placeholder="Số điện thoại người nhận.../"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="w-100">
+                            <button
+                              class="btn btn-primary d-block mx-auto"
+                              style={{ minWidth: "100px", fontSize: "16px" }}
+                              onClick={addListAddress}
+                            >
+                              THÊM
+                            </button>
+                          </div>
+                        </div>
+                        <button class="close" id="close-them-dia-chi">
+                          <span onClick={changeMyModal}>X</span>
+                        </button>
                       </div>
-                      <button class="close" id="close-them-dia-chi">
-                        <span onClick={changeMyModal}>X</span>
-                      </button>
-                    </div>
-                  }
-                  <button
-                    class="btn btn-info"
-                    style={{ fontSize: "16px" }}
-                    id="btn-them"
-                    onClick={changeMyModal}
-                  >
-                    <i class="fa fa-plus mr-3" aria-hidden="true"></i>THÊM ĐỊA
-                    CHỈ MỚI
-                  </button>
+                    }
+                    <button
+                      class="btn btn-info"
+                      style={{ fontSize: "16px" }}
+                      id="btn-them"
+                      onClick={changeMyModal}
+                    >
+                      <i class="fa fa-plus mr-3" aria-hidden="true"></i>THÊM ĐỊA
+                      CHỈ MỚI
+                    </button>
+                  </div>
                 </div>
-              </div>
-              <div id="s5" class="p-5 pekora">
-                <h1 class="title">
-                  Sản phẩm đã xem{" "}
-                  <span class="my-so-luong">({seenProducts.length})</span>
-                </h1>
-                <ListProduct
-                  onAddToCart={onAddToCart}
-                  products={mySeen}
-                ></ListProduct>
-              </div>
-              <div id="s6" class="p-5 pekora">
-                <h1 class="title">
-                  Sản phẩm yêu thích{" "}
-                  <span class="my-so-luong">
-                    ({myFavourite && myFavourite.flat().length})
-                  </span>
-                </h1>
-                <ListProduct
-                  onAddToCart={onAddToCart}
-                  products={myFavourite}
-                ></ListProduct>
+                <div id="s5" class="p-5 pekora">
+                  <h1 class="title">
+                    Sản phẩm đã xem{" "}
+                    <span class="my-so-luong">({seenProducts.length})</span>
+                  </h1>
+                  <ListProduct
+                    onAddToCart={onAddToCart}
+                    products={mySeen}
+                  ></ListProduct>
+                </div>
+                <div id="s6" class="p-5 pekora">
+                  <h1 class="title">
+                    Sản phẩm yêu thích{" "}
+                    <span class="my-so-luong">
+                      ({myFavourite && myFavourite.flat().length})
+                    </span>
+                  </h1>
+                  <ListProduct
+                    onAddToCart={onAddToCart}
+                    products={myFavourite}
+                  ></ListProduct>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
       </div>
     );
   }
